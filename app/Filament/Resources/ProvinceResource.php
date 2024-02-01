@@ -23,7 +23,20 @@ class ProvinceResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-c-globe-asia-australia';
 
-    protected static ?string $navigationGroup = 'Address';
+    public static function getNavigationGroup(): ?string
+    {
+        return __('filament.address');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('filament.province');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return ProvinceResource::getNavigationLabel();
+    }
 
     public static function getNavigationBadge(): ?string
     {
@@ -35,6 +48,7 @@ class ProvinceResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                    ->label(__('filament.name'))
                     ->required()
                     ->maxLength(255)
                     ->live(debounce: 1000)
@@ -43,9 +57,11 @@ class ProvinceResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\Repeater::make('Towns')
+                    ->label(__('filament.towns'))
                     ->relationship()
                     ->schema([
                         Forms\Components\TextInput::make('name')
+                            ->label(__('filament.name'))
                             ->required()
                             ->maxLength(255)
                             ->live(debounce: 1000)
@@ -66,6 +82,7 @@ class ProvinceResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label(__('filament.name'))
                 ->searchable(),
                 Tables\Columns\TextColumn::make('slug'),
             ])

@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TownResource\Pages;
-use App\Filament\Resources\TownResource\RelationManagers;
 use App\Models\Province;
 use App\Models\Town;
 use Filament\Forms;
@@ -12,8 +11,6 @@ use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 
 class TownResource extends Resource
@@ -22,7 +19,20 @@ class TownResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-c-map-pin';
 
-    protected static ?string $navigationGroup = 'Address';
+    public static function getNavigationGroup(): ?string
+    {
+        return __('filament.address');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('filament.town');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return TownResource::getNavigationLabel();
+    }
 
     public static function getNavigationBadge(): ?string
     {
@@ -34,10 +44,11 @@ class TownResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('province_id')
-                    ->label('Province')
+                    ->label(__('filament.province'))
                     ->options(Province::all()->pluck('name', 'id'))
                     ->searchable(),
                 Forms\Components\TextInput::make('name')
+                    ->label(__('filament.name'))
                     ->required()
                     ->maxLength(255)
                     ->live(debounce: 1000)
@@ -53,6 +64,7 @@ class TownResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label(__('filament.name'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug'),
             ])

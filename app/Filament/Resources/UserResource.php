@@ -1,0 +1,139 @@
+<?php
+
+namespace App\Filament\Resources;
+
+use App\Filament\Resources\UserResource\Pages;
+use App\Filament\Resources\UserResource\RelationManagers;
+use App\Models\User;
+use Filament\Forms;
+use Filament\Forms\Form;
+use Filament\Forms\Set;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Str;
+
+class UserResource extends Resource
+{
+    protected static ?string $model = User::class;
+
+    protected static ?string $navigationIcon = 'heroicon-o-users';
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('filament.users');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('filament.user');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return UserResource::getNavigationLabel();
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+
+    public static function form(Form $form): Form
+    {
+        return $form
+            ->schema([
+                Forms\Components\TextInput::make('name')
+                    ->label(__('filament.username'))
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('surname')
+                    ->label(__('filament.surname'))
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('middle_name')
+                    ->label(__('filament.middle_name'))
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('phone')
+                    ->label(__('messages.phone'))
+                    ->tel()
+                    ->telRegex('/^[0-9]{9}$/')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\Section::make(__('filament.personal info'))
+                    ->description(__('filament.personal info'))
+                    ->schema([
+                        Forms\Components\Repeater::make('User info')
+                            ->label(__('filament.user info'))
+                            ->relationship('userInfo')
+                            ->schema([
+                                Forms\Components\Select::make('province_id')
+                                    ->relationship('province', 'name')
+                                    ->label(__('filament.province'))
+                                    ->disabled(),
+                                Forms\Components\Select::make('town_id')
+                                    ->relationship('town', 'name')
+                                    ->label(__('filament.town'))
+                                    ->disabled(),
+                                Forms\Components\Select::make('user_type_id')
+                                    ->relationship('userType', 'name')
+                                    ->label(__('filament.user type'))
+                                    ->disabled(),
+                            ])
+                        ->disableItemCreation()
+                        ->disableItemDeletion(),
+                    ]),
+            ]);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return $table
+            ->columns([
+                Tables\Columns\TextColumn::make('name')
+                    ->label(__('filament.username'))
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('surname')
+                    ->label(__('filament.surname'))
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('phone')
+                    ->label(__('messages.phone'))
+                    ->searchable(),
+            ])
+            ->filters([
+                //
+            ])
+            ->actions([
+                Tables\Actions\EditAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
+                ]),
+            ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => Pages\ListUsers::route('/'),
+            'create' => Pages\CreateUser::route('/create'),
+            'edit' => Pages\EditUser::route('/{record}/edit'),
+        ];
+    }
+}

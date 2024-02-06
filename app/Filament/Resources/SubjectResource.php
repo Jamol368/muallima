@@ -18,11 +18,32 @@ class SubjectResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
 
+    public static function getNavigationGroup(): ?string
+    {
+        return __('filament.test');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('filament.subject');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return SubjectResource::getNavigationLabel();
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                    ->label(__('filament.name'))
                     ->required()
                     ->maxLength(255)
                     ->live(debounce: 1000)
@@ -31,13 +52,15 @@ class SubjectResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('img')
-                    ->label('Image Upload')
+                    ->label(__('filament.image upload'))
                     ->image()
                     ->moveFiles()
                     ->maxSize(2048),
                 Forms\Components\TextInput::make('icon')
+                    ->label(__('filament.icon'))
                     ->maxLength(255),
-                Forms\Components\RichEditor::make('content'),
+                Forms\Components\RichEditor::make('content')
+                    ->label(__('filament.content')),
             ]);
     }
 
@@ -46,6 +69,7 @@ class SubjectResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label(__('filament.name'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug'),
             ])

@@ -17,7 +17,7 @@ class TownResource extends Resource
 {
     protected static ?string $model = Town::class;
 
-    protected static ?string $navigationIcon = 'heroicon-c-map-pin';
+    protected static ?string $navigationIcon = 'heroicon-o-map-pin';
 
     public static function getNavigationGroup(): ?string
     {

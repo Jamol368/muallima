@@ -20,17 +20,40 @@ class SchoolResource extends Resource
 {
     protected static ?string $model = School::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
+
+    protected static ?int $navigationSort = 3;
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('filament.address');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('filament.school');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return SchoolResource::getNavigationLabel();
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\Select::make('town_id')
-                    ->label('Town')
+                    ->label(__('filament.town'))
                     ->options(Town::all()->pluck('name', 'id'))
                     ->searchable(),
                 Forms\Components\TextInput::make('name')
+                    ->label(__('filament.name'))
                     ->required()
                     ->maxLength(255)
                     ->live(debounce: 1000)
@@ -46,8 +69,10 @@ class SchoolResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label(__('filament.name'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('town.name')
+                    ->label(__('filament.town'))
                 ->searchable(),
             ])
             ->filters([

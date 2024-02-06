@@ -17,7 +17,7 @@ class UserTeacherResource extends Resource
 {
     protected static ?string $model = UserTeacher::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static bool $shouldRegisterNavigation = false;
 
     public static function form(Form $form): Form
     {

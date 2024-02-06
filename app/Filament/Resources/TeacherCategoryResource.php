@@ -19,13 +19,36 @@ class TeacherCategoryResource extends Resource
 {
     protected static ?string $model = TeacherCategory::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-bars-3';
+    protected static ?string $navigationIcon = 'heroicon-o-identification';
+
+    protected static ?int $navigationSort = 3;
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('filament.users');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('filament.teacher category');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return TeacherCategoryResource::getNavigationLabel();
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
+                    ->label(__('filament.name'))
                     ->required()
                     ->maxLength(255)
                     ->live(debounce: 1000)
@@ -33,7 +56,9 @@ class TeacherCategoryResource extends Resource
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\RichEditor::make('content'),
+                Forms\Components\RichEditor::make('content')
+                    ->label(__('filament.content'))
+                    ->fileAttachmentsDirectory('teachercategory'),
             ]);
     }
 
@@ -42,6 +67,7 @@ class TeacherCategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label(__('filament.name'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug'),
             ])

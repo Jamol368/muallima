@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('test_type_id')->constrained();
             $table->foreignId('subject_id')->constrained();
             $table->text('question');
-            $table->integer('complexity');
             $table->timestamps();
         });
     }

@@ -62,6 +62,8 @@ class User extends Authenticatable
 
     /**
      * Get the userInfo associated with the user.
+     *
+     * @return HasOne
      */
     public function userInfo(): HasOne
     {

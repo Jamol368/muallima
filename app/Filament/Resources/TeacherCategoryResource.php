@@ -58,7 +58,8 @@ class TeacherCategoryResource extends Resource
                     ->maxLength(255),
                 Forms\Components\RichEditor::make('content')
                     ->label(__('filament.content'))
-                    ->fileAttachmentsDirectory('teachercategory'),
+                    ->fileAttachmentsDirectory('teachercategory')
+                    ->columnSpanFull(),
             ]);
     }
 

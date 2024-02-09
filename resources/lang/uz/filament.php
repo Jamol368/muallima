@@ -28,4 +28,5 @@ return [
     'score' => "Ball",
     'price' => "Narx",
     'mins' => "Vaqt",
+    'question' => "Savol",
 ];

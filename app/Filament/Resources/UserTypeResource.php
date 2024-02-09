@@ -64,6 +64,7 @@ class UserTypeResource extends Resource
                 Forms\Components\RichEditor::make('content')
                     ->label(__('filament.content'))
                     ->fileAttachmentsDirectory('content')
+                    ->columnSpanFull(),
             ]);
     }
 

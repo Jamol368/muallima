@@ -17,7 +17,7 @@ class TestTypeFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->words(2),
+            'name' => fake()->words(2, true),
             'slug' => fake()->unique()->slug(2),
             'score' => fake()->randomElement([30, 60, 100]),
             'price' => fake()->randomElement([2000, 3000, 5000]),

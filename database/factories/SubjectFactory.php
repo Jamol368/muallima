@@ -17,7 +17,10 @@ class SubjectFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => fake()->words(2, true),
+            'slug' => fake()->unique()->slug(2),
+            'icon' => fake()->randomElement(['maths', 'history', 'science']),
+            'img' => fake()->optional()->image('public/storage/subject'),
         ];
     }
 }

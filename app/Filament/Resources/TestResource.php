@@ -4,7 +4,9 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\TestResource\Pages;
 use App\Filament\Resources\TestResource\RelationManagers;
+use App\Models\Subject;
 use App\Models\Test;
+use App\Models\TestType;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -19,19 +21,70 @@ class TestResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function getNavigationGroup(): ?string
+    {
+        return __('filament.test');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('filament.test');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return TestResource::getNavigationLabel();
+    }
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::count();
+    }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
-            ]);
+                Forms\Components\Select::make('test_type_id')
+                    ->label(__('filament.test type'))
+                    ->options(
+                        TestType::query()
+                            ->orderBy('name')
+                            ->get()
+                            ->pluck('name', 'id')
+                    )
+                    ->searchable()
+                    ->required(),
+                Forms\Components\Select::make('subject_id')
+                    ->label(__('filament.subject'))
+                    ->options(
+                        Subject::query()
+                            ->orderBy('name')
+                            ->get()
+                            ->pluck('name', 'id')
+                    )
+                    ->searchable()
+                    ->required(),
+                Forms\Components\RichEditor::make('question')
+                    ->label(__('filament.question'))
+                    ->fileAttachmentsDirectory('test')
+                    ->required(),
+            ])->columns(1);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('testType.name')
+                    ->label(__('filament.test type'))
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('subject.name')
+                    ->label(__('filament.subject'))
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('question')
+                    ->label(__('filament.question'))
+                    ->html()->wrap()->limit(50),
             ])
             ->filters([
                 //

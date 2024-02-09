@@ -20,6 +20,11 @@ class TestType extends Model
         'mins',
     ];
 
+    /**
+     * Get the tests associated with the test_type
+     *
+     * @return HasMany
+     */
     public function tests(): HasMany
     {
         return $this->hasMany('tests');

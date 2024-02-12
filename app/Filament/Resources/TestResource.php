@@ -19,7 +19,7 @@ class TestResource extends Resource
 {
     protected static ?string $model = Test::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-window';
 
     public static function getNavigationGroup(): ?string
     {
@@ -69,6 +69,23 @@ class TestResource extends Resource
                     ->label(__('filament.question'))
                     ->fileAttachmentsDirectory('test')
                     ->required(),
+                Forms\Components\Repeater::make('answers')
+                    ->label(__('filament.answers'))
+                    ->relationship()
+                    ->schema([
+                        Forms\Components\RichEditor::make('option')
+                            ->label(__('filament.option'))
+                            ->fileAttachmentsDirectory('answer')
+                            ->required()
+                        ->columnSpan(3),
+                        Forms\Components\Checkbox::make('is_true')
+                            ->label(__('filament.is true'))
+                        ->inline(false),
+                    ])
+                    ->cloneable()
+                    ->deleteAction(
+                        fn (Forms\Components\Actions\Action $action) => $action->requiresConfirmation(),
+                    )->columns(4),
             ])->columns(1);
     }
 

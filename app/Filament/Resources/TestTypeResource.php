@@ -21,7 +21,7 @@ class TestTypeResource extends Resource
 {
     protected static ?string $model = TestType::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-squares-plus';
 
     public static function getNavigationGroup(): ?string
     {

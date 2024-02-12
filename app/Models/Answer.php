@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
-class School extends Model
+class Answer extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -17,16 +16,16 @@ class School extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'town_id',
-        'name',
-        'slug',
+        'test_id',
+        'option',
+        'is_true',
     ];
 
     /**
-     * Get the town associated with the school.
+     * Get the test associated with the answer.
      */
-    public function town(): HasOne
+    public function test(): HasOne
     {
-        return $this->hasOne(Town::class, 'id', 'town_id');
+        return $this->hasOne(Test::class);
     }
 }

@@ -29,4 +29,7 @@ return [
     'price' => "Narx",
     'mins' => "Vaqt",
     'question' => "Savol",
+    'answers' => "Javoblar",
+    'option' => "Variant",
+    'is true' => "To'g'ri javob",
 ];

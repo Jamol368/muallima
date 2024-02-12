@@ -9,6 +9,11 @@ class UserPupil extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'user_info_id',
         'school_id',

@@ -17,7 +17,9 @@ class UserTeacherFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_info_id' => rand(1, 1000),
+            'teacher_category_id' => rand(1, 10),
+            'subject_id' => rand(1, 20),
         ];
     }
 }

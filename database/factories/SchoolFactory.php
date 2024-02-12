@@ -17,7 +17,9 @@ class SchoolFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'town_id' => rand(1, 200),
+            'name' => fake()->words(2, true),
+            'slug' => fake()->unique()->slug
         ];
     }
 }

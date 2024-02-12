@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Province;
+use App\Models\UserTeacher;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +18,13 @@ class UserInfoFactory extends Factory
      */
     public function definition(): array
     {
+        $province = Province::all()->random(1)->first();
+
         return [
-            //
+            'user_id' => rand(1, 10000),
+            'province_id' => $province['id'],
+            'town_id' => $province->towns->random(1)->first()['id'],
+            'user_type_id' => rand(1, 10),
         ];
     }
 }

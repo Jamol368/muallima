@@ -17,7 +17,9 @@ class UserPupilFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_info_id' => rand(1, 1000),
+            'school_id' => rand(1, 2000),
+            'school_grade' => rand(1, 4),
         ];
     }
 }

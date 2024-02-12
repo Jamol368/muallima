@@ -17,7 +17,9 @@ class UserStudentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_info_id' => rand(1, 1000),
+            'university' => fake()->company,
+            'university_grade' => rand(1, 5),
         ];
     }
 }

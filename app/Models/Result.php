@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Result extends Model
 {
@@ -46,5 +47,13 @@ class Result extends Model
     public function subject(): BelongsTo
     {
         return $this->belongsTo(Subject::class);
+    }
+
+    /**
+     * Get the result session associated with the result.
+     */
+    public function resultSession(): HasOne
+    {
+        return $this->hasOne(ResultSession::class);
     }
 }

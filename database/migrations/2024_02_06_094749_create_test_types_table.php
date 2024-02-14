@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->tinyInteger('score');
             $table->tinyInteger('price');
+            $table->tinyInteger('questions');
             $table->tinyInteger('mins');
             $table->softDeletes();
             $table->timestamps();

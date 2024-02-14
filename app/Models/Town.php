@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Town extends Model
@@ -23,10 +23,10 @@ class Town extends Model
     ];
 
     /**
-     * Get the province associated with the town.
+     * Get the province that owns the town.
      */
-    public function province(): HasOne
+    public function province(): BelongsTo
     {
-        return $this->hasOne(Province::class);
+        return $this->belongsTo(Province::class);
     }
 }

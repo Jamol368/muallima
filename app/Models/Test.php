@@ -23,7 +23,7 @@ class Test extends Model
     ];
 
     /**
-     * Get the test_type associated with the test.
+     * Get the test type that owns the test.
      *
      * @return BelongsTo
      */
@@ -34,7 +34,7 @@ class Test extends Model
     }
 
     /**
-     * Get the test_type associated with the test.
+     * Get the subject that owns the test.
      *
      * @return BelongsTo
      */

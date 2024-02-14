@@ -22,6 +22,7 @@ class TestType extends Model
         'slug',
         'score',
         'price',
+        'questions',
         'mins',
     ];
 

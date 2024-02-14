@@ -64,6 +64,10 @@ class TestTypeResource extends Resource
                     ->label(__('filament.price'))
                     ->integer()
                     ->required(),
+                Forms\Components\TextInput::make('questions')
+                    ->label(__('filament.questions'))
+                    ->integer()
+                    ->required(),
                 Forms\Components\TextInput::make('mins')
                     ->label(__('filament.mins'))
                     ->integer()

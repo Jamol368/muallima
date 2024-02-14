@@ -91,6 +91,38 @@ class UserResource extends Resource
                         ->disableItemCreation()
                         ->disableItemDeletion(),
                     ]),
+                Forms\Components\Section::make(__('filament.results'))
+                    ->description(__('filament.user results'))
+                    ->schema([
+                        Forms\Components\Repeater::make('results')
+                            ->hiddenLabel(__('filament.results'))
+                            ->relationship('results')
+                            ->schema([
+                                Forms\Components\Select::make('test_type_id')
+                                    ->relationship('testType', 'name')
+                                    ->label(__('filament.test type'))
+                                    ->disabled(),
+                                Forms\Components\Select::make('subject_id')
+                                    ->relationship('subject', 'name')
+                                    ->label(__('filament.subject'))
+                                    ->disabled(),
+                                Forms\Components\TextInput::make('true_answers')
+                                    ->label(__('filament.true answers'))
+                                    ->disabled(),
+                                Forms\Components\TextInput::make('wrong_answers')
+                                    ->label(__('filament.wrong answers'))
+                                    ->disabled(),
+                                Forms\Components\TextInput::make('score')
+                                    ->label(__('filament.score'))
+                                    ->disabled(),
+                                Forms\Components\TextInput::make('created_at')
+                                    ->label(__('filament.created_at'))
+                                    ->disabled(),
+                            ])
+                        ->disableItemCreation()
+                        ->disableItemDeletion()
+                        ->columns(3),
+                    ]),
             ]);
     }
 

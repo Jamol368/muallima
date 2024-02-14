@@ -23,7 +23,7 @@ class UserInfo extends Model
     ];
 
     /**
-     * Get the province associated with the user info.
+     * Get the province that owns the user info.
      */
     public function province(): BelongsTo
     {
@@ -31,7 +31,7 @@ class UserInfo extends Model
     }
 
     /**
-     * Get the town associated with the user info.
+     * Get the town that owns the user info.
      */
     public function town(): BelongsTo
     {
@@ -39,10 +39,18 @@ class UserInfo extends Model
     }
 
     /**
-     * Get the town associated with the user info.
+     * Get the user type that owns the user info.
      */
     public function userType(): BelongsTo
     {
         return $this->belongsTo(UserType::class, 'user_type_id', 'id');
+    }
+
+    /**
+     * Get the user that owns the user info.
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

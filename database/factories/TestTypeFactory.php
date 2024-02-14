@@ -21,6 +21,7 @@ class TestTypeFactory extends Factory
             'slug' => fake()->unique()->slug(2),
             'score' => fake()->randomElement([30, 60, 100]),
             'price' => fake()->randomElement([2000, 3000, 5000]),
+            'questions' => fake()->randomElement([10, 20, 30]),
             'mins' => fake()->randomElement([30, 60]),
         ];
     }

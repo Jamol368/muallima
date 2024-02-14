@@ -25,6 +25,7 @@ return [
     'image upload' => 'Rasm yuklash',
 
     'test type' => "Test turi",
+    'questions' => "Nechta savol",
     'score' => "Ball",
     'price' => "Narx",
     'mins' => "Vaqt",
@@ -32,4 +33,9 @@ return [
     'answers' => "Javoblar",
     'option' => "Variant",
     'is true' => "To'g'ri javob",
+    'results' => "Natijalar",
+    'user results' => "Foydalanuvchi natijalari",
+    'true answers' => "To'g'ri javoblar",
+    'wrong answers' => "Noto'g'ri javoblar",
+    'created_at' => "Topshirgan vaqti",
 ];

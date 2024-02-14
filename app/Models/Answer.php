@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Answer extends Model
 {
@@ -22,10 +22,10 @@ class Answer extends Model
     ];
 
     /**
-     * Get the test associated with the answer.
+     * Get the test that owns the answer.
      */
-    public function test(): HasOne
+    public function test(): BelongsTo
     {
-        return $this->hasOne(Test::class);
+        return $this->belongsTo(Test::class);
     }
 }

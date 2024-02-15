@@ -17,4 +17,12 @@ return [
     'log out' => "Chiqish",
     'profile' => "Profil",
     'manage account' => "Profilni boshqarish",
+
+    'home' => "Asosiy",
+    'course' => "Kurs",
+    'test' => "Test",
+    'contest' => "Tanlov",
+    'news' => "Yangiliklar",
+    'about' => "Biz haqimizda",
+    'contact' => "Aloqa",
 ];

@@ -10,6 +10,8 @@ use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 
 class SubjectResource extends Resource
@@ -54,13 +56,11 @@ class SubjectResource extends Resource
                 Forms\Components\FileUpload::make('img')
                     ->label(__('filament.image upload'))
                     ->image()
+                    ->directory('subject')
                     ->moveFiles()
                     ->maxSize(2048),
-                Forms\Components\TextInput::make('icon')
-                    ->label(__('filament.icon'))
-                    ->maxLength(255),
-                Forms\Components\RichEditor::make('content')
-                    ->label(__('filament.content')),
+                Forms\Components\ColorPicker::make('color')
+                    ->label(__('filament.color')),
             ]);
     }
 
@@ -71,10 +71,12 @@ class SubjectResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->label(__('filament.name'))
                     ->searchable(),
-                Tables\Columns\TextColumn::make('slug'),
+                Tables\Columns\ColorColumn::make('color')
+                    ->label(__('filament.color')),
             ])
+            ->reorderable('order')
             ->filters([
-                //
+                Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -100,5 +102,13 @@ class SubjectResource extends Resource
             'create' => Pages\CreateSubject::route('/create'),
             'edit' => Pages\EditSubject::route('/{record}/edit'),
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
+            ])->orderBy('order');
     }
 }

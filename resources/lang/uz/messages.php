@@ -25,4 +25,16 @@ return [
     'news' => "Yangiliklar",
     'about' => "Biz haqimizda",
     'contact' => "Aloqa",
+    'happy clients' => "Baxtli mijozlar",
+    'tests' => "Testlar soni",
+    'subjects' => "Fanlar soni",
+    'brief' => "Batafsil",
+
+    'get in touch' => "Biz bilan bog'lanish",
+    'quick links' => "Tezkor havolalar",
+    'popular links' => "Ommabop havolalar",
+
+    'our location' => "Xorazm vil. Urganch sh.",
+    'our email' => "muallima@gmail.com",
+    'our phone' => "+99(897) 364 25 64",
 ];

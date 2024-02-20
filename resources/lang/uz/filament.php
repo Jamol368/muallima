@@ -21,7 +21,7 @@ return [
     'test' => 'Test',
     'subject' => 'Fan',
     'content' => 'Matn',
-    'icon' => 'Ikonka',
+    'color' => 'Rang',
     'image upload' => 'Rasm yuklash',
 
     'test type' => "Test turi",

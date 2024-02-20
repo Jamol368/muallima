@@ -19,8 +19,9 @@ class SubjectFactory extends Factory
         return [
             'name' => fake()->words(2, true),
             'slug' => fake()->unique()->slug(2),
-            'icon' => fake()->randomElement(['maths', 'history', 'science']),
+            'color' => fake()->hexColor(),
             'img' => fake()->optional()->image('public/storage/subject'),
+            'order' => fake()->unique()->numberBetween(1, 20),
         ];
     }
 }

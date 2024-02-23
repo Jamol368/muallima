@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TeacherCategoryResource\Pages;
-use App\Filament\Resources\TeacherCategoryResource\RelationManagers;
 use App\Models\TeacherCategory;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -11,8 +10,6 @@ use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 
 class TeacherCategoryResource extends Resource
@@ -56,9 +53,17 @@ class TeacherCategoryResource extends Resource
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\RichEditor::make('content')
-                    ->label(__('filament.content'))
-                    ->fileAttachmentsDirectory('teachercategory')
+                Forms\Components\RichEditor::make('description')
+                    ->label(__('filament.description'))
+                    ->toolbarButtons([
+                        'blockquote',
+                        'bold',
+                        'h2',
+                        'h3',
+                        'italic',
+                        'link',
+                        'underline',
+                    ])
                     ->columnSpanFull(),
             ]);
     }

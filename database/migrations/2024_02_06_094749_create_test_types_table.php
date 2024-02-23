@@ -15,10 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->tinyInteger('score');
+            $table->float('score', 4, 1, true);
             $table->tinyInteger('price');
             $table->tinyInteger('questions');
             $table->tinyInteger('mins');
+            $table->string('img');
+            $table->string('description', 511);
+            $table->unsignedSmallInteger('order')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

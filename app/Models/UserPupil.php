@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UserPupil extends Model
 {
@@ -19,4 +20,12 @@ class UserPupil extends Model
         'school_id',
         'school_grade',
     ];
+
+    /**
+     * Get the user info that owns the user pupil.
+     */
+    public function userInfo(): BelongsTo
+    {
+        return $this->belongsTo(UserInfo::class);
+    }
 }

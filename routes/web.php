@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\TestTypeController;
+use App\Http\Controllers\UserInfoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +25,9 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('fan/{name}', [TestTypeController::class, 'index'])
+        ->name('subject');
+
+    Route::put('user-info/{userInfo}', [UserInfoController::class, 'update'])
+        ->name('user-info.update');
 });

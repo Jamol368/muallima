@@ -10,11 +10,10 @@ use Livewire\Component;
 class PupilData extends Component
 {
     public $schools;
-    public $town_id = 0;
+    public $town_id = 5;
+    public $userTown;
     public $selectedSchool;
     public $selectedPupilGrade;
-
-//    protected $listeners = ['type_changed' => '$refresh'];
 
     #[On('town_changed')]
     public function town_changed($value)
@@ -24,7 +23,9 @@ class PupilData extends Component
 
     public function render()
     {
-        $this->schools = School::where(['town_id' => $this->town_id])->get();
+        $this->schools = School::where(['town_id' => $this->town_id])
+            ->orWhere(['town_id' => $this->userTown])
+            ->get();
 
         return view('livewire.pupil-data');
     }

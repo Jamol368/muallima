@@ -20,7 +20,7 @@ return [
 
     'test' => 'Test',
     'subject' => 'Fan',
-    'content' => 'Matn',
+    'description' => 'Matn',
     'color' => 'Rang',
     'image upload' => 'Rasm yuklash',
 

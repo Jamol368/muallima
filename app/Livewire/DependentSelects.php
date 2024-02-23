@@ -19,7 +19,6 @@ class DependentSelects extends Component
     {
         DependentSelects::$staticTown = $value;
         $this->dispatch('town_changed', ['town_id' => $value]);
-//        dd(DependentSelects::$staticTown);
     }
 
     public function updatedSelectedProvince()

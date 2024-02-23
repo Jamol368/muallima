@@ -13,7 +13,7 @@
     @if($selectedType == 1)
         <livewire:teacher-type-select />
     @elseif($selectedType == 2)
-        <livewire:pupil-data :town_id="$town_id" />
+        <livewire:pupil-data :town_id="$town_id" :userTown="$userInfo->town_id??0" :selectedSchool="$userInfo->userPupil->school_id??0" :selectedPupilGrade="$userInfo->userPupil->school_grade??0" />
     @endif
 
 </div>

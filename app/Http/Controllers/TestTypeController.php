@@ -5,15 +5,23 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTestTypeRequest;
 use App\Http\Requests\UpdateTestTypeRequest;
 use App\Models\TestType;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class TestTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        Session::put('user_id_' . Auth::user()->getAuthIdentifier(), $request->name);
+        $testType = TestType::all();
+
+        return view('test_type.index', [
+            'testType' => $testType,
+        ]);
     }
 
     /**

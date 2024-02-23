@@ -10,13 +10,14 @@ class RadioButton extends Component
 {
     public $types;
 
-    public $town_id;
+    public $town_id = 0;
 
     public $selectedType = null;
 
+    public $userInfo = null;
+
     public function updatedSelectedType($value): void
     {
-//        dd(DependentSelects::$staticTown);
         $this->dispatch('type_changed', ['value' => $value]);
     }
 

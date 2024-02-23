@@ -24,6 +24,9 @@ class TestType extends Model
         'price',
         'questions',
         'mins',
+        'img',
+        'description',
+        'order',
     ];
 
     /**

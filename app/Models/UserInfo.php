@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class UserInfo extends Model
 {
@@ -52,5 +53,35 @@ class UserInfo extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the user pupil associated with the user info.
+     *
+     * @return HasOne
+     */
+    public function userPupil(): HasOne
+    {
+        return $this->hasOne(UserPupil::class);
+    }
+
+    /**
+     * Get the user teacher associated with the user info.
+     *
+     * @return HasOne
+     */
+    public function userTeacher(): HasOne
+    {
+        return $this->hasOne(UserTeacher::class);
+    }
+
+    /**
+     * Get the user student associated with the user info.
+     *
+     * @return HasOne
+     */
+    public function userStudent(): HasOne
+    {
+        return $this->hasOne(UserStudent::class);
     }
 }

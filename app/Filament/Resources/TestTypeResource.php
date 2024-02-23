@@ -3,8 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TestTypeResource\Pages;
-use App\Filament\Resources\TestTypeResource\RelationManagers;
-use App\Models\Province;
 use App\Models\TestType;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -15,7 +13,6 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
-use Livewire\Component;
 
 class TestTypeResource extends Resource
 {
@@ -72,6 +69,26 @@ class TestTypeResource extends Resource
                     ->label(__('filament.mins'))
                     ->integer()
                     ->required(),
+                Forms\Components\FileUpload::make('img')
+                    ->label(__('filament.image upload'))
+                    ->image()
+                    ->directory('test_type')
+                    ->moveFiles()
+                    ->maxSize(2048)
+                    ->required(),
+                Forms\Components\RichEditor::make('description')
+                    ->label(__('filament.description'))
+                    ->toolbarButtons([
+                        'blockquote',
+                        'bold',
+                        'h2',
+                        'h3',
+                        'italic',
+                        'link',
+                        'underline',
+                    ])
+                    ->maxLength(511)
+                    ->required(),
             ]);
     }
 
@@ -89,8 +106,9 @@ class TestTypeResource extends Resource
                     ->label(__('filament.price'))
                     ->searchable(),
             ])
+            ->reorderable('order')
             ->filters([
-                //
+                Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -116,5 +134,13 @@ class TestTypeResource extends Resource
             'create' => Pages\CreateTestType::route('/create'),
             'edit' => Pages\EditTestType::route('/{record}/edit'),
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
+            ])->orderBy('order');
     }
 }

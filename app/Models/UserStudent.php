@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UserStudent extends Model
 {
@@ -19,4 +20,12 @@ class UserStudent extends Model
         'university',
         'university_grade',
     ];
+
+    /**
+     * Get the user info that owns the user student.
+     */
+    public function userInfo(): BelongsTo
+    {
+        return $this->belongsTo(UserInfo::class);
+    }
 }

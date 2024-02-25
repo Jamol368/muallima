@@ -30,7 +30,9 @@ class DatabaseSeeder extends Seeder
 //            TestSeeder::class,
 //            AnswerSeeder::class,
 //            ResultSeeder::class,
-            ResultSessionSeeder::class,
+//            ResultSessionSeeder::class,
+//            PostCategorySeeder::class,
+            PostSeeder::class,
         ]);
     }
 }

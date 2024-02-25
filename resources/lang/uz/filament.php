@@ -38,4 +38,10 @@ return [
     'true answers' => "To'g'ri javoblar",
     'wrong answers' => "Noto'g'ri javoblar",
     'created_at' => "Topshirgan vaqti",
+
+    'post' => "Yangilik",
+    'post category' => "Yangilik turi",
+    'title' => "Sarlavha",
+    'content' => "Kontent",
+    'view count' => "Ko'rildi",
 ];

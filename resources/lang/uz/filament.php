@@ -44,4 +44,5 @@ return [
     'title' => "Sarlavha",
     'content' => "Kontent",
     'view count' => "Ko'rildi",
+    'tag' => "Teg",
 ];

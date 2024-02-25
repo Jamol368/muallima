@@ -20,7 +20,7 @@ class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-newspaper';
 
     public static function getNavigationGroup(): ?string
     {
@@ -79,6 +79,10 @@ class PostResource extends Resource
                     ->label(__('filament.view count'))
                     ->type('number')
                     ->disabled(),
+                Forms\Components\Select::make('tags')
+                    ->label(__('filament.tag'))
+                    ->multiple()
+                    ->relationship('tags', 'name'),
             ]);
     }
 

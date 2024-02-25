@@ -18,7 +18,7 @@ class PostFactory extends Factory
     {
         return [
             'post_category_id' => fake()->numberBetween(1, 10),
-            'title' => fake()->words(4, true),
+            'title' => fake()->paragraph,
             'slug' => fake()->unique()->slug,
             'description' => fake()->text,
             'img' => fake()->image('public/storage/post'),

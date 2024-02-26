@@ -862,7 +862,7 @@
                     <a href="#" class="nav-item nav-link">{{ __('messages.course') }}</a>
                     <a href="{{ route('home').'#subject' }}" class="nav-item nav-link">{{ __('messages.test') }}</a>
                     <a href="#" class="nav-item nav-link">{{ __('messages.contest') }}</a>
-                    <a href="#" class="nav-item nav-link">{{ __('messages.news') }}</a>
+                    <a href="{{ route('posts') }}" class="nav-item nav-link">{{ __('messages.news') }}</a>
                     <a href="#" class="nav-item nav-link">{{ __('messages.about') }}</a>
                     <a href="#" class="nav-item nav-link">{{ __('messages.contact') }}</a>
                 </div>
@@ -976,7 +976,7 @@
                                 <div class="link-animated d-flex flex-column justify-content-start">
                                     <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{{ __('messages.home') }}</a>
                                     <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{{ __('messages.about') }}</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{{ __('messages.news') }}</a>
+                                    <a class="text-light mb-2" href="{{ route('posts') }}"><i class="bi bi-arrow-right text-primary me-2"></i>{{ __('messages.news') }}</a>
                                     <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{{ __('messages.contact') }}</a>
                                 </div>
                             </div>

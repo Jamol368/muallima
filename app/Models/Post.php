@@ -29,7 +29,7 @@ class Post extends Model
     /**
      * Get the post category that owns the post.
      */
-    public function category(): BelongsTo
+    public function postCategory(): BelongsTo
     {
         return $this->belongsTo(PostCategory::class);
     }

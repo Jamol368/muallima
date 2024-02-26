@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
+use App\Models\PostCategory;
+use App\Models\Tag;
 
 class PostController extends Controller
 {
@@ -13,7 +15,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        return view('post.index', [
+            'posts' => Post::simplePaginate(6),
+            'categories' => PostCategory::all(),
+            'recent_posts' => Post::orderBy('id')->limit(5)->get(),
+            'tags' => Tag::all(),
+        ]);
     }
 
     /**

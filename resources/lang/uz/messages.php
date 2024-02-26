@@ -69,6 +69,8 @@ return [
     "test" => "Test",
     "contest" => "Tanlov",
     "news" => "Yangiliklar",
+    "recent news" => "So'nggi yangiliklar",
+    "search" => "Qidirish",
     "about" => "Biz haqimizda",
     "contact" => "Aloqa",
     "happy clients quantity" => "Baxtli mijozlar",

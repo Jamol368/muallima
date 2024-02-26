@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TestTypeController;
 use App\Http\Controllers\UserInfoController;
@@ -18,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [SiteController::class, 'index'])
     ->name('home');
+Route::get('yangiliklar/', [PostController::class, 'index'])
+    ->name('posts');
 
 
 Route::middleware([

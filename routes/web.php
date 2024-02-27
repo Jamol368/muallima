@@ -4,6 +4,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TestTypeController;
 use App\Http\Controllers\UserInfoController;
+use Goodoneuz\PayUz\PayUz;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,4 +34,8 @@ Route::middleware([
 
     Route::put('user-info/{userInfo}', [UserInfoController::class, 'update'])
         ->name('user-info.update');
+
+    Route::any('handle/{paysys}', function ($paysys) {
+        return response()->json(PayUz::driver($paysys)->handle());
+    });
 });

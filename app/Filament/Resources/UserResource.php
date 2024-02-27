@@ -68,6 +68,23 @@ class UserResource extends Resource
                     ->telRegex('/^[0-9]{9}$/')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Section::make(__('messages.user balance'))
+                    ->description(__('messages.user balance'))
+                    ->schema([
+                        Forms\Components\Repeater::make('User balance')
+                            ->label(false)
+                            ->relationship('userBalance')
+                            ->schema([
+                                Forms\Components\TextInput::make('balance')
+                                    ->label(__('messages.balance'))
+                                    ->type('number'),
+                                Forms\Components\TextInput::make('last_transaction_id')
+                                    ->label(__('filament.last transaction id'))
+                                    ->disabled(),
+                            ])
+                            ->disableItemCreation()
+                            ->disableItemDeletion(),
+                    ]),
                 Forms\Components\Section::make(__('filament.personal info'))
                     ->description(__('filament.personal info'))
                     ->schema([

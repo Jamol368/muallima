@@ -17,6 +17,7 @@ return [
     'user info' => "Foydalanuvchi ma'lumotlari",
     'user type' => "Foydalanuvchi turi",
     'teacher category' => "O'qituvchi toifasi",
+    'last transaction id' => "Oxirgi tranzaksiya identifikatori",
 
     'test' => 'Test',
     'subject' => 'Fan',

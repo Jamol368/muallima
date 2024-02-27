@@ -61,13 +61,23 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the userInfo associated with the user.
+     * Get the user info associated with the user.
      *
      * @return HasOne
      */
     public function userInfo(): HasOne
     {
         return $this->hasOne(UserInfo::class, 'user_id', 'id');
+    }
+
+    /**
+     * Get the user balance associated with the user.
+     *
+     * @return HasOne
+     */
+    public function userBalance(): HasOne
+    {
+        return $this->hasOne(UserBanalce::class);
     }
 
     /**

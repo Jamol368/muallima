@@ -86,4 +86,7 @@ return [
     "our location" => "Xorazm vil. Urganch sh.",
     "our email" => "muallima@gmail.com",
     "our phone" => "+99(897) 364 25 64",
+
+    'user balance' => "Foydalanuvchi balansi",
+    'balance' => "Balans",
 ];

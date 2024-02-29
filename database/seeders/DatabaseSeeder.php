@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             UserTeacherSeeder::class,
             UserPupilSeeder::class,
             UserStudentSeeder::class,
-            UserBanalceSeeder::class,
+            UserBalanceSeeder::class,
 
             TestTypeSeeder::class,
             TestSeeder::class,

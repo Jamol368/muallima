@@ -77,7 +77,7 @@ class User extends Authenticatable
      */
     public function userBalance(): HasOne
     {
-        return $this->hasOne(UserBanalce::class);
+        return $this->hasOne(UserBalance::class);
     }
 
     /**

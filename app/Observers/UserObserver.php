@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\Models\User;
-use App\Models\UserBanalce;
+use App\Models\UserBalance;
 
 class UserObserver
 {
@@ -13,7 +13,7 @@ class UserObserver
     public function created(User $user): void
     {
         if (!$user->userBalance()->exists()) {
-            UserBanalce::create([
+            UserBalance::create([
                 'user_id' => $user->id,
             ]);
         }

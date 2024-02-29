@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\UserBanalce;
+use App\Models\UserBalance;
 use Illuminate\Auth\Access\Response;
 
-class UserBanalcePolicy
+class UserBalancePolicy
 {
     public function before($user)
     {
@@ -24,7 +24,7 @@ class UserBanalcePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, UserBanalce $userBanalce): bool
+    public function view(User $user, UserBalance $userBalance): bool
     {
         //
     }
@@ -40,7 +40,7 @@ class UserBanalcePolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, UserBanalce $userBanalce): bool
+    public function update(User $user, UserBalance $userBalance): bool
     {
         //
     }
@@ -48,7 +48,7 @@ class UserBanalcePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, UserBanalce $userBanalce): bool
+    public function delete(User $user, UserBalance $userBalance): bool
     {
         //
     }
@@ -56,7 +56,7 @@ class UserBanalcePolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, UserBanalce $userBanalce): bool
+    public function restore(User $user, UserBalance $userBalance): bool
     {
         //
     }
@@ -64,7 +64,7 @@ class UserBanalcePolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, UserBanalce $userBanalce): bool
+    public function forceDelete(User $user, UserBalance $userBalance): bool
     {
         //
     }

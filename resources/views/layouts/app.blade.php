@@ -875,6 +875,7 @@
                                data-bs-toggle="dropdown">{{ auth()->user()->name  }}</a>
                             <div class="dropdown-menu m-0">
                                 <a href="{{ route('profile.show') }}" class="dropdown-item">{{ __('messages.profile') }}</a>
+                                <a href="{{ route('user-balance.edit') }}" class="dropdown-item">{{ __('messages.balance') }}</a>
                                 <hr>
                                 <!-- Authentication -->
                                 <form method="POST" id="logout" action="{{ route('logout') }}">

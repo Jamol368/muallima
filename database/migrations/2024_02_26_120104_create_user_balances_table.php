@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_banalces', function (Blueprint $table) {
+        Schema::create('user_balances', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->integer('balance')->default(0);
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_banalces');
+        Schema::dropIfExists('user_balances');
     }
 };

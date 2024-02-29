@@ -3,8 +3,8 @@
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TestTypeController;
+use App\Http\Controllers\UserBalanceController;
 use App\Http\Controllers\UserInfoController;
-use Goodoneuz\PayUz\PayUz;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,7 +35,18 @@ Route::middleware([
     Route::put('user-info/{userInfo}', [UserInfoController::class, 'update'])
         ->name('user-info.update');
 
-    Route::any('handle/{paysys}', function ($paysys) {
-        return response()->json(PayUz::driver($paysys)->handle());
-    });
+    Route::get('balans', [UserBalanceController::class, 'edit'])
+        ->name('user-balance.edit');
+
+    Route::post('balance-yangilash', [UserBalanceController::class, 'update'])
+        ->name('user-balance.update');
+
+
+//    redirect to payment system or payment form
+    Route::any('/pay/{paysys}/{key}/{amount}',function($paysys, $key, $amount){
+        $model = Goodoneuz\PayUz\Services\PaymentService::convertKeyToModel($key);
+        (new Goodoneuz\PayUz\PayUz)
+            ->driver($paysys)
+            ->redirect($model, $amount, 860, \route('home'));
+    })->name('pay');
 });

@@ -2,18 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\UserBanalce;
+use App\Models\UserBalance;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class UserBanalceSeeder extends Seeder
+class UserBalanceSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        UserBanalce::factory(10000)
+        UserBalance::factory(10000)
             ->create();
     }
 }

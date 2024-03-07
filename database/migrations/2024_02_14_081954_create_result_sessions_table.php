@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('result_id')->constrained();
             $table->json('questions');
             $table->json('answers')->nullable();
+            $table->json('true_answers')->nullable();
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->float('score', 4, 1, true);
-            $table->tinyInteger('price');
+            $table->integer('price');
             $table->tinyInteger('questions');
             $table->tinyInteger('mins');
             $table->string('img');

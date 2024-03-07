@@ -27,12 +27,12 @@
                 <div class="col-lg-4 wow slideInUp" data-wow-delay="0.{{ 2 + $key }}s">
                     <div class="blog-item bg-light rounded overflow-hidden">
                         <div class="blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="{{ asset('storage/' . $item->img) }}" alt="">
+                            <img class="img-fluid object-cover min-h-250" src="{{ asset('storage/' . $item->img) }}" alt="">
                         </div>
                         <div class="p-4">
-                            <h4 class="mb-3">{{ $item->name }}</h4>
-                            <p>{!! $item->description !!}</p>
-                            <a class="text-uppercase" href="">Tanlash <i class="bi bi-arrow-right"></i></a>
+                            <h4 class="mb-3 min-h-full">{{ $item->name }}</h4>
+                            <div class="min-h-72">{!! $item->description !!}</div>
+                            <a class="text-uppercase" href="{{ route('result.create', ['test_type' => $item->slug]) }}">Tanlash <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ResultController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\TestTypeController;
 use App\Http\Controllers\UserBalanceController;
 use App\Http\Controllers\UserInfoController;
@@ -31,6 +33,11 @@ Route::middleware([
 ])->group(function () {
     Route::get('fan/{name}', [TestTypeController::class, 'index'])
         ->name('subject');
+    Route::get('test/{test_type}', [ResultController::class, 'store'])
+        ->name('result.create');
+
+    Route::post('test', [TestController::class, 'store'])
+        ->name('test.store');
 
     Route::put('user-info/{userInfo}', [UserInfoController::class, 'update'])
         ->name('user-info.update');

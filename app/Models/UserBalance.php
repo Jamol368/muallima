@@ -28,4 +28,14 @@ class UserBalance extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function check(int $price): bool
+    {
+//        if ($this->balance >= $price) {
+//            $this->balance -= $price;
+//            return $this->update();
+//        }
+
+        return true;
+    }
 }

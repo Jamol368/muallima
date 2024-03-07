@@ -73,8 +73,8 @@ return [
     "search" => "Qidirish",
     "about" => "Biz haqimizda",
     "contact" => "Aloqa",
-    "happy clients quantity" => "Baxtli mijozlar",
-    "tests quantity" => "Testlar soni",
+    "happy clients" => "Baxtli mijozlar",
+    "tests" => "Testlar soni",
     "subjects quantity" => "Fanlar soni",
     "subjects" => "Fanlar",
     "brief" => "Batafsil",
@@ -89,4 +89,6 @@ return [
 
     'user balance' => "Foydalanuvchi balansi",
     'balance' => "Balans",
+
+    'error' => "Xatolik",
 ];

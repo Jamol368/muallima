@@ -528,3 +528,25 @@ h6,
 .mt-32 {
     margin-top: 8rem;
 }
+
+#timer {
+    width: 100%;
+    font-size: 60px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+}
+
+.options {
+    background-color: #06a3da;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.min-h-72 {
+    min-height: 72px;
+}
+.min-h-250 {
+    min-height: 250px;
+}

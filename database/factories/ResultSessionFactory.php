@@ -24,6 +24,9 @@ class ResultSessionFactory extends Factory
             'answers' => [
                 fake()->randomElements(range(1, 1000), 10)
             ],
+            'true_answers' => [
+                fake()->randomElements(range(1, 1000), 10)
+            ],
         ];
     }
 }

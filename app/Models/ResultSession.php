@@ -19,6 +19,7 @@ class ResultSession extends Model
         'result_id',
         'questions',
         'answers',
+        'true_answers',
     ];
 
     /**
@@ -29,6 +30,7 @@ class ResultSession extends Model
     protected $casts = [
         'questions' => 'array',
         'answers' => 'array',
+        'true_answers' => 'array',
     ];
 
     /**

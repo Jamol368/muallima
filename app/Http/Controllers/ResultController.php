@@ -4,7 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreResultRequest;
 use App\Http\Requests\UpdateResultRequest;
+use App\Models\Answer;
 use App\Models\Result;
+use App\Models\ResultSession;
+use App\Models\Subject;
+use App\Models\Test;
+use App\Models\TestType;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ResultController extends Controller
 {
@@ -27,9 +34,39 @@ class ResultController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreResultRequest $request)
+    public function store(StoreResultRequest $request, string $test_type)
     {
-        //
+        $user = Auth::user();
+
+        if ($subject = Subject::where(['slug' => Session::get('user_id_' .$user->id)])->first() and
+            $test_type_model = TestType::where(['slug' => $test_type])->first()) {
+
+            if ($user->userBalance->check($test_type_model->price) and
+                $question_ids = Test::check($subject->id, $test_type_model)) {
+
+                $questions = Test::whereIn('id', $question_ids)->get();
+                $true_answers = Answer::whereIn('test_id', $question_ids)->where('is_true')->get();
+
+                $result = new Result([
+                    'user_id' => $user->id,
+                    'test_type_id' => $test_type_model->id,
+                    'subject_id' => $subject->id,
+                ]);
+
+                $result_session = new ResultSession([
+                    'result_id' => $result->id,
+                    'questions' => $question_ids,
+                    'true_answers' => $true_answers,
+                ]);
+
+                return view('test.index', [
+                    'questions' => $questions,
+                    'test_type' => $test_type_model,
+                ]);
+            }
+            abort(404, 'Balansingiz yoki testlar soni yetarli emas.');
+        }
+        abort(404, 'Fan yoki test turi noto\'g\'ri tanlangan.');
     }
 
     /**

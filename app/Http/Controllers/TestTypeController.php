@@ -17,7 +17,7 @@ class TestTypeController extends Controller
     public function index(Request $request)
     {
         Session::put('user_id_' . Auth::user()->getAuthIdentifier(), $request->name);
-        $testType = TestType::all();
+        $testType = TestType::orderBy('order')->get();
 
         return view('test_type.index', [
             'testType' => $testType,

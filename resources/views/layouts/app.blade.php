@@ -1028,6 +1028,7 @@
 
         <!-- Template Javascript -->
         <script src="{{ asset('js/main.js') }}"></script>
+        <script src="{{ asset('js/tabs.js') }}"></script>
 
         @livewireScripts
     </body>

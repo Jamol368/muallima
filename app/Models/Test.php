@@ -51,4 +51,10 @@ class Test extends Model
     {
         return $this->hasMany(Answer::class);
     }
+
+    public static function check(int $subject_id, TestType $test_type): array|int
+    {
+        $test_indexes = Test::where(['subject_id' => $subject_id, 'test_type_id' => $test_type->id])->inRandomOrder()->take($test_type->questions)->pluck('id')->toArray();
+        return count($test_indexes)==$test_type->questions?$test_indexes:0;
+    }
 }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('result_sessions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('result_id')->constrained();
+            $table->foreignId('result_id')->constrained()->cascadeOnDelete();
             $table->json('questions');
             $table->json('answers')->nullable();
             $table->json('true_answers')->nullable();

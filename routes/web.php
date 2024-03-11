@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostTagController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TestController;
@@ -24,6 +26,12 @@ Route::get('/', [SiteController::class, 'index'])
     ->name('home');
 Route::get('yangiliklar/', [PostController::class, 'index'])
     ->name('posts');
+Route::get('yangiliklar/{slug}', [PostController::class, 'show'])
+    ->name('post');
+Route::get('yangiliklar-turi/{postCategory}/{slug}', [PostCategoryController::class, 'show'])
+    ->name('post-category.show');
+Route::get('yangiliklar-teg-boyicha/{postTag}/{slug}', [PostTagController::class, 'show'])
+    ->name('post-tag.show');
 
 
 Route::middleware([

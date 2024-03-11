@@ -42,9 +42,17 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show(string $slug)
     {
-        //
+        $post = Post::where('slug', $slug)->first();
+        $post->increment('view_count');
+
+        return view('post.show', [
+            'post' => $post,
+            'categories' => PostCategory::all(),
+            'recent_posts' => Post::orderBy('id')->limit(5)->get(),
+            'tags' => Tag::all(),
+        ]);
     }
 
     /**

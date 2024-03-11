@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\Subject;
 use App\Models\Test;
 use App\Models\User;
@@ -16,6 +17,7 @@ class SiteController extends Controller
             'tests' => Test::all()->count(),
             'subjects' => Subject::all()->count(),
             'subject_models' => Subject::all()->sortBy('order'),
+            'posts' => Post::latest()->take(3)->get(),
         ]);
     }
 }

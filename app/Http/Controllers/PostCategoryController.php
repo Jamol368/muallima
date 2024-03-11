@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostCategoryRequest;
 use App\Http\Requests\UpdatePostCategoryRequest;
 use App\Models\PostCategory;
+use App\Models\Post;
+use App\Models\Tag;
 
 class PostCategoryController extends Controller
 {
@@ -35,9 +37,14 @@ class PostCategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(PostCategory $postCategory)
+    public function show(PostCategory $postCategory, string $slug)
     {
-        //
+        return view('post.index', [
+            'posts' => Post::where('post_category_id', $postCategory->id)->simplePaginate(6),
+            'categories' => PostCategory::all(),
+            'recent_posts' => Post::orderBy('id')->limit(5)->get(),
+            'tags' => Tag::all(),
+        ]);
     }
 
     /**

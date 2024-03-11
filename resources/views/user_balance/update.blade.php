@@ -35,7 +35,7 @@
                             @method('POST')
                             <div class="row g-3">
                                 <div class="col-md-8">
-                                    <input type="number" name="amount" class="form-control border-0 bg-light px-4" value="1000" style="height: 55px;" min="1000">
+                                    <input type="number" name="amount" class="form-control border-0 bg-light px-4" value="10000" style="height: 55px;" min="10000">
                                 </div>
                                 <div class="col-md-4">
                                     <button class="btn btn-info w-100 py-3" type="submit">To'ldirish</button>

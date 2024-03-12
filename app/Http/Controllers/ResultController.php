@@ -20,7 +20,9 @@ class ResultController extends Controller
      */
     public function index()
     {
-        //
+        return view('result.index', [
+            'results' => Result::where('user_id', Auth::user()->getAuthIdentifier())->get(),
+        ]);
     }
 
     /**

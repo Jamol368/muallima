@@ -39,13 +39,18 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
+
     Route::get('fan/{name}', [TestTypeController::class, 'index'])
         ->name('subject');
+
     Route::get('test/{test_type}', [ResultController::class, 'store'])
         ->name('result.create');
 
     Route::post('test', [TestController::class, 'store'])
         ->name('test.store');
+
+    Route::get('natijalar', [ResultController::class, 'index'])
+        ->name('result.index');
 
     Route::put('user-info/{userInfo}', [UserInfoController::class, 'update'])
         ->name('user-info.update');
@@ -55,7 +60,6 @@ Route::middleware([
 
     Route::post('balance-yangilash', [UserBalanceController::class, 'update'])
         ->name('user-balance.update');
-
 
 //    redirect to payment system or payment form
     Route::any('/pay/{paysys}/{key}/{amount}',function($paysys, $key, $amount){

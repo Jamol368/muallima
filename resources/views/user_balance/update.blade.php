@@ -19,7 +19,7 @@
             <div class="row g-5">
                 <div class="col-lg-12">
                     <div class="row g-5">
-                        <h2>{{ __('messages.user balance') }}</h2>
+                        <h2 class="h2">{{ __('messages.user balance') }}</h2>
 
                         <div class="col-md-3">User ID:</div>
                         <div class="col-md-9">{{ $userBalance->user_id }}</div>
@@ -29,7 +29,7 @@
                     <hr class="mt-3 mb-3" />
                     <br>
                     <div class="row g-5">
-                        <h2>Hisobni to'ldirish (Click orqali)</h2>
+                        <h3 class="h3">Hisobni to'ldirish (Click orqali)</h3>
                         <form action="{{ route('user-balance.update') }}" method="post">
                             @csrf
                             @method('POST')

@@ -875,6 +875,7 @@
                                data-bs-toggle="dropdown">{{ auth()->user()->name  }}</a>
                             <div class="dropdown-menu m-0">
                                 <a href="{{ route('profile.show') }}" class="dropdown-item">{{ __('messages.profile') }}</a>
+                                <a href="{{ route('result.index') }}" class="dropdown-item">{{ __('filament.results') }}</a>
                                 <a href="{{ route('user-balance.edit') }}" class="dropdown-item">{{ __('messages.balance') }}</a>
                                 <hr>
                                 <!-- Authentication -->

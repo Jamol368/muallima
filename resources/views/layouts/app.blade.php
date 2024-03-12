@@ -1018,7 +1018,21 @@
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-        <!-- JavaScript Libraries -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var preventBack = {{ Session::has('preventBack') ? 'true' : 'false' }};
+
+            if (preventBack) {
+                history.pushState(null, null, location.href);
+                window.onpopstate = function () {
+                    history.go(1);
+                };
+            }
+        });
+    </script>
+
+
+    <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="{{ asset('lib/wow/wow.min.js') }}"></script>

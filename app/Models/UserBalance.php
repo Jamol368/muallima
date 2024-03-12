@@ -31,10 +31,10 @@ class UserBalance extends Model
 
     public function check(int $price): bool
     {
-//        if ($this->balance >= $price) {
-//            $this->balance -= $price;
-//            return $this->update();
-//        }
+        if ($this->balance >= $price) {
+            $this->balance -= $price;
+            return $this->update();
+        }
 
         return true;
     }

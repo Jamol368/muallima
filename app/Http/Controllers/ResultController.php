@@ -20,8 +20,12 @@ class ResultController extends Controller
      */
     public function index()
     {
+        $results = Result::where('user_id', Auth::user()->getAuthIdentifier())
+            ->orderBy('created_at', 'desc')
+            ->get();
+
         return view('result.index', [
-            'results' => Result::where('user_id', Auth::user()->getAuthIdentifier())->get(),
+            'results' => $results,
         ]);
     }
 
@@ -40,7 +44,7 @@ class ResultController extends Controller
     {
         $user = Auth::user();
 
-        if ($subject = Subject::where(['slug' => Session::get('user_id_' .$user->id)])->first() and
+        if ($subject = Subject::where(['slug' => Session::get('user_id_' . $user->id)])->first() and
             $test_type_model = TestType::where(['slug' => $test_type])->first()) {
 
             if ($user->userBalance->check($test_type_model->price) and
@@ -54,12 +58,14 @@ class ResultController extends Controller
                     'test_type_id' => $test_type_model->id,
                     'subject_id' => $subject->id,
                 ]);
+                $result->save();
 
                 $result_session = new ResultSession([
                     'result_id' => $result->id,
                     'questions' => $question_ids,
                     'true_answers' => $true_answers,
                 ]);
+                $result_session->save();
 
                 return view('test.index', [
                     'questions' => $questions,

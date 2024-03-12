@@ -38,8 +38,7 @@
 
     }
 
-    // var secondsLeft = $('#time').val() * 60;
-    var secondsLeft = 5;
+    var secondsLeft = $('#time').val() * 60;
 
     function updateTimer() {
         var minutes = Math.floor(secondsLeft / 60);
@@ -71,10 +70,19 @@
 
         // If user confirms, proceed with form submission
         if (confirmation) {
-            $('#test').submit(); // Submit the form
+            return true // Submit the form
         }
 
         return false
+    });
+
+    window.history.pushState(null, "", window.location.href);
+    window.onpopstate = function() {
+        window.history.pushState(null, "", window.location.href);
+    };
+
+    $("body").on("contextmenu", function(e) {
+        return false;
     });
 
 })(jQuery);

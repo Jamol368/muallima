@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTestRequest;
 use App\Http\Requests\UpdateTestRequest;
 use App\Models\Test;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class TestController extends Controller
 {
@@ -29,8 +32,37 @@ class TestController extends Controller
      */
     public function store(StoreTestRequest $request)
     {
-        dd($request->post('1'));
-        return redirect()->route('result.index');
+        $result = User::find(Auth::user()->getAuthIdentifier())
+            ->results()
+            ->latest()
+            ->first();
+
+        $result_session = $result->resultSession;
+
+        $array = [];
+        $true_answers = 0;
+
+        foreach ($result_session->true_answers as $key => $item) {
+            $value = $request->post($key+1);
+            $array[] = $value;
+
+            if ($value === $item) {
+                $true_answers++;
+            }
+        }
+
+        $result_session->answers = $array;
+        $result->true_answers = $true_answers;
+        $result->wrong_answers = sizeof($result_session->questions) - $true_answers;
+        $result->score = $result->testType->score * $true_answers;
+
+        $result->update();
+        $result_session->update();
+
+        Session::flash('preventBack', true);
+
+        return redirect()
+            ->route('result.index');
     }
 
     /**

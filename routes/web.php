@@ -38,6 +38,7 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
+    'prevent-back-button',
 ])->group(function () {
 
     Route::get('fan/{name}', [TestTypeController::class, 'index'])
@@ -62,7 +63,7 @@ Route::middleware([
         ->name('user-balance.update');
 
 //    redirect to payment system or payment form
-    Route::any('/pay/{paysys}/{key}/{amount}',function($paysys, $key, $amount){
+    Route::any('/pay/{paysys}/{key}/{amount}', function ($paysys, $key, $amount) {
         $model = Goodoneuz\PayUz\Services\PaymentService::convertKeyToModel($key);
         (new Goodoneuz\PayUz\PayUz)
             ->driver($paysys)

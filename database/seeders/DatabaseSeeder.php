@@ -13,30 +13,30 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            ProvinceSeeder::class,
-            TownSeeder::class,
-            SchoolSeeder::class,
-            SubjectSeeder::class,
-            TeacherCategorySeeder::class,
+//            ProvinceSeeder::class,
+//            TownSeeder::class,
+//            SchoolSeeder::class,
+//            SubjectSeeder::class,
+//            TeacherCategorySeeder::class,
 
-            UserTypeSeeder::class,
+//            UserTypeSeeder::class,
             UserSeeder::class,
-            UserInfoSeeder::class,
-            UserTeacherSeeder::class,
-            UserPupilSeeder::class,
-            UserStudentSeeder::class,
-            UserBalanceSeeder::class,
+//            UserInfoSeeder::class,
+//            UserTeacherSeeder::class,
+//            UserPupilSeeder::class,
+//            UserStudentSeeder::class,
+//            UserBalanceSeeder::class,
 
-            TestTypeSeeder::class,
-            TestSeeder::class,
-            AnswerSeeder::class,
-            ResultSeeder::class,
-            ResultSessionSeeder::class,
+//            TestTypeSeeder::class,
+//            TestSeeder::class,
+//            AnswerSeeder::class,
+//            ResultSeeder::class,
+//            ResultSessionSeeder::class,
 
-            PostCategorySeeder::class,
-            PostSeeder::class,
-            TagSeeder::class,
-            PostTagSeeder::class,
+//            PostCategorySeeder::class,
+//            PostSeeder::class,
+//            TagSeeder::class,
+//            PostTagSeeder::class,
         ]);
     }
 }

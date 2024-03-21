@@ -84,8 +84,10 @@ return [
     "popular links" => "Ommabop havolalar",
 
     "our location" => "Xorazm vil. Urganch sh.",
-    "our email" => "muallima@gmail.com",
-    "our phone" => "+99(897) 364 25 64",
+    "telegram" => "https://t.me/muallimauz",
+    "telegram bot" => "https://t.me/Muallimauz_bot",
+    "facebook" => "https://www.facebook.com/Muallimaofficiel?mibextid=ZbWKwL",
+    "instagram" => "https://www.instagram.com/invites/contact/?i=tv6lxbygsuvv&utm_content=pr5wtiu",
 
     'user balance' => "Foydalanuvchi balansi",
     'balance' => "Balans",

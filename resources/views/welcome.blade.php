@@ -4,26 +4,11 @@
         <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="{{ asset('img/carousel-1.jpg') }}" alt="Image">
+                    <img class="w-100" src="{{ asset('img/carousel-1.webp') }}" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
-                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">Creative & Innovative</h5>
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Creative & Innovative Digital
-                                Solution</h1>
-                            <a href="#"
-                               class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">{{ __('messages.brief') }}</a>
-                            <a href="#"
-                               class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">{{ __('messages.contact') }}</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img class="w-100" src="{{ asset('img/carousel-2.jpg') }}" alt="Image">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 900px;">
-                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">Creative & Innovative</h5>
-                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Creative & Innovative Digital
-                                Solution</h1>
+                            <h5 class="text-white text-uppercase mb-3 animated slideInDown">Muallima.uz</h5>
+                            <h1 class="display-1 text-white mb-md-4 animated zoomIn">Yaxshi muallim - sifatli ta'lim</h1>
                             <a href="#"
                                class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">{{ __('messages.brief') }}</a>
                             <a href="#"
@@ -120,11 +105,13 @@
                     <div class="d-flex align-items-center mb-4 wow fadeIn" data-wow-delay="0.6s">
                         <div class="bg-primary d-flex align-items-center justify-content-center rounded"
                              style="width: 60px; height: 60px;">
-                            <i class="fa fa-phone-alt text-white"></i>
+                            <i class="fab fa-telegram text-white fs-3"></i>
                         </div>
                         <div class="ps-4">
                             <h5 class="mb-2">{{ __('messages.get in touch') }}</h5>
-                            <h4 class="text-primary mb-0">{{ __('messages.our phone') }}</h4>
+                            <a href="https://t.me/Muallimauz_bot" target="_blank">
+                                <h4 class="text-primary mb-0">Telegram bot</h4>
+                            </a>
                         </div>
                     </div>
                     <a href="#" class="btn btn-primary py-3 px-5 mt-3 wow zoomIn"
@@ -170,91 +157,6 @@
         </div>
     </div>
     <!-- Service End -->
-
-    <!-- Pricing Plan Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Pricing Plans</h5>
-                <h1 class="mb-0">We are Offering Competitive Prices for Our Clients</h1>
-            </div>
-            <div class="row g-0">
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
-                    <div class="bg-light rounded">
-                        <div class="border-bottom py-4 px-5 mb-4">
-                            <h4 class="text-primary mb-1">Basic Plan</h4>
-                            <small class="text-uppercase">For Small Size Business</small>
-                        </div>
-                        <div class="p-5 pt-0">
-                            <h1 class="display-5 mb-3">
-                                <small class="align-top"
-                                       style="font-size: 22px; line-height: 45px;">$</small>49.00<small
-                                    class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Month</small>
-                            </h1>
-                            <div class="d-flex justify-content-between mb-3"><span>HTML5 & CSS3</span><i
-                                    class="fa fa-check text-primary pt-1"></i></div>
-                            <div class="d-flex justify-content-between mb-3"><span>Bootstrap v5</span><i
-                                    class="fa fa-check text-primary pt-1"></i></div>
-                            <div class="d-flex justify-content-between mb-3"><span>Responsive Layout</span><i
-                                    class="fa fa-times text-danger pt-1"></i></div>
-                            <div class="d-flex justify-content-between mb-2"><span>Cross-browser Support</span><i
-                                    class="fa fa-times text-danger pt-1"></i></div>
-                            <a href="" class="btn btn-primary py-2 px-4 mt-4">Order Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
-                    <div class="bg-white rounded shadow position-relative" style="z-index: 1;">
-                        <div class="border-bottom py-4 px-5 mb-4">
-                            <h4 class="text-primary mb-1">Standard Plan</h4>
-                            <small class="text-uppercase">For Medium Size Business</small>
-                        </div>
-                        <div class="p-5 pt-0">
-                            <h1 class="display-5 mb-3">
-                                <small class="align-top"
-                                       style="font-size: 22px; line-height: 45px;">$</small>99.00<small
-                                    class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Month</small>
-                            </h1>
-                            <div class="d-flex justify-content-between mb-3"><span>HTML5 & CSS3</span><i
-                                    class="fa fa-check text-primary pt-1"></i></div>
-                            <div class="d-flex justify-content-between mb-3"><span>Bootstrap v5</span><i
-                                    class="fa fa-check text-primary pt-1"></i></div>
-                            <div class="d-flex justify-content-between mb-3"><span>Responsive Layout</span><i
-                                    class="fa fa-check text-primary pt-1"></i></div>
-                            <div class="d-flex justify-content-between mb-2"><span>Cross-browser Support</span><i
-                                    class="fa fa-times text-danger pt-1"></i></div>
-                            <a href="" class="btn btn-primary py-2 px-4 mt-4">Order Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
-                    <div class="bg-light rounded">
-                        <div class="border-bottom py-4 px-5 mb-4">
-                            <h4 class="text-primary mb-1">Advanced Plan</h4>
-                            <small class="text-uppercase">For Large Size Business</small>
-                        </div>
-                        <div class="p-5 pt-0">
-                            <h1 class="display-5 mb-3">
-                                <small class="align-top"
-                                       style="font-size: 22px; line-height: 45px;">$</small>149.00<small
-                                    class="align-bottom" style="font-size: 16px; line-height: 40px;">/ Month</small>
-                            </h1>
-                            <div class="d-flex justify-content-between mb-3"><span>HTML5 & CSS3</span><i
-                                    class="fa fa-check text-primary pt-1"></i></div>
-                            <div class="d-flex justify-content-between mb-3"><span>Bootstrap v5</span><i
-                                    class="fa fa-check text-primary pt-1"></i></div>
-                            <div class="d-flex justify-content-between mb-3"><span>Responsive Layout</span><i
-                                    class="fa fa-check text-primary pt-1"></i></div>
-                            <div class="d-flex justify-content-between mb-2"><span>Cross-browser Support</span><i
-                                    class="fa fa-check text-primary pt-1"></i></div>
-                            <a href="" class="btn btn-primary py-2 px-4 mt-4">Order Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Pricing Plan End -->
 
     <!-- Blog Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">

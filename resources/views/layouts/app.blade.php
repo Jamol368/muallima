@@ -820,26 +820,20 @@
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <small class="me-3 text-light"><i
-                            class="fa fa-map-marker-alt me-2"></i>{{ __('messages.our location') }}</small>
-                    <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>{{ __('messages.our phone') }}
-                    </small>
-                    <small class="text-light"><i class="fa fa-envelope-open me-2"></i>{{ __('messages.our email') }}
-                    </small>
+                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>{{ trans('messages.our location') }}</small>
+                    <a href="{{ trans('messages.telegram') }}" target="_blank"><small class="me-3 text-light"><i class="fab fa-telegram me-2"></i>Telegram</small></a>
+                    <a href="{{ trans('messages.facebook') }}" target="_blank"><small class="me-3 text-light"><i class="fab fa-instagram me-2"></i>Instagram</small></a>
+                    <a href="{{ trans('messages.instagram') }}" target="_blank"><small class="text-light"><i class="fab fa-facebook me-2"></i>Facebook</small></a>
                 </div>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
-                            class="fab fa-twitter fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="{{ trans('messages.telegram') }}"><i
+                            class="fab fa-telegram fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="{{ trans('messages.facebook') }}"><i
                             class="fab fa-facebook-f fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
-                            class="fab fa-linkedin-in fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="{{ trans('messages.instagram') }}"><i
                             class="fab fa-instagram fw-normal"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i
-                            class="fab fa-youtube fw-normal"></i></a>
                 </div>
             </div>
         </div>
@@ -936,11 +930,9 @@
                         <div
                             class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
                             <a href="{{ route('home') }}" class="navbar-brand">
-                                <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>{{ env('APP_NAME') }}</h1>
+                                <h1 class="h1 m-0 text-white"><i class="fa fa-user-tie me-2"></i>{{ env('APP_NAME') }}</h1>
                             </a>
-                            <p class="mt-3 mb-4">Lorem diam sit erat dolor elitr et, diam lorem justo amet clita stet eos sit.
-                                Elitr dolor duo lorem, elitr clita ipsum sea. Diam amet erat lorem stet eos. Diam amet et kasd
-                                eos duo.</p>
+                            <p class="mt-3 mb-4">Yaxshi muallim - sifatli ta'lim</p>
                         </div>
                     </div>
                     <div class="col-lg-8 col-md-6">
@@ -950,24 +942,33 @@
                                     <h3 class="text-light mb-0">{{ __('messages.get in touch') }}</h3>
                                 </div>
                                 <div class="d-flex mb-2">
-                                    <i class="bi bi-geo-alt text-primary me-2"></i>
-                                    <p class="mb-0">{{ __('messages.our location') }}</p>
+                                    <i class="bi bi-telegram text-primary me-2"></i>
+                                    <a href="{{ trans('messages.telegram') }}" target="_blank">
+                                        <p class="">Telegram</p>
+                                    </a>
+                                </div><div class="d-flex mb-2">
+                                    <i class="bi bi-telegram text-primary me-2"></i>
+                                    <a href="{{ trans('messages.telegram bot') }}" target="_blank">
+                                        <p class="">Telegram bot</p>
+                                    </a>
                                 </div>
                                 <div class="d-flex mb-2">
-                                    <i class="bi bi-envelope-open text-primary me-2"></i>
-                                    <p class="mb-0">{{ __('messages.our email') }}</p>
+                                    <i class="bi bi-facebook text-primary me-2"></i>
+                                    <a href="{{ trans('messages.facebook') }}" target="_blank">
+                                        <p class="">Facebook</p>
+                                    </a>
                                 </div>
                                 <div class="d-flex mb-2">
-                                    <i class="bi bi-telephone text-primary me-2"></i>
-                                    <p class="mb-0">{{ __('messages.our phone') }}</p>
+                                    <i class="bi bi-instagram text-primary me-2"></i>
+                                    <a href="{{ trans('messages.instagram') }}" target="_blank">
+                                        <p class="">Instagram</p>
+                                    </a>
                                 </div>
                                 <div class="d-flex mt-4">
-                                    <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                                    <a class="btn btn-primary btn-square me-2" href="#"><i
+                                    <a class="btn btn-primary btn-square me-2" href="{{ trans('messages.telegram') }}"><i class="fab fa-telegram fw-normal"></i></a>
+                                    <a class="btn btn-primary btn-square me-2" href="{{ trans('messages.facebook') }}"><i
                                             class="fab fa-facebook-f fw-normal"></i></a>
-                                    <a class="btn btn-primary btn-square me-2" href="#"><i
-                                            class="fab fa-linkedin-in fw-normal"></i></a>
-                                    <a class="btn btn-primary btn-square" href="#"><i
+                                    <a class="btn btn-primary btn-square" href="{{ trans('messages.instagram') }}"><i
                                             class="fab fa-instagram fw-normal"></i></a>
                                 </div>
                             </div>

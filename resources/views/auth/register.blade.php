@@ -7,6 +7,14 @@
             @csrf
 
             <div class="mt-4">
+                <livewire:radio-button />
+            </div>
+
+            <div class="mt-4">
+                <livewire:dependent-selects />
+            </div>
+
+            <div class="mt-4">
                 <x-label for="name" value="{{ __('messages.name') }}" />
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autocomplete="name" />
             </div>
@@ -23,14 +31,6 @@
 
             <div class="mt-4">
                 <livewire:phone />
-            </div>
-
-            <div class="mt-4">
-                <livewire:dependent-selects />
-            </div>
-
-            <div class="mt-4">
-                <livewire:radio-button />
             </div>
 
             <div class="mt-4">

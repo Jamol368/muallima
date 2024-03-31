@@ -36,6 +36,6 @@ class UserBalance extends Model
             return $this->update();
         }
 
-        return true;
+        return false;
     }
 }

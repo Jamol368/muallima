@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('town_id')->constrained();
             $table->string('name');
-            $table->string('slug')->unique();
+            $table->string('slug')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

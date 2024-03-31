@@ -43,7 +43,7 @@ class TestController extends Controller
         $true_answers = 0;
 
         foreach ($result_session->true_answers as $key => $item) {
-            $value = $request->post($key+1);
+            $value = $request->post('mat-radio-group-' . $key+1);
             $array[] = $value;
 
             if ($value === $item) {

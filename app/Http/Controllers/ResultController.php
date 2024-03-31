@@ -10,6 +10,7 @@ use App\Models\ResultSession;
 use App\Models\Subject;
 use App\Models\Test;
 use App\Models\TestType;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -42,7 +43,7 @@ class ResultController extends Controller
      */
     public function store(StoreResultRequest $request, string $test_type)
     {
-        $user = Auth::user();
+        $user = User::find(Auth::user()->getAuthIdentifier());
 
         if ($subject = Subject::where(['slug' => Session::get('user_id_' . $user->id)])->first() and
             $test_type_model = TestType::where(['slug' => $test_type])->first()) {
@@ -70,6 +71,7 @@ class ResultController extends Controller
                 return view('test.index', [
                     'questions' => $questions,
                     'test_type' => $test_type_model,
+                    'subject' => $subject,
                 ]);
             }
             abort(404, 'Balansingiz yoki testlar soni yetarli emas.');

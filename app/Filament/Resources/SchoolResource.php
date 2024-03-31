@@ -59,7 +59,6 @@ class SchoolResource extends Resource
                     ->live(debounce: 1000)
                     ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
                 Forms\Components\TextInput::make('slug')
-                    ->required()
                     ->maxLength(255),
             ]);
     }

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('test_type_id')->constrained();
             $table->foreignId('subject_id')->constrained();
+            $table->unsignedBigInteger('primary_subject_id')->nullable();
             $table->text('question');
             $table->timestamps();
         });

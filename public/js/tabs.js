@@ -1,44 +1,7 @@
 (function ($) {
     "use strict";
 
-    openQuestion(1);
-
-    $('.tablinks').click(function (){
-        openQuestion($(this).html());
-    })
-
-    $('.next').click(function () {
-        direction($('.tabcontent.show input').attr('name'), 1)
-    })
-
-    $('.previous').click(function () {
-        direction($('.tabcontent.show input').attr('name'), -1)
-    })
-
-    function direction(key, dir) {
-        let current_tablink = $('.tablinks.active')
-        if (dir === 1 && current_tablink.next()) {
-            current_tablink.next().trigger('click');
-        } else if (dir === -1 && current_tablink.prev()) {
-            current_tablink.prev().trigger('click');
-        }
-    }
-
-    function openQuestion(key) {
-        let current_tablink = $('.tablinks.active');
-        if ($('.tabcontent.show input').is(':checked')) {
-            current_tablink.addClass('checked')
-        }
-
-        current_tablink.removeClass('active');
-        $('#tablinks-'+key).addClass('active');
-
-        $('.tabcontent.show').removeClass('show');
-        $('#tabcontent-'+key).addClass('show');
-
-    }
-
-    var secondsLeft = $('#time').val() * 60;
+    var secondsLeft = $('#minutes').text() * 60;
 
     function updateTimer() {
         var minutes = Math.floor(secondsLeft / 60);
@@ -47,14 +10,14 @@
         minutes = minutes>9?minutes:'0'+minutes;
         seconds = seconds>9?seconds:'0'+seconds;
 
-        var timerDisplay = minutes + ":" + seconds;
-        $('#timer').text(timerDisplay);
+        $('#minutes').text(minutes);
+        $('#seconds').text(seconds);
 
         secondsLeft--;
 
         if (secondsLeft < 0) {
             clearInterval(timerInterval);
-            $('#submit').click();
+            $('#end-test-button').click();
         }
     }
 
@@ -64,16 +27,19 @@
     // Call updateTimer every second
     var timerInterval = setInterval(updateTimer, 1000);
 
+    $('#end-test-button').click(function (){
+        $('#test').submit();
+    })
+
     $('#test').submit(function(event) {
+        event.preventDefault();
         // Show a confirmation dialog
         var confirmation = secondsLeft>0?confirm("Testni yakunlamoqchimisiz?"):true;
 
         // If user confirms, proceed with form submission
         if (confirmation) {
-            return true // Submit the form
+            $(this).unbind('submit').submit(); // Submit the form
         }
-
-        return false
     });
 
     window.history.pushState(null, "", window.location.href);
@@ -84,5 +50,53 @@
     $("body").on("contextmenu", function(e) {
         return false;
     });
+
+    $('.mat-radio-label').click(function () {
+        let active_tab_link = $('.tab-links.active');
+        let current = parseInt(active_tab_link.text());
+        let parent = $(this).parent().parent();
+
+        let container = parent.find('.mat-radio-container');
+        container.removeClass('mat-radio-checked');
+        $(this).find('.mat-radio-container').addClass('mat-radio-checked');
+
+        active_tab_link.addClass('checked');
+    });
+
+    $('.tab-links').click(function () {
+        let current = $('.test-list:not(.hidden)');
+        current.addClass('hidden');
+        $('.nav-item.active').removeClass('active');
+
+        let next = $('.test-list-' + parseInt($(this).text()) + '');
+        next.removeClass('hidden');
+        $(this).addClass('active');
+    });
+
+    $('.prev').click(function () {
+        let prev = parseInt($('.tab-links.active').text()) - 1;
+        let prev_nav = $('.nav-item-' + prev);
+        if(prev_nav.length > 0) {
+            $('.test-list-' + (prev + 1)).addClass('hidden');
+            $('.test-list-' + prev).removeClass('hidden');
+
+            let active_nav = $('.nav-item.active');
+            active_nav.removeClass('active');
+            prev_nav.addClass('active');
+        }
+    });
+
+    $('.next').click(function () {
+        let next = parseInt($('.tab-links.active').text()) + 1;
+        let next_nav = $('.nav-item-' + next);
+        if(next_nav.length > 0) {
+            $('.test-list-' + (next - 1)).addClass('hidden');
+            $('.test-list-' + next).removeClass('hidden');
+
+            let active_nav = $('.nav-item.active');
+            active_nav.removeClass('active');
+            next_nav.addClass('active');
+        }
+    })
 
 })(jQuery);

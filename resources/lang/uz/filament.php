@@ -21,6 +21,7 @@ return [
 
     'test' => 'Test',
     'subject' => 'Fan',
+    'primary_subject' => 'Boshlang\'ich ta\'lim fani',
     'description' => 'Matn',
     'color' => 'Rang',
     'image upload' => 'Rasm yuklash',

@@ -61,7 +61,23 @@ class TestResource extends Resource
                             ->pluck('name', 'id')
                     )
                     ->searchable()
+                    ->live()
                     ->required(),
+                Forms\Components\Select::make('primary_subject_id')
+                    ->options([
+                        1 => 'Metodika',
+                        2 => 'Ona tili',
+                        3 => 'Matem',
+                        4 => 'Tabi\'iy fan',
+                        5 => 'Tarbiya',
+                        6 => 'Texnologiya',
+                        7 => 'O\'qish',
+                        8 => 'Ped mahorat',
+                    ])
+                    ->label(__('filament.primary_subject'))
+                    ->native(false)
+                    ->hidden(fn (Forms\Get $get):bool => $get('subject_id') != 1)
+                    ->required(fn (Forms\Get $get):bool => $get('subject_id') != 1),
                 Forms\Components\RichEditor::make('question')
                     ->label(__('filament.question'))
                     ->fileAttachmentsDirectory('test')

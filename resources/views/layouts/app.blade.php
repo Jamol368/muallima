@@ -820,10 +820,9 @@
         <div class="row gx-0">
             <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>{{ trans('messages.our location') }}</small>
                     <a href="{{ trans('messages.telegram') }}" target="_blank"><small class="me-3 text-light"><i class="fab fa-telegram me-2"></i>Telegram</small></a>
-                    <a href="{{ trans('messages.facebook') }}" target="_blank"><small class="me-3 text-light"><i class="fab fa-instagram me-2"></i>Instagram</small></a>
-                    <a href="{{ trans('messages.instagram') }}" target="_blank"><small class="text-light"><i class="fab fa-facebook me-2"></i>Facebook</small></a>
+                    <a href="{{ trans('messages.facebook') }}" target="_blank"><small class="me-3 text-light"><i class="fab fa-facebook me-2"></i>Facebook</small></a>
+                    <a href="{{ trans('messages.instagram') }}" target="_blank"><small class="text-light"><i class="fab fa-instagram me-2"></i>Instagram</small></a>
                 </div>
             </div>
             <div class="col-lg-4 text-center text-lg-end">

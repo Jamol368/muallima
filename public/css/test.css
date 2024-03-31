@@ -4028,7 +4028,7 @@ select.mat-input-element:not(:disabled) {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30px
+    padding: 20px
 }
 
 .question-number {
@@ -4063,9 +4063,7 @@ select.mat-input-element:not(:disabled) {
 }
 
 .question-form-wrapper {
-    /*overflow-y: auto;*/
-    /*height: 55vh;*/
-    padding: 40px
+    padding: 0 20px 20px
 }
 
 form {
@@ -4073,7 +4071,7 @@ form {
 }
 
 .question {
-    margin-bottom: 30px !important
+    margin-bottom: 10px !important
 }
 
 .question, .answers {
@@ -4149,3 +4147,11 @@ button {
     font-weight: normal;
 }
 
+body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

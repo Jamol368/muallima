@@ -17,7 +17,7 @@
             rel="stylesheet">
 
         <!-- Icon Font Stylesheet -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
         <!-- Libraries Stylesheet -->
@@ -822,7 +822,8 @@
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
                     <a href="{{ trans('messages.telegram') }}" target="_blank"><small class="me-3 text-light"><i class="fab fa-telegram me-2"></i>Telegram</small></a>
                     <a href="{{ trans('messages.facebook') }}" target="_blank"><small class="me-3 text-light"><i class="fab fa-facebook me-2"></i>Facebook</small></a>
-                    <a href="{{ trans('messages.instagram') }}" target="_blank"><small class="text-light"><i class="fab fa-instagram me-2"></i>Instagram</small></a>
+                    <a href="{{ trans('messages.instagram') }}" target="_blank"><small class="me-3 text-light"><i class="fab fa-instagram me-2"></i>Instagram</small></a>
+                    <a href="{{ trans('messages.twitter') }}" target="_blank"><small class="text-light"><i class="fab fa-x-twitter me-2"></i>Twitter</small></a>
                 </div>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
@@ -833,6 +834,8 @@
                             class="fab fa-facebook-f fw-normal"></i></a>
                     <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="{{ trans('messages.instagram') }}"><i
                             class="fab fa-instagram fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="{{ trans('messages.twitter') }}"><i
+                            class="fab fa-x-twitter fw-normal"></i></a>
                 </div>
             </div>
         </div>
@@ -857,10 +860,8 @@
                     <a href="#" class="nav-item nav-link">{{ __('messages.contest') }}</a>
                     <a href="{{ route('posts') }}" class="nav-item nav-link">{{ __('messages.news') }}</a>
                     <a href="#" class="nav-item nav-link">{{ __('messages.about') }}</a>
-                    <a href="#" class="nav-item nav-link">{{ __('messages.contact') }}</a>
+                    <a href="{{ trans('messages.telegram bot') }}" target="_blank" class="nav-item nav-link">{{ __('messages.contact') }}</a>
                 </div>
-                {{--            <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i--}}
-                {{--                    class="fa fa-search"></i></butaton>--}}
                 @if (Route::has('login'))
                     @auth
                         <div class="nav-item dropdown">
@@ -969,6 +970,8 @@
                                             class="fab fa-facebook-f fw-normal"></i></a>
                                     <a class="btn btn-primary btn-square" href="{{ trans('messages.instagram') }}"><i
                                             class="fab fa-instagram fw-normal"></i></a>
+                                    <a class="btn btn-primary btn-square" href="{{ trans('messages.twitter') }}"><i
+                                            class="fab fa-x-twitter fw-normal"></i></a>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">

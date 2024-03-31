@@ -14,12 +14,12 @@
     @endsection
 
     <!-- Blog Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
+    <div class="container-fluid wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="row">
                 <div class="col-lg-12">
-                    <div class="row g-5">
-                        <h2 class="h2">{{ __('messages.user balance') }}</h2>
+                    <div class="row">
+                        <h2 class="h3">{{ __('messages.user balance') }}</h2>
 
                         <div class="col-md-3">User ID:</div>
                         <div class="col-md-9">{{ $userBalance->user_id }}</div>
@@ -28,8 +28,8 @@
                     </div>
                     <hr class="mt-3 mb-3" />
                     <br>
-                    <div class="row g-5">
-                        <h3 class="h3">Hisobni to'ldirish (Click orqali)</h3>
+                    <div class="row">
+                        <img src="{{ asset('img/click-white.jpg') }}" alt="click.uz" class="click-logo">
                         <form action="{{ route('user-balance.update') }}" method="post">
                             @csrf
                             @method('POST')

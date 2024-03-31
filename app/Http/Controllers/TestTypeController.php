@@ -16,6 +16,10 @@ class TestTypeController extends Controller
      */
     public function index(Request $request)
     {
+        if (Auth::user()->userBalance->balance < 1000) {
+            return redirect()->route('user-balance.edit');
+        }
+
         Session::put('user_id_' . Auth::user()->getAuthIdentifier(), $request->name);
         $testType = TestType::orderBy('order')->get();
 

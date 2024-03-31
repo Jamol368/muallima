@@ -8,17 +8,17 @@
 
             <div class="mt-4">
                 <x-label for="name" value="{{ __('messages.name') }}" />
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autocomplete="name" />
+                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autocomplete="name" minlength="3" />
             </div>
 
             <div class="mt-4">
                 <x-label for="surname" value="{{ __('messages.surname') }}" />
-                <x-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required autocomplete="surname" />
+                <x-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required autocomplete="surname" minlength="5" />
             </div>
 
             <div class="mt-4">
                 <x-label for="middle_name" value="{{ __('messages.middle name') }}" />
-                <x-input id="middle_name" class="block mt-1 w-full" type="text" name="middle_name" :value="old('middle_name')" required autocomplete="middle_name" />
+                <x-input id="middle_name" class="block mt-1 w-full" type="text" name="middle_name" :value="old('middle_name')" required autocomplete="middle_name" minlength="5" />
             </div>
 
             <div class="mt-4">

@@ -11,7 +11,7 @@
                             <h1 class="display-1 text-white mb-md-4 animated zoomIn">Yaxshi muallim - sifatli ta'lim</h1>
                             <a href="#"
                                class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">{{ __('messages.brief') }}</a>
-                            <a href="#"
+                            <a href="{{ trans('messages.telegram bot') }}" target="_blank"
                                class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">{{ __('messages.contact') }}</a>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
                             </a>
                         </div>
                     </div>
-                    <a href="#" class="btn btn-primary py-3 px-5 mt-3 wow zoomIn"
+                    <a href="{{ trans('messages.telegram bot') }}" target="_blank" class="btn btn-primary py-3 px-5 mt-3 wow zoomIn"
                        data-wow-delay="0.9s">{{ __('messages.contact') }}</a>
                 </div>
                 <div class="col-lg-5" style="min-height: 500px;">

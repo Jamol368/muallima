@@ -33,6 +33,11 @@ Route::get('yangiliklar-turi/{postCategory}/{slug}', [PostCategoryController::cl
 Route::get('yangiliklar-teg-boyicha/{postTag}/{slug}', [PostTagController::class, 'show'])
     ->name('post-tag.show');
 
+// handle requests from payment system
+Route::any('/handle/{paysys}',function($paysys){
+    (new Goodoneuz\PayUz\PayUz)->driver($paysys)->handle();
+});
+
 
 Route::middleware([
     'auth:sanctum',
@@ -61,11 +66,6 @@ Route::middleware([
 
     Route::post('balance-yangilash', [UserBalanceController::class, 'update'])
         ->name('user-balance.update');
-        
-//    handle requests from payment system
-    Route::any('/handle/{paysys}',function($paysys){
-        (new Goodoneuz\PayUz\PayUz)->driver($paysys)->handle();
-    });
 
 //    redirect to payment system or payment form
     Route::any('/pay/{paysys}/{key}/{amount}', function ($paysys, $key, $amount) {

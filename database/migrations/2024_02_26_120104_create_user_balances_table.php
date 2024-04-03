@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_balances', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->integer('balance')->default(0);
+            $table->double('balance')->default(0);
             $table->unsignedBigInteger('last_transaction_id')->default(0);
             $table->timestamps();
         });

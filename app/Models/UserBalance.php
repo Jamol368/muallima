@@ -24,7 +24,7 @@ class UserBalance extends Model
     /**
      * Get the user that owns the user balance.
      */
-    public function province(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

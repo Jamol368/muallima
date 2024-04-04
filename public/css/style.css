@@ -568,3 +568,11 @@ body {
 .click-logo {
     width: 250px;
 }
+
+.w-120 {
+    width: 120px;
+}
+
+.fw-500 {
+    font-weight: 500 !important;
+}

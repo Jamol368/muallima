@@ -1,2 +1,1 @@
-<?php 
-    return ($amount >= 10000);
+<?php

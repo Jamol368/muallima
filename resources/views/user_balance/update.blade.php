@@ -21,10 +21,14 @@
                     <div class="row">
                         <h2 class="h3">{{ __('messages.user balance') }}</h2>
 
-                        <div class="col-md-3">User ID:</div>
-                        <div class="col-md-9">{{ $userBalance->user_id }}</div>
-                        <div class="col-md-3">{{ __('messages.balance') }}:</div>
-                        <div class="col-md-9">{{ $userBalance->balance }}</div>
+                        <div class="user-id flex">
+                            <p class="flex-grow-0 w-120 fw-500">User ID:</p>
+                            <p class="flex-auto">{{ $userBalance->user_id }}</p>
+                        </div>
+                        <div class="user-balance flex">
+                            <p class="flex-grow-0 w-120 fw-500">{{ __('messages.balance') }}:</p>
+                            <p class="flex-auto">{{ $userBalance->balance }}</p>
+                        </div>
                     </div>
                     <hr class="mt-3 mb-3" />
                     <br>
@@ -35,7 +39,7 @@
                             @method('POST')
                             <div class="row g-3">
                                 <div class="col-md-8">
-                                    <input type="number" name="amount" class="form-control border-0 bg-light px-4" value="10000" style="height: 55px;" min="10000">
+                                    <input type="number" name="amount" class="form-control border-0 bg-light px-4" value="10000" style="height: 55px;" min="1000">
                                 </div>
                                 <div class="col-md-4">
                                     <button class="btn btn-info w-100 py-3" type="submit">To'ldirish</button>

@@ -177,7 +177,7 @@
                                 </div>
                                 <div class="test-list-pagination">
                                     <button class="prev" type="button"> Oldingi</button>
-                                    <span class="test-number"> {{ $key + 1 }} / 50</span>
+                                    <span class="test-number"> {{ $key + 1 }} / {{ count($questions) }}</span>
                                     <button class="next" type="button"> Keyingisi</button>
                                 </div>
                             </div>

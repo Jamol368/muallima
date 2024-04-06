@@ -46,7 +46,7 @@ class TestController extends Controller
             $value = $request->post('mat-radio-group-' . $key+1);
             $array[] = $value;
 
-            if ($value === $item) {
+            if ($value == $item) {
                 $true_answers++;
             }
         }

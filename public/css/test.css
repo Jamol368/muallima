@@ -4020,8 +4020,7 @@ select.mat-input-element:not(:disabled) {
     font-weight: 400;
     max-width: 1200px;
     word-wrap: break-word;
-    text-wrap: wrap;
-    white-space: pre-line
+    text-wrap: wrap
 }
 
 .question-wrapper {
@@ -4071,7 +4070,7 @@ form {
 }
 
 .question {
-    margin-bottom: 10px !important
+    margin: 20px 5px !important
 }
 
 .question, .answers {
@@ -4129,7 +4128,8 @@ button {
 }
 
 .example-radio-button {
-    display: flex
+    display: flex;
+    margin-bottom: 20px
 }
 
 .example-radio-button b {

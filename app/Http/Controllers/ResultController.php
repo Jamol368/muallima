@@ -52,7 +52,8 @@ class ResultController extends Controller
                 $question_ids = Test::check($subject->id, $test_type_model)) {
 
                 $questions = Test::whereIn('id', $question_ids)->get();
-                $true_answers = Answer::whereIn('test_id', $question_ids)->where('is_true')->get();
+                $fake = [0 => 1, 1 => 2, 3 => 4, 4 => 5, 5 => 6, 6 => 7, 7 => 8, 8 => 9];
+                $true_answers = Answer::whereIn('test_id', $fake)->where('is_true', true)->pluck('id')->toArray();
 
                 $result = new Result([
                     'user_id' => $user->id,

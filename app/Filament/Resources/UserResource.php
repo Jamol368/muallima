@@ -71,7 +71,7 @@ class UserResource extends Resource
                 Forms\Components\Section::make(__('messages.user balance'))
                     ->description(__('messages.user balance'))
                     ->schema([
-                        Forms\Components\Repeater::make('User balance')
+                        Forms\Components\Fieldset::make('User balance')
                             ->label(false)
                             ->relationship('userBalance')
                             ->schema([
@@ -81,14 +81,12 @@ class UserResource extends Resource
                                 Forms\Components\TextInput::make('last_transaction_id')
                                     ->label(__('filament.last transaction id'))
                                     ->disabled(),
-                            ])
-                            ->disableItemCreation()
-                            ->disableItemDeletion(),
+                            ]),
                     ]),
                 Forms\Components\Section::make(__('filament.personal info'))
                     ->description(__('filament.personal info'))
                     ->schema([
-                        Forms\Components\Repeater::make('User info')
+                        Forms\Components\Fieldset::make('User info')
                             ->label(__('filament.user info'))
                             ->relationship('userInfo')
                             ->schema([
@@ -104,9 +102,7 @@ class UserResource extends Resource
                                     ->relationship('userType', 'name')
                                     ->label(__('filament.user type'))
                                     ->disabled(),
-                            ])
-                        ->disableItemCreation()
-                        ->disableItemDeletion(),
+                            ]),
                     ]),
                 Forms\Components\Section::make(__('filament.results'))
                     ->description(__('filament.user results'))

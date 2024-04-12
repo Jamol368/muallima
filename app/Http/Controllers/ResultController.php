@@ -12,6 +12,7 @@ use App\Models\Test;
 use App\Models\TestType;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class ResultController extends Controller
@@ -45,39 +46,53 @@ class ResultController extends Controller
     {
         $user = User::find(Auth::user()->getAuthIdentifier());
 
-        if ($subject = Subject::where(['slug' => Session::get('user_id_' . $user->id)])->first() and
-            $test_type_model = TestType::where(['slug' => $test_type])->first()) {
+        DB::beginTransaction();
 
-            if ($user->userBalance->check($test_type_model->price) and
-                $question_ids = Test::check($subject->id, $test_type_model)) {
+        try {
 
-                $questions = Test::whereIn('id', $question_ids)->get();
-                $fake = [0 => 1, 1 => 2, 3 => 4, 4 => 5, 5 => 6, 6 => 7, 7 => 8, 8 => 9];
-                $true_answers = Answer::whereIn('test_id', $fake)->where('is_true', true)->pluck('id')->toArray();
+            if ($subject = Subject::where(['slug' => Session::get('user_id_' . $user->id)])->first() and
+                $test_type_model = TestType::where(['slug' => $test_type])->first()) {
 
-                $result = new Result([
-                    'user_id' => $user->id,
-                    'test_type_id' => $test_type_model->id,
-                    'subject_id' => $subject->id,
-                ]);
-                $result->save();
+                if ($user->userBalance->check($test_type_model->price) and
+                    $questions = Test::check($subject->id, $test_type_model)) {
 
-                $result_session = new ResultSession([
-                    'result_id' => $result->id,
-                    'questions' => $question_ids,
-                    'true_answers' => $true_answers,
-                ]);
-                $result_session->save();
+                    $question_ids = $questions->pluck('id')->toArray();
 
-                return view('test.index', [
-                    'questions' => $questions,
-                    'test_type' => $test_type_model,
-                    'subject' => $subject,
-                ]);
+                    $answers = Answer::whereIn('test_id', $question_ids)->where('is_true', true)->get();
+                    $answers = $answers->sortby(function ($answer) use ($question_ids) {
+                        return array_search($answer->test_id, $question_ids);
+                    });
+
+                    $true_answers = $answers->pluck('id');
+
+                    $result = new Result([
+                        'user_id' => $user->id,
+                        'test_type_id' => $test_type_model->id,
+                        'subject_id' => $subject->id,
+                    ]);
+                    $result->save();
+
+                    $result_session = new ResultSession([
+                        'result_id' => $result->id,
+                        'questions' => $question_ids,
+                        'true_answers' => $true_answers,
+                    ]);
+                    $result_session->save();
+
+                    return view('test.index', [
+                        'questions' => $questions,
+                        'test_type' => $test_type_model,
+                        'subject' => $subject,
+                    ]);
+                }
+                abort(404, 'Balansingiz yoki testlar soni yetarli emas.');
             }
-            abort(404, 'Balansingiz yoki testlar soni yetarli emas.');
+            DB::commit(); // Commit the transaction if all operations are successful
+            abort(404, 'Fan yoki test turi noto\'g\'ri tanlangan.');
+        } catch (\Exception $e) {
+            DB::rollback(); // Roll back the transaction if an error occurs
+            throw $e;
         }
-        abort(404, 'Fan yoki test turi noto\'g\'ri tanlangan.');
     }
 
     /**

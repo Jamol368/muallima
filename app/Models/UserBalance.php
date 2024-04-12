@@ -17,6 +17,7 @@ class UserBalance extends Model
      */
     protected $fillable = [
         'name',
+        'balance',
         'balace_id',
         'last_transaction_id',
     ];
@@ -26,7 +27,7 @@ class UserBalance extends Model
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function check(int $price): bool

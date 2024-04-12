@@ -3852,7 +3852,8 @@ select.mat-input-element:not(:disabled) {
     margin: 20px;
     height: auto;
     background-color: #f2f2f2;
-    border-radius: 10px
+    border-radius: 10px;
+    overflow: auto
 }
 
 .test-logo {
@@ -4141,6 +4142,7 @@ button {
     font-size: 24px;
     line-height: 22px;
     font-weight: bold;
+    min-width: 180px;
 }
 .home-header-span{
     font-size: 12px;
@@ -4154,4 +4156,34 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+@media (max-width: 768px) {
+    .wrapper .time-block .count {
+        width: 64px;
+        padding: 12px 7px;
+        border-width: 2px;
+        font-size: 20px;
+    }
+    .wrapper .time-block .label {
+        font-size: 12px;
+    }
+    .wrapper .split {
+        font-size: 22px;
+    }
+    .end-test-button {
+        min-width: 150px;
+        height: 54px;
+        padding: 8px 18px;
+        font-size: 14px;
+    }
+    .selected-answer {
+        font-size: 16px
+    }
+    .header-container {
+        width: 100vh
+    }
+    #test-submit {
+        margin-left: 6px
+    }
 }

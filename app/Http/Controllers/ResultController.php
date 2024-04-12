@@ -79,6 +79,8 @@ class ResultController extends Controller
                     ]);
                     $result_session->save();
 
+                    DB::commit(); // Commit the transaction if all operations are successful
+
                     return view('test.index', [
                         'questions' => $questions,
                         'test_type' => $test_type_model,
@@ -87,7 +89,6 @@ class ResultController extends Controller
                 }
                 abort(404, 'Balansingiz yoki testlar soni yetarli emas.');
             }
-            DB::commit(); // Commit the transaction if all operations are successful
             abort(404, 'Fan yoki test turi noto\'g\'ri tanlangan.');
         } catch (\Exception $e) {
             DB::rollback(); // Roll back the transaction if an error occurs

@@ -67,7 +67,9 @@ class Test extends Model
     {
         if($subject_id == 1)
             return Test::checkForPrimaryTest($subject_id, $test_type);
+
         $tests = Test::where(['subject_id' => $subject_id, 'test_type_id' => $test_type->id])->inRandomOrder()->take($test_type->questions)->get();
+
         return count($tests)==$test_type->questions?$tests:0;
     }
 
@@ -75,52 +77,14 @@ class Test extends Model
     {
         $tests = Test::where(['subject_id' => $subject_id, 'test_type_id' => $test_type->id, 'primary_subject_id' => 1])
             ->inRandomOrder()
-            ->take(10)
+            ->take(35)
             ->get();
-
-        $tests = $tests->concat(Test::where(['subject_id' => $subject_id, 'test_type_id' => $test_type->id, 'primary_subject_id' => 2])
-            ->inRandomOrder()
-            ->take(5)
-            ->get()
-        );
-
-        $tests = $tests->concat(Test::where(['subject_id' => $subject_id, 'test_type_id' => $test_type->id, 'primary_subject_id' => 3])
-            ->inRandomOrder()
-            ->take(5)
-            ->get()
-        );
-
-        $tests = $tests->concat(Test::where(['subject_id' => $subject_id, 'test_type_id' => $test_type->id, 'primary_subject_id' => 4])
-            ->inRandomOrder()
-            ->take(5)
-            ->get()
-        );
-
-        $tests = $tests->concat(Test::where(['subject_id' => $subject_id, 'test_type_id' => $test_type->id, 'primary_subject_id' => 5])
-            ->inRandomOrder()
-            ->take(2)
-            ->get()
-        );
-
-        $tests = $tests->concat(Test::where(['subject_id' => $subject_id, 'test_type_id' => $test_type->id, 'primary_subject_id' => 6])
-            ->inRandomOrder()
-            ->take(3)
-            ->get()
-        );
-
-        $tests = $tests->concat(Test::where(['subject_id' => $subject_id, 'test_type_id' => $test_type->id, 'primary_subject_id' => 7])
-            ->inRandomOrder()
-            ->take(5)
-            ->get()
-        );
 
         $tests = $tests->concat(Test::where(['subject_id' => 10, 'test_type_id' => 10, 'primary_subject_id' => 8])
             ->inRandomOrder()
             ->take(15)
             ->get()
         );
-
-//        dd($tests);
 
         return count($tests)==$test_type->questions+10?$tests:0;
     }

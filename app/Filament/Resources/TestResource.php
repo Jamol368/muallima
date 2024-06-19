@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Forms\Components\TinyMceEditor;
 use App\Filament\Resources\TestResource\Pages;
 use App\Models\Subject;
 use App\Models\Test;
@@ -65,13 +66,7 @@ class TestResource extends Resource
                     ->required(),
                 Forms\Components\Select::make('primary_subject_id')
                     ->options([
-                        1 => 'Metodika',
-                        2 => 'Ona tili',
-                        3 => 'Matem',
-                        4 => 'Tabi\'iy fan',
-                        5 => 'Tarbiya',
-                        6 => 'Texnologiya',
-                        7 => 'O\'qish',
+                        1 => 'Umumiy',
                         8 => 'Ped mahorat',
                     ])
                     ->label(__('filament.primary_subject'))

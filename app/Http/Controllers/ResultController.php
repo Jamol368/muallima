@@ -87,6 +87,7 @@ class ResultController extends Controller
                         'subject' => $subject,
                     ]);
                 }
+                dd(Test::check($subject->id, $test_type_model));
                 abort(404, 'Balansingiz yoki testlar soni yetarli emas.');
             }
             abort(404, 'Fan yoki test turi noto\'g\'ri tanlangan.');

@@ -65,27 +65,44 @@ class Test extends Model
 
     public static function check(int $subject_id, TestType $test_type): object|int
     {
-        if($subject_id == 1)
-            return Test::checkForPrimaryTest($subject_id, $test_type);
+        if($test_type->id == 1) {
+            $test_type->questions += 10;
+            $tests = Test::getAttestationQuestions($subject_id, $test_type);
+        } else {
+            $tests = Test::getQuestions($subject_id, $test_type);
+        }
 
-        $tests = Test::where(['subject_id' => $subject_id, 'test_type_id' => $test_type->id])->inRandomOrder()->take($test_type->questions)->get();
-
-        return count($tests)==$test_type->questions?$tests:0;
+        return Test::ckeckQuestionsCount($tests, $test_type->questions);
     }
 
-    public static function checkForPrimaryTest(int $subject_id, TestType $test_type): object|int
+    public static function getAttestationQuestions(int $subject_id, TestType $test_type): object|int
     {
-        $tests = Test::where(['subject_id' => $subject_id, 'test_type_id' => $test_type->id, 'primary_subject_id' => 1])
+        $tests = Test::where(['subject_id' => $subject_id, 'test_type_id' => $test_type->id])
             ->inRandomOrder()
             ->take(35)
             ->get();
 
-        $tests = $tests->concat(Test::where(['subject_id' => 10, 'test_type_id' => 10, 'primary_subject_id' => 8])
+        $tests = $tests->concat(Test::where(['subject_id' => 12, 'test_type_id' => 10])
             ->inRandomOrder()
             ->take(15)
             ->get()
         );
 
-        return count($tests)==$test_type->questions+10?$tests:0;
+        return $tests;
+    }
+
+    public static function getQuestions(int $subject_id, TestType $test_type): object|int
+    {
+        $tests = Test::where(['subject_id' => $subject_id, 'test_type_id' => $test_type->id])
+            ->inRandomOrder()
+            ->take($test_type->questions)
+            ->get();
+
+        return $tests;
+    }
+
+    public static function ckeckQuestionsCount($questions, $expectedQuestionCount)
+    {
+        return count($questions)==$expectedQuestionCount?$questions:0;
     }
 }

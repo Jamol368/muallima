@@ -64,15 +64,6 @@ class TestResource extends Resource
                     ->searchable()
                     ->live()
                     ->required(),
-                Forms\Components\Select::make('primary_subject_id')
-                    ->options([
-                        1 => 'Umumiy',
-                        8 => 'Ped mahorat',
-                    ])
-                    ->label(__('filament.primary_subject'))
-                    ->native(false)
-                    ->hidden(fn (Forms\Get $get):bool => $get('subject_id') != 1)
-                    ->required(fn (Forms\Get $get):bool => $get('subject_id') != 1),
                 Forms\Components\RichEditor::make('question')
                     ->label(__('filament.question'))
                     ->fileAttachmentsDirectory('test')

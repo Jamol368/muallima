@@ -82,7 +82,7 @@ class Test extends Model
             ->take(35)
             ->get();
 
-        $tests = $tests->concat(Test::where(['subject_id' => 12, 'test_type_id' => 10])
+        $tests = $tests->concat(Test::where(['subject_id' => 12, 'test_type_id' => 2])
             ->inRandomOrder()
             ->take(15)
             ->get()

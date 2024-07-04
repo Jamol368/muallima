@@ -78,6 +78,69 @@
     </div>
     <!-- Facts Start -->
 
+    <!-- Blog Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+                <h5 class="fw-bold text-primary text-uppercase">{{ __('messages.recent news') }}</h5>
+                <h1 class="mb-0">{{ __('messages.recent news') }}</h1>
+            </div>
+            <div class="row g-5">
+                @foreach($posts as $key => $item)
+                    <div class="col-lg-4 wow slideInUp" data-wow-delay="0.{{ 2 + $key }}s">
+                        <div class="blog-item bg-light rounded overflow-hidden">
+                            <div class="flex justify-center blog-img position-relative overflow-hidden">
+                                <img class="img-fluid" src="{{ asset('storage/' . $item->img) }}" alt="">
+                                <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4"
+                                   href="{{ route('post-category.show', ['postCategory' => $item->id, 'slug' => $item->slug]) }}">{{ $item->postCategory->name }}</a>
+                            </div>
+                            <div class="p-4">
+                                <div class="d-flex mb-3">
+                                    <small class="me-3"><i class="far fa-eye text-primary me-2"></i>{{ $item->view_count }}</small>
+                                    <small><i class="far fa-calendar-alt text-primary me-2"></i>{{ $item->created_at->format('d M, Y') }}</small>
+                                </div>
+                                <h4 class="h5 mb-3">{{ $item->title }}</h4>
+                                <p>{!! $item->description !!}</p>
+                                <a class="text-uppercase" href="{{ route('post', ['slug' => $item->slug]) }}">Read More <i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <!-- Blog Start -->
+
+    <!-- Service Start -->
+    <div id="subject" class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+                <h5 class="fw-bold text-primary text-uppercase">{{ __('messages.test') }}</h5>
+                <h1 class="mb-0">Attestatsiyaga tayyorlov testlari</h1>
+            </div>
+            <div class="flex flex-wrap justify-center g-5">
+                @foreach($subject_models as $subject)
+                    <div class="subject wow zoomIn">
+                        <div
+                            class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center"
+                            style="background-color: {{ $subject->color }} !important;">
+                            <div>
+                                <img class="subject-img" src="{{ asset('storage/' . $subject->img) }}" alt="muallima">
+                            </div>
+                            <h2 class="mt-3 mb-3 text-white text-uppercase">{{ $subject->name }}</h2>
+                            <a class="btn btn-lg btn-primary rounded"
+                               href="{{ route('subject', ['name' => $subject->slug]) }}"
+                               style="background-color: {{ $subject->color }};">
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+
     <!-- About Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
@@ -128,66 +191,4 @@
     </div>
     <!-- About End -->
 
-    <!-- Service Start -->
-    <div id="subject" class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">{{ __('messages.test') }}</h5>
-                <h1 class="mb-0">Attestatsiyaga tayyorlov testlari</h1>
-            </div>
-            <div class="flex flex-wrap justify-center g-5">
-                @foreach($subject_models as $subject)
-                    <div class="subject wow zoomIn">
-                        <div
-                            class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center"
-                            style="background-color: {{ $subject->color }} !important;">
-                            <div>
-                                <img class="subject-img" src="{{ asset('storage/' . $subject->img) }}" alt="muallima">
-                            </div>
-                            <h2 class="mt-3 mb-3 text-white text-uppercase">{{ $subject->name }}</h2>
-                            <a class="btn btn-lg btn-primary rounded"
-                               href="{{ route('subject', ['name' => $subject->slug]) }}"
-                               style="background-color: {{ $subject->color }};">
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-    <!-- Service End -->
-
-    <!-- Blog Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">{{ __('messages.recent news') }}</h5>
-                <h1 class="mb-0">{{ __('messages.recent news') }}</h1>
-            </div>
-            <div class="row g-5">
-                @foreach($posts as $key => $item)
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.{{ 2 + $key }}s">
-                    <div class="blog-item bg-light rounded overflow-hidden">
-                        <div class="flex justify-center blog-img position-relative overflow-hidden">
-                            <img class="img-fluid" src="{{ asset('storage/' . $item->img) }}" alt="">
-                            <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4"
-                               href="{{ route('post-category.show', ['postCategory' => $item->id, 'slug' => $item->slug]) }}">{{ $item->postCategory->name }}</a>
-                        </div>
-                        <div class="p-4">
-                            <div class="d-flex mb-3">
-                                <small class="me-3"><i class="far fa-eye text-primary me-2"></i>{{ $item->view_count }}</small>
-                                <small><i class="far fa-calendar-alt text-primary me-2"></i>{{ $item->created_at->format('d M, Y') }}</small>
-                            </div>
-                            <h4 class="h5 mb-3">{{ $item->title }}</h4>
-                            <p>{!! $item->description !!}</p>
-                            <a class="text-uppercase" href="{{ route('post', ['slug' => $item->slug]) }}">Read More <i class="bi bi-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-    <!-- Blog Start -->
 </x-app-layout>

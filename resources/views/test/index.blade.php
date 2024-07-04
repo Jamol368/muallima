@@ -95,7 +95,7 @@
 
                                                 <div class="mat-expansion-panel-body ng-tns-c128-28">
                                                     <div class="container ng-tns-c128-28">
-                                                        @for($i=0; $i<$test_type->questions;)
+                                                        @for($i=0; $i<$test_type->getOriginal('questions');)
                                                         <div class="nav-item ng-star-inserted tab-links nav-item-{{ $i + 1 }} {{ $i ? '' : 'active' }}"> {{ ++$i }}</div>
                                                         @endfor
                                                     </div>

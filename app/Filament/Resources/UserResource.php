@@ -64,6 +64,9 @@ class UserResource extends Resource
                     ->telRegex('/^[0-9]{9}$/')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\DatePicker::make('created_at')
+                    ->label(__('messages.registered at'))
+                    ->disabled(),
                 Forms\Components\Section::make(__('messages.user balance'))
                     ->description(__('messages.user balance'))
                     ->schema([

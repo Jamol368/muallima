@@ -75,14 +75,14 @@ class TestResource extends Resource
                             ->label(__('filament.option'))
                             ->fileAttachmentsDirectory('answer')
                             ->required()
-                        ->columnSpan(3),
+                            ->columnSpan(3),
                         Forms\Components\Checkbox::make('is_true')
                             ->label(__('filament.is true'))
-                        ->inline(false),
+                            ->inline(false),
                     ])
                     ->cloneable()
                     ->deleteAction(
-                        fn (Forms\Components\Actions\Action $action) => $action->requiresConfirmation(),
+                        fn(Forms\Components\Actions\Action $action) => $action->requiresConfirmation(),
                     )->columns(4),
             ])->columns(1);
     }
@@ -101,6 +101,7 @@ class TestResource extends Resource
                     ->label(__('filament.question'))
                     ->html()->wrap()->limit(50),
             ])
+            ->defaultSort('created_at', 'desc')
             ->filters([
                 //
             ])

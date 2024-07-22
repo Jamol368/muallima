@@ -86,6 +86,7 @@ class ProvinceResource extends Resource
                 ->searchable(),
                 Tables\Columns\TextColumn::make('slug'),
             ])
+            ->defaultSort('created_at', 'desc')
             ->filters([
                 //
             ])

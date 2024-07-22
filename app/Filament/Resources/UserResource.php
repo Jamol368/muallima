@@ -7,13 +7,9 @@ use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Str;
 
 class UserResource extends Resource
 {
@@ -132,9 +128,9 @@ class UserResource extends Resource
                                     ->label(__('filament.created_at'))
                                     ->disabled(),
                             ])
-                        ->disableItemCreation()
-                        ->disableItemDeletion()
-                        ->columns(3),
+                            ->disableItemCreation()
+                            ->disableItemDeletion()
+                            ->columns(3),
                     ]),
             ]);
     }
@@ -153,6 +149,7 @@ class UserResource extends Resource
                     ->label(__('messages.phone'))
                     ->searchable(),
             ])
+            ->defaultSort('created_at', 'desc')
             ->filters([
                 //
             ])

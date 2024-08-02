@@ -1,0 +1,61 @@
+version: '3.8'
+services:
+    app:
+        build:
+            context: .
+            dockerfile: docker/php/Dockerfile
+        image: laravel-app
+        container_name: muallima-php
+        restart: unless-stopped
+        working_dir: /var/www
+        volumes:
+            - .:/var/www
+            - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+        command: >
+            bash -c "true
+            && ls -l
+            && whoami
+            && cp .env.example .env
+            && composer install --ignore-platform-req=ext-intl --ignore-platform-req=ext-zip
+            && php artisan config:clear
+            && php artisan key:generate
+            && php artisan migrate
+            && docker-php-entrypoint php-fpm"
+        depends_on:
+            - db
+
+    webserver:
+        image: nginx:alpine
+        container_name: muallima-web
+        restart: unless-stopped
+        ports:
+            - "8000:80"
+        volumes:
+            - .:/var/www
+            - ./docker/nginx:/etc/nginx/conf.d
+
+    db:
+        image: postgres:13
+        container_name: muallima-db
+        restart: unless-stopped
+        ports:
+            - "5454:5432"
+        environment:
+            POSTGRES_DB: ${DB_DATABASE}
+            POSTGRES_USER: ${DB_USERNAME}
+            POSTGRES_PASSWORD: ${DB_PASSWORD}
+        volumes:
+            - dbdata:/var/lib/postgresql/data
+    npm:
+        image: node:16
+        working_dir: /var/www
+        volumes:
+            - .:/var/www
+        ports:
+            -   "5173:5173"
+        command: sh -c "npm install && npm run dev"
+        depends_on:
+            - app
+
+volumes:
+    dbdata:

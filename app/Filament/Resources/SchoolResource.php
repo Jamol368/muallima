@@ -74,6 +74,7 @@ class SchoolResource extends Resource
                     ->label(__('filament.town'))
                 ->searchable(),
             ])
+            ->defaultSort('created_at', 'desc')
             ->filters([
                 //
             ])

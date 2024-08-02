@@ -798,6 +798,34 @@
                 padding: 2rem
             }
         }
+
+        .relative {
+            position: relative;
+        }
+        .absolute {
+            position: absolute;
+        }
+        .inset-y-0 {
+            right: 10px;
+            top: 0;
+            bottom: 0;
+        }
+        .pr-10 {
+            padding-right: 2.5rem; /* Adjust this value if needed */
+        }
+        .pr-3 {
+            padding-right: 0.75rem;
+        }
+        .flex {
+            display: flex;
+            align-items: center;
+        }
+        .leading-5 {
+            line-height: 1.25rem; /* Adjust this value if needed */
+        }
+        .cursor-pointer {
+            cursor: pointer;
+        }
     </style>
 
     <!-- Scripts -->
@@ -1038,6 +1066,38 @@
 
 <!-- Template Javascript -->
 <script src="{{ asset('js/main.js') }}"></script>
+
+<script>
+    document.getElementById('togglePassword').addEventListener('click', function (e) {
+        const passwordInput = document.getElementById('password');
+        const icon = e.target;
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    });
+
+    document.getElementById('togglePasswordConfirmation').addEventListener('click', function (e) {
+        const passwordConfirmationInput = document.getElementById('password_confirmation');
+        const icon = e.target;
+
+        if (passwordConfirmationInput.type === 'password') {
+            passwordConfirmationInput.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            passwordConfirmationInput.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    });
+</script>
 
 @livewireScripts
 </body>

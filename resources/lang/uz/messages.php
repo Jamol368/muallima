@@ -5,6 +5,7 @@ return [
     "surname" => "Familiya",
     "middle name" => "Otasining ismi",
     "phone" => "Telefon raqam",
+    "registered at" => "Ro'yxatdan o'tgan sana",
     "select province" => "Viloyatni tanlang",
     "select town" => "Shahar/tuman tanlang",
     "password" => "Parol",

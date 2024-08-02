@@ -90,7 +90,9 @@
                     <div class="col-lg-4 wow slideInUp" data-wow-delay="0.{{ 2 + $key }}s">
                         <div class="blog-item bg-light rounded overflow-hidden">
                             <div class="flex justify-center blog-img position-relative overflow-hidden">
-                                <img class="img-fluid" src="{{ asset('storage/' . $item->img) }}" alt="">
+                                <a href="{{ route('post-category.show', ['postCategory' => $item->id, 'slug' => $item->slug]) }}">
+                                    <img class="img-fluid" src="{{ asset('storage/' . $item->img) }}" alt="">
+                                </a>
                                 <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4"
                                    href="{{ route('post-category.show', ['postCategory' => $item->id, 'slug' => $item->slug]) }}">{{ $item->postCategory->name }}</a>
                             </div>
@@ -99,9 +101,11 @@
                                     <small class="me-3"><i class="far fa-eye text-primary me-2"></i>{{ $item->view_count }}</small>
                                     <small><i class="far fa-calendar-alt text-primary me-2"></i>{{ $item->created_at->format('d M, Y') }}</small>
                                 </div>
-                                <h4 class="h5 mb-3">{{ $item->title }}</h4>
+                                <a href="{{ route('post-category.show', ['postCategory' => $item->id, 'slug' => $item->slug]) }}">
+                                    <h4 class="h5 mb-3">{{ $item->title }}</h4>
+                                </a>
                                 <p>{!! $item->description !!}</p>
-                                <a class="text-uppercase" href="{{ route('post', ['slug' => $item->slug]) }}">Read More <i class="bi bi-arrow-right"></i></a>
+                                <a class="text-uppercase" href="{{ route('post', ['slug' => $item->slug]) }}">Batafsil <i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>

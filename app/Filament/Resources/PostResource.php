@@ -96,6 +96,7 @@ class PostResource extends Resource
                 Tables\Columns\TextColumn::make('view_count')
                     ->label(__('filament.view count')),
             ])
+            ->defaultSort('created_at', 'desc')
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
             ])

@@ -17,7 +17,7 @@
         rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
@@ -848,26 +848,22 @@
     <div class="row gx-0">
         <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
             <div class="d-inline-flex align-items-center" style="height: 45px;">
-                <small class="me-3 text-light"><i
-                        class="fa fa-map-marker-alt me-2"></i>{{ __('messages.our location') }}</small>
-                <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>{{ __('messages.our phone') }}
-                </small>
-                <small class="text-light"><i class="fa fa-envelope-open me-2"></i>{{ __('messages.our email') }}
-                </small>
+                <a href="{{ trans('messages.telegram') }}" target="_blank"><small class="me-3 text-light"><i class="fab fa-telegram me-2"></i>Telegram</small></a>
+                <a href="{{ trans('messages.facebook') }}" target="_blank"><small class="me-3 text-light"><i class="fab fa-facebook me-2"></i>Facebook</small></a>
+                <a href="{{ trans('messages.instagram') }}" target="_blank"><small class="me-3 text-light"><i class="fab fa-instagram me-2"></i>Instagram</small></a>
+                <a href="{{ trans('messages.twitter') }}" target="_blank"><small class="text-light"><i class="fab fa-x-twitter me-2"></i>Twitter</small></a>
             </div>
         </div>
         <div class="col-lg-4 text-center text-lg-end">
             <div class="d-inline-flex align-items-center" style="height: 45px;">
-                <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
-                        class="fab fa-twitter fw-normal"></i></a>
-                <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="{{ trans('messages.telegram') }}"><i
+                        class="fab fa-telegram fw-normal"></i></a>
+                <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="{{ trans('messages.facebook') }}"><i
                         class="fab fa-facebook-f fw-normal"></i></a>
-                <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
-                        class="fab fa-linkedin-in fw-normal"></i></a>
-                <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i
+                <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="{{ trans('messages.instagram') }}"><i
                         class="fab fa-instagram fw-normal"></i></a>
-                <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i
-                        class="fab fa-youtube fw-normal"></i></a>
+                <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="{{ trans('messages.twitter') }}"><i
+                        class="fab fa-x-twitter fw-normal"></i></a>
             </div>
         </div>
     </div>
@@ -876,7 +872,7 @@
 
 <!-- Navbar & Carousel Start -->
 <div class="container-fluid position-relative p-0">
-    <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+    <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0" style="background-color: #0689b7">
         <a href="{{ route('home') }}" class="navbar-brand p-0">
             <h1 class="m-0 fs-2"><i class="fa fa-user-tie me-2"></i>Muallima<span class="fs-5">.uz</span> <br><span
                     class="fs-7">Yaxshi muallim - sifatli ta'lim</span></h1>
@@ -886,23 +882,23 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
-                <a href="{{ route('home') }}" class="nav-item nav-link active">{{ __('messages.home') }}</a>
+                <a href="{{ route('home') }}" class="nav-item nav-link {{ Request::is('home')?'active':'' }}">{{ __('messages.home') }}</a>
                 <a href="#" class="nav-item nav-link">{{ __('messages.course') }}</a>
                 <a href="{{ route('home').'#subject' }}" class="nav-item nav-link">{{ __('messages.test') }}</a>
                 <a href="#" class="nav-item nav-link">{{ __('messages.contest') }}</a>
-                <a href="#" class="nav-item nav-link">{{ __('messages.news') }}</a>
+                <a href="{{ route('posts') }}" class="nav-item nav-link">{{ __('messages.news') }}</a>
                 <a href="#" class="nav-item nav-link">{{ __('messages.about') }}</a>
-                <a href="#" class="nav-item nav-link">{{ __('messages.contact') }}</a>
+                <a href="{{ trans('messages.telegram bot') }}" target="_blank" class="nav-item nav-link">{{ __('messages.contact') }}</a>
             </div>
-            {{--            <butaton type="button" class="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i--}}
-            {{--                    class="fa fa-search"></i></butaton>--}}
             @if (Route::has('login'))
                 @auth
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle"
                            data-bs-toggle="dropdown">{{ auth()->user()->name  }}</a>
                         <div class="dropdown-menu m-0">
-                            <a href="#" class="dropdown-item">{{ __('messages.profile') }}</a>
+                            <a href="{{ route('profile.show') }}" class="dropdown-item">{{ __('messages.profile') }}</a>
+                            <a href="{{ route('result.index') }}" class="dropdown-item">{{ __('filament.results') }}</a>
+                            <a href="{{ route('user-balance.edit') }}" class="dropdown-item">{{ __('messages.balance') }}</a>
                             <hr>
                             <!-- Authentication -->
                             <form method="POST" id="logout" action="{{ route('logout') }}">
@@ -925,18 +921,7 @@
         </div>
     </nav>
 
-    @section('carousel')
-    <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
-        <div class="row py-5">
-            <div class="col-12 pt-lg-5 mt-lg-5 text-center">
-                <h1 class="display-4 text-white animated zoomIn">Blog Grid</h1>
-                <a href="" class="h5 text-white">Home</a>
-                <i class="far fa-circle text-white px-2"></i>
-                <a href="" class="h5 text-white">Blog Grid</a>
-            </div>
-        </div>
-    </div>
-    @endsection
+    @yield('carousel')
 </div>
 <!-- Navbar & Carousel End -->
 
@@ -973,11 +958,9 @@
                 <div
                     class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
                     <a href="{{ route('home') }}" class="navbar-brand">
-                        <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>{{ env('APP_NAME') }}</h1>
+                        <h1 class="h1 m-0 text-white"><i class="fa fa-user-tie me-2"></i>{{ env('APP_NAME') }}</h1>
                     </a>
-                    <p class="mt-3 mb-4">Lorem diam sit erat dolor elitr et, diam lorem justo amet clita stet eos sit.
-                        Elitr dolor duo lorem, elitr clita ipsum sea. Diam amet erat lorem stet eos. Diam amet et kasd
-                        eos duo.</p>
+                    <p class="mt-3 mb-4">Yaxshi muallim - sifatli ta'lim</p>
                 </div>
             </div>
             <div class="col-lg-8 col-md-6">
@@ -987,25 +970,36 @@
                             <h3 class="text-light mb-0">{{ __('messages.get in touch') }}</h3>
                         </div>
                         <div class="d-flex mb-2">
-                            <i class="bi bi-geo-alt text-primary me-2"></i>
-                            <p class="mb-0">{{ __('messages.our location') }}</p>
+                            <i class="bi bi-telegram text-primary me-2"></i>
+                            <a href="{{ trans('messages.telegram') }}" target="_blank">
+                                <p class="">Telegram</p>
+                            </a>
+                        </div><div class="d-flex mb-2">
+                            <i class="bi bi-telegram text-primary me-2"></i>
+                            <a href="{{ trans('messages.telegram bot') }}" target="_blank">
+                                <p class="">Telegram bot</p>
+                            </a>
                         </div>
                         <div class="d-flex mb-2">
-                            <i class="bi bi-envelope-open text-primary me-2"></i>
-                            <p class="mb-0">{{ __('messages.our email') }}</p>
+                            <i class="bi bi-facebook text-primary me-2"></i>
+                            <a href="{{ trans('messages.facebook') }}" target="_blank">
+                                <p class="">Facebook</p>
+                            </a>
                         </div>
                         <div class="d-flex mb-2">
-                            <i class="bi bi-telephone text-primary me-2"></i>
-                            <p class="mb-0">{{ __('messages.our phone') }}</p>
+                            <i class="bi bi-instagram text-primary me-2"></i>
+                            <a href="{{ trans('messages.instagram') }}" target="_blank">
+                                <p class="">Instagram</p>
+                            </a>
                         </div>
                         <div class="d-flex mt-4">
-                            <a class="btn btn-primary btn-square me-2" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                            <a class="btn btn-primary btn-square me-2" href="#"><i
+                            <a class="btn btn-primary btn-square me-2" href="{{ trans('messages.telegram') }}"><i class="fab fa-telegram fw-normal"></i></a>
+                            <a class="btn btn-primary btn-square me-2" href="{{ trans('messages.facebook') }}"><i
                                     class="fab fa-facebook-f fw-normal"></i></a>
-                            <a class="btn btn-primary btn-square me-2" href="#"><i
-                                    class="fab fa-linkedin-in fw-normal"></i></a>
-                            <a class="btn btn-primary btn-square" href="#"><i
+                            <a class="btn btn-primary btn-square" href="{{ trans('messages.instagram') }}"><i
                                     class="fab fa-instagram fw-normal"></i></a>
+                            <a class="btn btn-primary btn-square" href="{{ trans('messages.twitter') }}"><i
+                                    class="fab fa-x-twitter fw-normal"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
@@ -1015,7 +1009,7 @@
                         <div class="link-animated d-flex flex-column justify-content-start">
                             <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{{ __('messages.home') }}</a>
                             <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{{ __('messages.about') }}</a>
-                            <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{{ __('messages.news') }}</a>
+                            <a class="text-light mb-2" href="{{ route('posts') }}"><i class="bi bi-arrow-right text-primary me-2"></i>{{ __('messages.news') }}</a>
                             <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{{ __('messages.contact') }}</a>
                         </div>
                     </div>
@@ -1054,6 +1048,19 @@
 
 <!-- Back to Top -->
 <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var preventBack = {{ Session::has('preventBack') ? 'true' : 'false' }};
+
+        if (preventBack) {
+            history.pushState(null, null, location.href);
+            window.onpopstate = function () {
+                history.go(1);
+            };
+        }
+    });
+</script>
+
 
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -1066,38 +1073,7 @@
 
 <!-- Template Javascript -->
 <script src="{{ asset('js/main.js') }}"></script>
-
-<script>
-    document.getElementById('togglePassword').addEventListener('click', function (e) {
-        const passwordInput = document.getElementById('password');
-        const icon = e.target;
-
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-slash');
-        } else {
-            passwordInput.type = 'password';
-            icon.classList.remove('fa-eye-slash');
-            icon.classList.add('fa-eye');
-        }
-    });
-
-    document.getElementById('togglePasswordConfirmation').addEventListener('click', function (e) {
-        const passwordConfirmationInput = document.getElementById('password_confirmation');
-        const icon = e.target;
-
-        if (passwordConfirmationInput.type === 'password') {
-            passwordConfirmationInput.type = 'text';
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-slash');
-        } else {
-            passwordConfirmationInput.type = 'password';
-            icon.classList.remove('fa-eye-slash');
-            icon.classList.add('fa-eye');
-        }
-    });
-</script>
+<script src="{{ asset('js/tabs.js') }}"></script>
 
 @livewireScripts
 </body>

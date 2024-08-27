@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-guest-layout>
     <x-authentication-card>
 
         <x-validation-errors class="mb-4" />
@@ -42,4 +42,4 @@
             </div>
         </form>
     </x-authentication-card>
-</x-app-layout>
+</x-guest-layout>

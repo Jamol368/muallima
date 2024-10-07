@@ -19,8 +19,8 @@
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Latest Blog</h5>
-                <h1 class="mb-0">Read The Latest Articles from Our Blog Post</h1>
+                <h5 class="fw-bold text-primary text-uppercase">{{ __('filament.test type') }}</h5>
+                <h1 class="mb-0">Test turini tanlang!</h1>
             </div>
             <div class="row g-5">
                 @foreach($testType as $key => $item)
@@ -32,7 +32,7 @@
                         <div class="p-4">
                             <h4 class="mb-3 min-h-full">{{ $item->name }}</h4>
                             <div class="min-h-72">{!! $item->description !!}</div>
-                            <a class="text-uppercase" href="{{ route('result.create', ['test_type' => $item->slug]) }}">Tanlash <i class="bi bi-arrow-right"></i></a>
+                            <a class="text-uppercase start-test" href="{{ route('result.create', ['test_type' => $item->slug]) }}">Tanlash <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>

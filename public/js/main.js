@@ -121,5 +121,13 @@
         }
     });
 
+    $('.start-test').on('click', function(event) {
+        var userConfirmed = confirm('Testni boshlamoqchimisiz? Buning uchun hisobingizdan pul mablag\'i qirqiladi!');
+
+        if (!userConfirmed) {
+            event.preventDefault();
+        }
+    });
+
 })(jQuery);
 

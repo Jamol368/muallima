@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostTagController;
@@ -21,6 +22,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+//Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+//Route::post('/register', [RegisterController::class, 'register']);
 
 Route::get('/', [SiteController::class, 'index'])
     ->name('home');

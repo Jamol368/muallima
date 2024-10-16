@@ -3,7 +3,7 @@
 return [
     "name" => "Ism",
     "surname" => "Familiya",
-    "middle name" => "Otasining ismi",
+    "middle name" => "Otaning ismi",
     "phone" => "Telefon raqam",
     "registered at" => "Ro'yxatdan o'tgan sana",
     "select province" => "Viloyatni tanlang",

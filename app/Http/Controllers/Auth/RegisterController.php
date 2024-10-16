@@ -3,44 +3,99 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\RegisterRequest;
+use App\Models\Province;
+use App\Models\School;
+use App\Models\Subject;
+use App\Models\TeacherCategory;
+use App\Models\Town;
 use App\Models\User;
-use Illuminate\Http\Request;
+use App\Models\UserBalance;
+use App\Models\UserInfo;
+use App\Models\UserPupil;
+use App\Models\UserTeacher;
+use App\Models\UserType;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
+use Throwable;
 
 class RegisterController extends Controller
 {
     /**
      * Show the registration form.
      */
-    public function showRegistrationForm()
+    public function showRegistrationForm(): View
     {
-        return view('auth.register'); // Make sure this view exists
+        $provinces = Province::query()->get();
+        $towns = Town::query()->get();
+        $user_types = UserType::query()->orderBy('id')->get();
+        $teacher_types = TeacherCategory::query()->get();
+        $subjects = Subject::query()->get();
+        $schools = School::query()->get();
+
+        return view('auth.register', [
+            'provinces' => $provinces,
+            'towns' => $towns,
+            'user_types' => $user_types,
+            'teacher_types' => $teacher_types,
+            'subjects' => $subjects,
+            'schools' => $schools,
+        ]);
     }
 
     /**
      * Handle a registration request.
+     * @throws Throwable
      */
-    public function register(Request $request)
+    public function register(RegisterRequest $request): RedirectResponse
     {
-        // Validate the request data
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+        $validated = $request->validated();
 
-        // Create the user
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        try {
+            DB::beginTransaction();
+            $user = User::create([
+                'name' => $validated['name'],
+                'phone' => $validated['phone'],
+                'surname' => $validated['surname'],
+                'middle_name' => $validated['middle_name'],
+                'password' => Hash::make($validated['password']),
+            ]);
 
-        // Log the user in
-        auth()->login($user);
+            UserBalance::create([
+                'user_id' => $user->id,
+            ]);
 
-        // Redirect to the desired page
-        return redirect()->route('home');
+            $userInfo = UserInfo::create([
+                'user_id' => $user->id,
+                'province_id' => $validated['province'],
+                'town_id' => $validated['town'],
+                'user_type_id' => $validated['type'],
+            ]);
+
+            if ($userInfo->user_type_id == 1) {
+                UserTeacher::create([
+                    'user_info_id' => $userInfo->id,
+                    'teacher_category_id' => $validated['teacher_category'],
+                    'subject_id' => $validated['subject'],
+                ]);
+            } else if ($userInfo->user_type_id == 2) {
+                UserPupil::create([
+                    'user_info_id' => $userInfo->id,
+                    'school_id' => $validated['school'],
+                    'school_grade' => $validated['pupil_grade'],
+                ]);
+            }
+
+            auth()->login($user);
+
+            DB::commit();
+
+            return redirect()->route('home');
+        } catch (Throwable $throwable) {
+            DB::rollBack();
+            throw $throwable;
+        }
     }
 }

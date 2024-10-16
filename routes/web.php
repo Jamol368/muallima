@@ -23,8 +23,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-//Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])
+    ->middleware('guest')
+    ->name('register');
+Route::post('/register', [RegisterController::class, 'register']);
 
 Route::get('/', [SiteController::class, 'index'])
     ->name('home');

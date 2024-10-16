@@ -129,5 +129,42 @@
         }
     });
 
+    $('input[type=radio][name=type]').on('change', function (){
+        $('.depending-section').hide();
+
+        var type = $(this).val();
+
+        if (type == 1) {
+            $('#teacher-section').show();
+        } else if (type == 2) {
+            $('#pupil-section').show();
+        }
+    });
+
+    $('#province').on('change', function (){
+        $('#school option:not(:first)').hide();
+        $('#school').val('');
+
+        $('#town option:not(:first)').hide();
+        $('#town').val('');
+
+        var province_id = $(this).val();
+
+        $('#town option').filter( function () {
+            return $(this).attr('data-province') === province_id;
+        }).show();
+    });
+
+    $('#town').on('change', function (){
+        $('#school option:not(:first)').hide();
+        $('#school').val('');
+
+        var town_id = $(this).val();
+
+        $('#school option').filter( function () {
+            return $(this).attr('data-town') === town_id;
+        }).show();
+    });
+
 })(jQuery);
 

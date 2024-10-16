@@ -35,6 +35,9 @@ return [
     "select teacher type" => "O'qituvchi toifangizni tanlang",
     "select subject" => "Fanni tanlang",
 
+    "school" => "Maktab",
+    "school grade" => "Sinf",
+
     "two factor auth" => "Ikki faktorli autentifikatsiya",
     "add two factor auth" => "Ikki faktorli autentifikatsiya yordamida hisobingizga qoʻshimcha xavfsizlik qoʻshing.",
     "not two factor auth" => "Ikki faktorli autentifikatsiyani yoqmagansiz.",

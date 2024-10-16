@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class UserTeacher extends Model
 {
@@ -27,5 +28,21 @@ class UserTeacher extends Model
     public function userInfo(): BelongsTo
     {
         return $this->belongsTo(UserInfo::class);
+    }
+
+    /**
+     * Get the subject that owns the user teacher.
+     */
+    public function subject(): BelongsTo
+    {
+        return $this->belongsTo(Subject::class);
+    }
+
+    /**
+     * Get the teacher category that owns the user teacher.
+     */
+    public function teacherCategory(): BelongsTo
+    {
+        return $this->belongsTo(TeacherCategory::class);
     }
 }

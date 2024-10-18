@@ -28,26 +28,10 @@
             <div class="mt-4">
                 <label class="block font-medium text-sm text-gray-700">{{ __('messages.phone') }}</label>
                 <div class="flex items-center gap-1">
-                    <div class="relative w-1/2">
-                        <select id="code" name="code" required
-                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm mt-1 block w-full">
-                            <option selected>Kod</option>
-                            <option value="33">33</option>
-                            <option value="88">88</option>
-                            <option value="90">90</option>
-                            <option value="91">91</option>
-                            <option value="93">93</option>
-                            <option value="94">94</option>
-                            <option value="95">95</option>
-                            <option value="97">97</option>
-                            <option value="98">98</option>
-                            <option value="99">99</option>
-                        </select>
-                    </div>
                     <div class="relative w-full">
                         <input type="tel" id="phone-input" name="phone" value="{{ old('phone') }}"
                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
-                               pattern="[0-9]{7}" maxlength="7" placeholder="###-##-##" required/>
+                               pattern="^\+\d{12}$" maxlength="13" placeholder="" required/>
                     </div>
                 </div>
                 <span class="small text-warning italic">( Raqamlar orasini ochmasdan,chiziqcha qoʻymasdan yozing)</span>

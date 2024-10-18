@@ -596,3 +596,22 @@ body {
 .profile-links:last-child {
     border-radius: 0 0 5px 5px;
 }
+
+.dropdown-content {
+    right: -20px;
+    top: 150%;
+}
+
+.fz-22 {
+    font-size: 22px;
+}
+.fz-20 {
+    font-size: 20px;
+}
+.fz-16 {
+    font-size: 16px;
+}
+
+.light-blue {
+    color: #06a3da;
+}

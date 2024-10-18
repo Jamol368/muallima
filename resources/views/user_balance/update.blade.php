@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-sm-9">
                     <div class="row">
-                        <img src="{{ asset('/img/avatar-default-icon.png') }}" class="col-sm-3"  alt=""/>
+                        <img src="{{ asset('/img/avatar-default-icon.png') }}" class="col-sm-3 h-100"  alt=""/>
                         <div class="col-sm-9">
                             <h2 class="h2">{{ $user['name'] }}</h2>
 

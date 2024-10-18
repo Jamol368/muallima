@@ -26,8 +26,7 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'min:3', 'max:255'],
-            'phone' => ['required', 'numeric', 'digits:7', 'unique:users'],
-            'code' => ['required', 'numeric', 'digits:2'],
+            'phone' => ['required', 'string', 'regex:/^\+\d{12}$/', 'unique:users'],
             'type' => ['required', 'integer'],
             'teacher_category' => ['required_if:type,1', 'integer'],
             'subject' => ['required_if:type,1', 'integer'],

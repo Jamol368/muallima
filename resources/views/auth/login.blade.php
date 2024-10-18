@@ -1,7 +1,11 @@
 <x-guest-layout>
     <x-authentication-card>
 
-        <x-validation-errors class="mb-4" />
+        @if ($errors->any())
+            <div class="mb-4">
+                <div class="font-medium text-red-600">Telefon yoki parol no'to'g'ri, yoki siz hali ro‘yxatdan o‘tmagansiz</div>
+            </div>
+        @endif
 
         @if (session('status'))
             <div class="mb-4 font-medium text-sm text-green-600">

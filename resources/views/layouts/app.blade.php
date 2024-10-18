@@ -804,9 +804,6 @@
             }
         </style>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-
         <!-- Styles -->
         @livewireStyles
     </head>
@@ -865,31 +862,35 @@
                     <a href="{{ route('posts') }}" class="nav-item nav-link">{{ __('messages.news') }}</a>
                     <a href="#" class="nav-item nav-link">{{ __('messages.about') }}</a>
                     <a href="{{ trans('messages.telegram bot') }}" target="_blank" class="nav-item nav-link">{{ __('messages.contact') }}</a>
-                </div>
-                @if (Route::has('login'))
-                    @auth
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle"
-                               data-bs-toggle="dropdown">{{ auth()->user()->name  }}</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="{{ route('user-balance.edit') }}" class="dropdown-item">{{ __('messages.profile') }}</a>
-                                <hr>
-                                <form method="POST" id="logout" action="{{ route('logout') }}">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item">{{ __('messages.log out') }}</button>
-                                </form>
+                    @if (Route::has('login'))
+                        @auth
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link fz-22"
+                                   data-bs-toggle="dropdown"><i class="fa fa-user-tie me-2"></i></a>
+                                <div class="dropdown-menu m-0" style="right: 0; width: 200px">
+                                    <div class="dropdown-title p-3">
+                                        <h5 class="font-black fz-20"> {{ auth()->user()->name }}</h5>
+                                        <p class="fz-16">ID: {{ auth()->user()->getAuthIdentifier() }}</p>
+                                    </div>
+                                    <a href="{{ route('user-balance.edit') }}" class="dropdown-item">
+                                        <i class="fa fa-user me-2 light-blue"> </i>{{ __('messages.profile') }}</a>
+                                    <hr>
+                                    <form method="POST" id="logout" action="{{ route('logout') }}">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">
+                                            <i class="fa fa-sign-out me-2 light-blue"> </i>{{ __('messages.log out') }}</button>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                    @else
-                        <a href="{{ route('login') }}"
-                           class="btn btn-primary py-2 px-4 ms-3">{{ __('messages.log in') }}</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}"
-                               class="btn btn-primary py-2 px-4 ms-3">{{ __('messages.register') }}</a>
-                        @endif
-                    @endauth
-                @endif
+                        @endauth
+                    @endif
+                </div>
+                @guest
+                <a href="{{ route('login') }}"
+                   class="btn btn-primary py-2 px-4 ms-3">{{ __('messages.log in') }}</a>
+                <a href="{{ route('register') }}"
+                       class="btn btn-primary py-2 px-4 ms-3">{{ __('messages.register') }}</a>
+                @endguest
             </div>
         </nav>
 
@@ -968,7 +969,7 @@
                                     <a class="btn btn-primary btn-square me-2" href="{{ trans('messages.telegram') }}"><i class="fab fa-telegram fw-normal"></i></a>
                                     <a class="btn btn-primary btn-square me-2" href="{{ trans('messages.facebook') }}"><i
                                             class="fab fa-facebook-f fw-normal"></i></a>
-                                    <a class="btn btn-primary btn-square" href="{{ trans('messages.instagram') }}"><i
+                                    <a class="btn btn-primary btn-square me-2" href="{{ trans('messages.instagram') }}"><i
                                             class="fab fa-instagram fw-normal"></i></a>
                                     <a class="btn btn-primary btn-square" href="{{ trans('messages.twitter') }}"><i
                                             class="fab fa-x-twitter fw-normal"></i></a>

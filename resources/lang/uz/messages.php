@@ -2,9 +2,10 @@
 
 return [
     "name" => "Ism",
+    "enter name" => "Foydalanuvchi FIO toʻliq yozing",
     "surname" => "Familiya",
     "middle name" => "Otaning ismi",
-    "phone" => "Telefon raqam",
+    "phone" => "Shaxsiy telefon raqam",
     "registered at" => "Ro'yxatdan o'tgan sana",
     "select province" => "Viloyatni tanlang",
     "select town" => "Shahar/tuman tanlang",
@@ -34,6 +35,8 @@ return [
     "select pupil grade" => "Maktab sinfingizni tanlang",
     "select teacher type" => "O'qituvchi toifangizni tanlang",
     "select subject" => "Fanni tanlang",
+    "subject" => "Fan nomi",
+    "teacher category" => "Malaka toifa (amaldagi)",
 
     "school" => "Maktab",
     "school grade" => "Sinf",

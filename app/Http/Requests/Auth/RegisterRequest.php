@@ -26,8 +26,6 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'min:3', 'max:255'],
-            'surname' => ['required', 'string', 'min:5', 'max:255'],
-            'middle_name' => ['required', 'string', 'min:5', 'max:255'],
             'phone' => ['required', 'numeric', 'digits:7', 'unique:users'],
             'code' => ['required', 'numeric', 'digits:2'],
             'type' => ['required', 'integer'],

@@ -7,28 +7,22 @@
             @csrf
 
             <div class="mt-4">
-                <label for="name" class="block font-medium text-sm text-gray-700">{{ __('messages.name') }}</label>
+                <div>
+                    <h1>Toifangizni tanlang:</h1>
+                    @foreach($user_types ?? [] as $type)
+                        <label class="block">
+                            {{ $type->name }} <input type="radio" name="type" value="{{ $type->id }}"
+                                                     required>
+                        </label>
+                    @endforeach
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <label for="name" class="block font-medium text-sm text-gray-700">{{ __('messages.enter name') }}</label>
                 <input id="name"
                        class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
                        type="text" name="name" value="{{ old('name')}}" required autocomplete="name" minlength="3"/>
-            </div>
-
-            <div class="mt-4">
-                <label for="surname"
-                       class="block font-medium text-sm text-gray-700">{{ __('messages.surname') }}</label>
-                <input id="surname"
-                       class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
-                       type="text" name="surname" value="{{ old('surname')}}" required autocomplete="surname"
-                       minlength="5"/>
-            </div>
-
-            <div class="mt-4">
-                <label for="middle_name"
-                       class="block font-medium text-sm text-gray-700">{{ __('messages.middle name') }}</label>
-                <input id="middle_name"
-                       class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full"
-                       type="text" name="middle_name" value="{{ old('middle_name')}}" required
-                       autocomplete="middle_name" minlength="5"/>
             </div>
 
             <div class="mt-4">
@@ -56,18 +50,7 @@
                                pattern="[0-9]{7}" maxlength="7" placeholder="###-##-##" required/>
                     </div>
                 </div>
-            </div>
-
-            <div class="mt-4">
-                <div>
-                    <h1>Toifangizni tanlang:</h1>
-                    @foreach($user_types ?? [] as $type)
-                        <label class="block">
-                            {{ $type->name }} <input type="radio" name="type" value="{{ $type->id }}"
-                                                     required>
-                        </label>
-                    @endforeach
-                </div>
+                <span class="small text-warning italic">( Raqamlar orasini ochmasdan,chiziqcha qoʻymasdan yozing)</span>
             </div>
 
             <div class="mt-4">

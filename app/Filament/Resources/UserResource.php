@@ -50,14 +50,6 @@ class UserResource extends Resource
                     ->label(__('filament.username'))
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('surname')
-                    ->label(__('filament.surname'))
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('middle_name')
-                    ->label(__('filament.middle_name'))
-                    ->required()
-                    ->maxLength(255),
                 Forms\Components\TextInput::make('phone')
                     ->label(__('messages.phone'))
                     ->tel()
@@ -144,9 +136,6 @@ class UserResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->label(__('filament.username'))
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('surname')
-                    ->label(__('filament.surname'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('phone')
                     ->label(__('messages.phone'))

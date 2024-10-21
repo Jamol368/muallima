@@ -166,5 +166,22 @@
         }).show();
     });
 
+    $('#toggle_password').on('click', function () {
+        const passwordInput = $('#password');
+        const type = passwordInput.attr('type') === 'password' ? 'text' : 'password';
+        passwordInput.attr('type', type);
+
+        // Toggle the eye icon between eye and eye-slash
+        $(this).toggleClass('fa-eye fa-eye-slash');
+    });
+    $('#toggle_password_confirmation').on('click', function () {
+        const passwordInput = $('#password_confirmation');
+        const type = passwordInput.attr('type') === 'password' ? 'text' : 'password';
+        passwordInput.attr('type', type);
+
+        // Toggle the eye icon between eye and eye-slash
+        $(this).toggleClass('fa-eye fa-eye-slash');
+    });
+
 })(jQuery);
 

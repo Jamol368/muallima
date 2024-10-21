@@ -18,12 +18,15 @@
 
             <div>
                 <x-label for="phone" value="{{ __('messages.phone') }}" />
-                <x-input id="phone" class="block mt-1 w-full" type="number" name="phone" :value="old('phone')" required autofocus autocomplete="username" />
+                <x-input id="phone" class="block mt-1 w-full" type="tel" name="phone" :value="old('phone')" required autofocus autocomplete="phone" placeholder="+9989******" />
             </div>
 
             <div class="mt-4">
                 <x-label for="password" value="{{ __('messages.password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+                <div class="position-relative">
+                    <x-input id="password" class="block mt-1 w-full d-inline-block pr-42" type="password" name="password" required autocomplete="current-password" />
+                    <span toggle="#password" class="fa fa-fw fa-eye field-icon password-eye-toggle" id="toggle_password"></span>
+                </div>
             </div>
 
             <div class="block mt-4">

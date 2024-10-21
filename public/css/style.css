@@ -615,3 +615,24 @@ body {
 .light-blue {
     color: #06a3da;
 }
+
+.password-eye-toggle {
+    padding: 6px 10px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.pr-42 {
+    padding-right: 42px !important;
+}
+
+.auth-title {
+    color: #514b4b;
+    text-align: center;
+    margin: 30px auto;
+    border-bottom: 1px solid #513e3e;
+}

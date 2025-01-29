@@ -93,6 +93,20 @@ class UserResource extends Resource
                                     ->relationship('userType', 'name')
                                     ->label(__('filament.user type'))
                                     ->disabled(),
+                                Forms\Components\Fieldset::make('User teacher')
+                                    ->label(__('filament.teacher info'))
+                                    ->relationship('userTeacher')
+                                    ->schema([
+                                        Forms\Components\Select::make('subject')
+                                            ->relationship('subject', 'name')
+                                            ->label(__('filament.subject'))
+                                            ->disabled(),
+                                        Forms\Components\Select::make('teacherCategory')
+                                            ->relationship('teacherCategory', 'name')
+                                            ->label(__('filament.teacher category'))
+                                            ->disabled(),
+                                    ])
+                                    ->hidden(fn ($record) => !$record || !$record->userTeacher),
                             ]),
                     ]),
                 Forms\Components\Section::make(__('filament.results'))

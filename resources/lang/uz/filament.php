@@ -27,6 +27,9 @@ return [
     'color' => 'Rang',
     'image upload' => 'Rasm yuklash',
 
+    'topic' => "Mavzu",
+    'parent topic' => "Asosiy mavzu",
+
     'test type' => "Test turi",
     'questions' => "Nechta savol",
     'score' => "Ball",

@@ -6,6 +6,7 @@ use App\Filament\Resources\TestResource\Pages;
 use App\Models\Subject;
 use App\Models\Test;
 use App\Models\TestType;
+use App\Models\Topic;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -62,6 +63,16 @@ class TestResource extends Resource
                     )
                     ->searchable()
                     ->live()
+                    ->required(),
+                Forms\Components\Select::make('topic_id')
+                    ->label(__('filament.topic'))
+                    ->options(
+                        Topic::query()
+                            ->orderBy('name')
+                            ->get()
+                            ->pluck('name', 'id')
+                    )
+                    ->searchable()
                     ->required(),
                 Forms\Components\RichEditor::make('question')
                     ->label(__('filament.question'))

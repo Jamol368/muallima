@@ -28,4 +28,9 @@ class Topic extends Model
     {
         return $this->hasMany(__CLASS__, 'parent_id');
     }
+
+    public function subject(): BelongsTo
+    {
+        return $this->belongsTo(Subject::class, 'subject_id');
+    }
 }

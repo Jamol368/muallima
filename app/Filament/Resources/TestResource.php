@@ -61,17 +61,22 @@ class TestResource extends Resource
                             ->get()
                             ->pluck('name', 'id')
                     )
+                    ->reactive()
+                    ->afterStateUpdated(fn (callable $set) => $set('topic_id', null))
                     ->searchable()
                     ->live()
                     ->required(),
                 Forms\Components\Select::make('topic_id')
                     ->label(__('filament.topic'))
-                    ->options(
-                        Topic::query()
-                            ->orderBy('name')
-                            ->get()
-                            ->pluck('name', 'id')
-                    )
+                    ->options(function ($get) {
+                        $subject_id = $get('$subject_id');
+                        if (!$subject_id) {
+                            return Topic::query()->pluck('name', 'id');
+                        }
+
+                        return Topic::query()->where('subject_id', $subject_id)->pluck('name', 'id');
+                    })
+                    ->reactive()
                     ->searchable()
                     ->required(),
                 Forms\Components\RichEditor::make('question')

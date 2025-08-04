@@ -42,6 +42,13 @@ class TopicResource extends Resource
     {
         return $form
             ->schema([
+                Select::make('subject_id')
+                    ->label(__('filament.subject'))
+                    ->relationship('subject', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->nullable(),
+
                 TextInput::make('name')
                     ->label(__('filament.name'))
                     ->required(),
@@ -63,6 +70,8 @@ class TopicResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('subject.name')
+                    ->label(__('filament.subject')),
                 TextColumn::make('name')
                     ->label(__('filament.name'))
                     ->searchable(),

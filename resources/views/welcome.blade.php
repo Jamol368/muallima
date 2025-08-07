@@ -93,7 +93,7 @@
                         <h5 class="fw-bold text-primary text-uppercase">{{ $topic_test_type->name }}</h5>
                         <h1 class="mb-0">{{ $topic_test_type->name }}</h1>
                     </div>
-                    <p class="mb-4">{{ $topic_test_type->description }}</p>
+                    <p class="mb-4">{!! $topic_test_type->description !!}</p>
                     <a href="{{ route('topic-test.subjects') }}" class="btn btn-outline-success rounded-start rounded-3 py-3 px-5 mt-3 wow zoomIn"
                        data-wow-delay="0.9s">{{ __('messages.select subject for topic tests') }}</a>
                 </div>

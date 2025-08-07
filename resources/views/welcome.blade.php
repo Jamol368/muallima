@@ -78,6 +78,30 @@
     </div>
     <!-- Facts Start -->
 
+    <!-- Topic tests Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-5" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute rounded wow zoomIn" data-wow-delay="0.9s"
+                             src="{{ asset('storage/' . $topic_test_type->img) }}" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="section-title position-relative pb-3 mb-5">
+                        <h5 class="fw-bold text-primary text-uppercase">{{ $topic_test_type->name }}</h5>
+                        <h1 class="mb-0">{{ $topic_test_type->name }}</h1>
+                    </div>
+                    <p class="mb-4">{{ $topic_test_type->description }}</p>
+                    <a href="{{ route('topic-test.subjects') }}" class="btn btn-outline-success rounded-start rounded-3 py-3 px-5 mt-3 wow zoomIn"
+                       data-wow-delay="0.9s">{{ __('messages.select subject for topic tests') }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topic test End -->
+
     <!-- Blog Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">

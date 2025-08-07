@@ -101,4 +101,6 @@ return [
     'balance' => "Balans",
 
     'error' => "Xatolik",
+
+    "select subject for topic tests" => "Mavzulashgan test uchun fanni tanlash",
 ];

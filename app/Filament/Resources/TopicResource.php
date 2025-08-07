@@ -47,6 +47,7 @@ class TopicResource extends Resource
                     ->relationship('subject', 'name')
                     ->searchable()
                     ->preload()
+                    ->placeholder(__('filament.subject'))
                     ->nullable(),
 
                 TextInput::make('name')

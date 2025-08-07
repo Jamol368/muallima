@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostTagController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TestTypeController;
 use App\Http\Controllers\UserBalanceController;
@@ -72,6 +73,12 @@ Route::middleware([
 
     Route::post('balance-yangilash', [UserBalanceController::class, 'update'])
         ->name('user-balance.update');
+
+    Route::get('mavzulashgan-test/fanlar', [SubjectController::class, 'topicSubjects'])
+        ->name('topic-test.subjects');
+
+    Route::get('test/{subject_slug}', [ResultController::class, 'storeForTopic'])
+        ->name('topic-result.create');
 
 //    redirect to payment system or payment form
     Route::any('/pay/{paysys}/{key}/{amount}', function ($paysys, $key, $amount) {

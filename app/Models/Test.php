@@ -21,6 +21,7 @@ class Test extends Model
         'subject_id',
         'primary_subject_id',
         'question',
+        'topic_id',
     ];
 
     /**
@@ -42,6 +43,17 @@ class Test extends Model
     public function subject(): BelongsTo
     {
         return $this->belongsTo(Subject::class, 'subject_id', 'id')
+            ->orderBy('name');
+    }
+
+    /**
+     * Get the topic that owns the test.
+     *
+     * @return BelongsTo
+     */
+    public function topic(): BelongsTo
+    {
+        return $this->belongsTo(Topic::class, 'topic_id', 'id')
             ->orderBy('name');
     }
 

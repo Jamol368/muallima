@@ -96,6 +96,12 @@ class TestResource extends Resource
                             ->label(__('filament.is true'))
                             ->inline(false),
                     ])
+                    ->default([
+                        ['option' => '', 'is_true' => false],
+                        ['option' => '', 'is_true' => false],
+                        ['option' => '', 'is_true' => false],
+                        ['option' => '', 'is_true' => false],
+                    ])
                     ->cloneable()
                     ->deleteAction(
                         fn(Forms\Components\Actions\Action $action) => $action->requiresConfirmation(),

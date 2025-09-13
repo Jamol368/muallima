@@ -9,6 +9,7 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TestTypeController;
+use App\Http\Controllers\TopicController;
 use App\Http\Controllers\UserBalanceController;
 use App\Http\Controllers\UserInfoController;
 use Illuminate\Support\Facades\Route;
@@ -56,7 +57,10 @@ Route::middleware([
     Route::get('fan/{name}', [TestTypeController::class, 'index'])
         ->name('subject');
 
-    Route::get('test/{test_type}', [ResultController::class, 'store'])
+    Route::get('test-turi/{test_type}/fanlar', [SubjectController::class, 'index'])
+        ->name('subject.list');
+
+    Route::get('test/{test_type}{subject}', [ResultController::class, 'store'])
         ->name('result.create');
 
     Route::post('test', [TestController::class, 'store'])
@@ -74,10 +78,13 @@ Route::middleware([
     Route::post('balance-yangilash', [UserBalanceController::class, 'update'])
         ->name('user-balance.update');
 
+    Route::get('fan/{subject}/mavzulashgan-test', [TopicController::class, 'index'])
+        ->name('topics.index');
+
     Route::get('mavzulashgan-test/fanlar', [SubjectController::class, 'topicSubjects'])
         ->name('topic-test.subjects');
 
-    Route::get('test/{subject_slug}', [ResultController::class, 'storeForTopic'])
+    Route::get('test/{subject}{topic}', [ResultController::class, 'storeForTopic'])
         ->name('topic-result.create');
 
 //    redirect to payment system or payment form

@@ -636,3 +636,13 @@ body {
     margin: 30px auto;
     border-bottom: 1px solid #513e3e;
 }
+
+.test-type-btn {
+    background-color: #6dbde8;
+    color: #fff !important;
+    width: 100%;
+}
+
+.test-type-btn:hover {
+    background-color: #3ba3ce;
+}

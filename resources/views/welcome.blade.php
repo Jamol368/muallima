@@ -78,30 +78,6 @@
     </div>
     <!-- Facts Start -->
 
-    <!-- Topic tests Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-5" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute rounded wow zoomIn" data-wow-delay="0.9s"
-                             src="{{ asset('storage/' . $topic_test_type->img) }}" style="object-fit: cover;">
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <div class="section-title position-relative pb-3 mb-5">
-                        <h5 class="fw-bold text-primary text-uppercase">{{ $topic_test_type->name }}</h5>
-                        <h1 class="mb-0">{{ $topic_test_type->name }}</h1>
-                    </div>
-                    <p class="mb-4">{!! $topic_test_type->description !!}</p>
-                    <a href="{{ route('topic-test.subjects') }}" class="btn btn-outline-success rounded-start rounded-3 py-3 px-5 mt-3 wow zoomIn"
-                       data-wow-delay="0.9s">{{ __('messages.select subject for topic tests') }}</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Topic test End -->
-
     <!-- Blog Start -->
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
@@ -140,27 +116,24 @@
     <!-- Blog Start -->
 
     <!-- Service Start -->
-    <div id="subject" class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div id="test_type" class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">{{ __('messages.test') }}</h5>
-                <h1 class="mb-0">Attestatsiyaga tayyorlov testlari</h1>
+                <h5 class="fw-bold text-primary text-uppercase">{{ __('filament.test type') }}</h5>
+                <h1 class="mb-0">Test turini tanlang!</h1>
             </div>
-            <div class="flex flex-wrap justify-center g-5">
-                @foreach($subject_models as $subject)
-                    <div class="subject wow zoomIn">
-                        <div
-                            class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center"
-                            style="background-color: {{ $subject->color }} !important;">
-                            <div>
-                                <img class="subject-img" src="{{ asset('storage/' . $subject->img) }}" alt="muallima">
+            <div class="row g-5">
+                @foreach($test_types as $key => $item)
+                    <div class="col-lg-4 wow slideInUp" data-wow-delay="0.{{ 2 + $key }}s">
+                        <div class="blog-item bg-light rounded overflow-hidden">
+                            <div class="blog-img position-relative overflow-hidden">
+                                <img class="img-fluid object-cover min-h-250" src="{{ asset('storage/' . $item->img) }}" alt="">
                             </div>
-                            <h2 class="mt-3 mb-3 text-white text-uppercase">{{ $subject->name }}</h2>
-                            <a class="btn btn-lg btn-primary rounded"
-                               href="{{ route('subject', ['name' => $subject->slug]) }}"
-                               style="background-color: {{ $subject->color }};">
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
+                            <div class="p-4">
+                                <h4 class="mb-3 min-h-full">{{ $item->name }}</h4>
+                                <div class="min-h-72">{!! $item->description !!}</div>
+                                <a class="btn text-uppercase test-type-btn" href="{{ route('subject.list', ['test_type' => $item->id]) }}">Tanlash <i class="bi bi-arrow-right"></i></a>
+                            </div>
                         </div>
                     </div>
                 @endforeach

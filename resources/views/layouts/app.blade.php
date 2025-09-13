@@ -857,7 +857,7 @@
                 <div class="navbar-nav ms-auto py-0">
                     <a href="{{ route('home') }}" class="nav-item nav-link {{ Request::is('home')?'active':'' }}">{{ __('messages.home') }}</a>
                     <a href="#" class="nav-item nav-link">{{ __('messages.course') }}</a>
-                    <a href="{{ route('home').'#subject' }}" class="nav-item nav-link">{{ __('messages.test') }}</a>
+                    <a href="{{ route('home').'#test_type' }}" class="nav-item nav-link">{{ __('messages.test') }}</a>
                     <a href="#" class="nav-item nav-link">{{ __('messages.contest') }}</a>
                     <a href="{{ route('posts') }}" class="nav-item nav-link">{{ __('messages.news') }}</a>
                     <a href="#" class="nav-item nav-link">{{ __('messages.about') }}</a>

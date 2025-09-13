@@ -77,12 +77,7 @@ class Test extends Model
 
     public static function check(int $subject_id, TestType $test_type): object|int
     {
-        if($test_type->id == 1) {
-            $test_type->questions += 10;
-            $tests = Test::getAttestationQuestions($subject_id, $test_type);
-        } else {
-            $tests = Test::getQuestions($subject_id, $test_type);
-        }
+        $tests = Test::getQuestions($subject_id, $test_type);
 
         return Test::ckeckQuestionsCount($tests, $test_type->questions);
     }
@@ -106,6 +101,23 @@ class Test extends Model
     public static function getQuestions(int $subject_id, TestType $test_type): object|int
     {
         $tests = Test::where(['subject_id' => $subject_id, 'test_type_id' => $test_type->id])
+            ->inRandomOrder()
+            ->take($test_type->questions)
+            ->get();
+
+        return $tests;
+    }
+
+    public static function checkForTopic(int $topic_id, TestType $test_type): object|int
+    {
+        $tests = self::getTopicQuestions($topic_id, $test_type->id);
+
+        return self::ckeckQuestionsCount($tests, $test_type->questions);
+    }
+
+    public static function getTopicQuestions(int $topic_id, TestType $test_type): object|int
+    {
+        $tests = Test::where(['topic_id' => $topic_id, 'test_type_id' => $test_type->id])
             ->inRandomOrder()
             ->take($test_type->questions)
             ->get();

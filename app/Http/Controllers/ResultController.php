@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Enums\TestTypeEnum;
 use App\Http\Requests\StoreResultRequest;
-use App\Http\Requests\UpdateResultRequest;
 use App\Models\Answer;
 use App\Models\Result;
 use App\Models\ResultSession;
@@ -14,11 +13,18 @@ use App\Models\TestType;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
 
 class ResultController extends Controller
 {
-    public function store(StoreResultRequest $request, string $test_type)
+
+    public function index()
+    {
+        $results = Result::where(['user_id' => Auth::id()])->get();
+
+        return view('result.index', compact('results'));
+    }
+
+    public function store(StoreResultRequest $request, string $test_type, string $subject)
     {
         $user = User::find(Auth::user()->getAuthIdentifier());
 
@@ -26,8 +32,8 @@ class ResultController extends Controller
 
         try {
 
-            if ($subject = Subject::where(['slug' => Session::get('user_id_' . $user->id)])->first() and
-                $test_type_model = TestType::where(['slug' => $test_type])->first()) {
+            if ($subject = Subject::findOrFail($subject) and
+                $test_type_model = TestType::findOrFail($test_type)) {
 
                 if ($user->userBalance->check($test_type_model->price) and
                     $questions = Test::check($subject->id, $test_type_model)) {
@@ -72,7 +78,7 @@ class ResultController extends Controller
         }
     }
 
-    public function storeForTopic(StoreResultRequest $request, string $subject_slug)
+    public function storeForTopic(StoreResultRequest $request, int $subject_id, int $topic_id)
     {
         $user = User::query()->find(Auth::user()?->getAuthIdentifier());
 
@@ -80,11 +86,11 @@ class ResultController extends Controller
 
         try {
 
-            if ($subject = Subject::query()->where(['slug' => $subject_slug])->first() and
-                $test_type = TestType::query()->where('id', TestTypeEnum::TEST_TYPE_TOPIC)->first()) {
+            if ($subject = Subject::query()->find($subject_id)?->first() and
+                $test_type = TestType::query()->find(TestTypeEnum::TEST_TYPE_TOPIC)?->first()) {
 
                 if ($user->userBalance->check($test_type->price) and
-                    $questions = Test::check($subject->id, $test_type)) {
+                    $questions = Test::checkForTopic($topic_id, $test_type->id)) {
 
                     $question_ids = $questions->pluck('id')->toArray();
 

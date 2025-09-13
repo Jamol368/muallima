@@ -24,7 +24,6 @@ class Login extends BaseAuth
     {
         return TextInput::make('phone')
             ->label(__('messages.phone'))
-            ->numeric()
             ->required()
             ->autocomplete()
             ->autofocus();

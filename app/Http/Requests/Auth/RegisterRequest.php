@@ -26,15 +26,10 @@ class RegisterRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'min:3', 'max:255'],
-            'phone' => ['required', 'string', 'regex:/^\+\d{12}$/', 'unique:users'],
-            'type' => ['required', 'integer'],
+            'phone' => ['required', 'integer', 'digits:9', 'unique:users'],
             'teacher_category' => ['required_if:type,1', 'integer'],
             'subject' => ['required_if:type,1', 'integer'],
-            'school' => ['required_if:type,2', 'integer'],
-            'pupil_grade' => ['required_if:type,2', 'integer'],
-            'province' => ['required', 'integer'],
-            'town' => ['required', 'integer'],
-            'password' => $this->passwordRules(),
+            'password' => ['required', 'string', 'min:8'],
         ];
     }
 }

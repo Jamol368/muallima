@@ -587,7 +587,7 @@ body {
     border: 1px solid #ddd;
 }
 .profile-links.active {
-    background-color: #3f90f0;
+    background-color: #0d2e55;
     color: #fff;
 }
 .profile-links:first-child {
@@ -595,6 +595,17 @@ body {
 }
 .profile-links:last-child {
     border-radius: 0 0 5px 5px;
+}
+
+.profile-links a {
+    display: block;
+}
+.profile-links button {
+    width: 100%;
+    text-align: left;
+}
+.profile-links a:hover, .profile-links button:hover {
+    color: #aaaaaa;
 }
 
 .dropdown-content {
@@ -631,10 +642,10 @@ body {
 }
 
 .auth-title {
-    color: #514b4b;
+    color: #333;
     text-align: center;
     margin: 30px auto;
-    border-bottom: 1px solid #513e3e;
+    font-weight: 700 !important;
 }
 
 .test-type-btn {
@@ -645,4 +656,34 @@ body {
 
 .test-type-btn:hover {
     background-color: #3ba3ce;
+}
+
+.profile-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.profile-info h4 {
+    margin: 0;
+    width: 30%;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.profile-info p {
+    font-size: 18px;
+    color: #555;
 }

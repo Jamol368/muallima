@@ -49,27 +49,10 @@ class UserBalanceController extends Controller
      */
     public function edit()
     {
-        $user = User::query()->with(['userBalance', 'userInfo' => function ($query) {
-            $query->with('province', 'town');
-        }])->find(Auth::id())?->toArray();
-        $teacher = $pupil = null;
-
-        if ($user['user_info']['user_type_id'] === 1) {
-            $teacher = UserTeacher::query()
-                ->with('subject', 'teacherCategory')
-                ->where('user_info_id', $user['user_info']['id'])
-                ->get()->toArray()[0];
-        } else if ($user['user_info']['user_type_id'] === 2) {
-            $pupil = UserPupil::query()
-                ->with('school')
-                ->where('user_info_id', $user['user_info']['id'])
-                ->get()->toArray()[0];
-        }
+        $user = User::query()->with(['userBalance', 'subject', 'teacherCategory'])->find(Auth::id())?->toArray();
 
         return view('user_balance.update', [
             'user' => $user,
-            'teacher' => $teacher,
-            'pupil' => $pupil,
         ]);
     }
 

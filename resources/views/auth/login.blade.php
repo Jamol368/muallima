@@ -1,52 +1,64 @@
-<x-guest-layout>
-    <x-authentication-card>
+<x-auth-layout>
+    <div class="auth-layout">
+        <main class="auth-box">
+            <div class="box-container">
+                <div class="auth-content">
 
-        @if ($errors->any())
-            <div class="mb-4">
-                <div class="font-medium text-red-600">Telefon yoki parol no'to'g'ri, yoki siz hali ro‘yxatdan o‘tmagansiz</div>
-            </div>
-        @endif
+                    <div class="d-flex justify-content-center align-items-center mb-5">
+                        <div class="flex-1">
+                            <a href="{{ route('home') }}"
+                               class="home-link navbar-brand p-0 d-flex align-items-center gap-2">
+                                <div class="auth-logo">
+                                    <i class="fa fa-user-tie me-2"></i>
+                                </div>
+                                <div class="auth-platform text-start">
+                                    <h3 class="m-0 fs-1 auth-color">Muallima</h3>
+                                    <p class="m-0 fs-6">test platformasi</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
 
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
-        @endif
+                    <form action="{{ route('login') }}" class="auth-form" method="POST">
+                        @csrf
+                        <div class="auth-form-container align-items-center">
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+                            <h1 class="mb-3 auth-title">Tizimga kirish</h1>
+                            <p class="text-muted">Iltimos, telefon raqam hamda parolinggizni kiriting!</p>
 
-            <div>
-                <x-label for="phone" value="{{ __('messages.phone') }}" />
-                <x-input id="phone" class="block mt-1 w-full" type="tel" name="phone" :value="old('phone')" required autofocus autocomplete="phone" placeholder="+9989******" />
-            </div>
+                            <p class="auth-label">Telefon raqam</p>
+                            <input type="text" id="phone-number" name="phone-number" placeholder="+998" class="auth-input">
+                            <input type="hidden" id="phone" name="phone">
 
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('messages.password') }}" />
-                <div class="position-relative">
-                    <x-input id="password" class="block mt-1 w-full d-inline-block pr-42" type="password" name="password" required autocomplete="current-password" />
-                    <span toggle="#password" class="fa fa-fw fa-eye field-icon password-eye-toggle" id="toggle_password"></span>
+                            <script src="https://cdn.jsdelivr.net/npm/cleave.js@1/dist/cleave.min.js"></script>
+                            <script>
+                                let cleave = new Cleave('#phone-number', {
+                                    prefix: '+998',
+                                    delimiters: [' ', '(', ') ', '-', '-'],
+                                    blocks: [4, 0, 2, 3, 2, 2],
+                                    numericOnly: true,
+                                    noImmediatePrefix: true,
+                                    rawValueTrimPrefix: true
+                                });
+
+                                document.querySelector('form').addEventListener('submit', function(e) {
+                                    document.querySelector('#phone').value = cleave.getRawValue()
+                                });
+                            </script>
+
+                            <p class="auth-label">Parol</p>
+                            <input type="password" id="password" name="password" class="auth-input">
+
+                            <button type="submit" class="btn auth-btn confirm-btn mt-3">Kirish</button>
+
+                            <p class="mt-3 medium text-muted">
+                                Parolni unutdingizmi?
+                                <a href="#">Yangilash</a>
+                            </p>
+                        </div>
+                    </form>
                 </div>
             </div>
-
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-checkbox id="remember_me" name="remember" />
-                    <span class="ms-2 text-sm text-gray-600">{{ __('messages.remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                        {{ __('messages.forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ms-4">
-                    {{ __('messages.log in') }}
-                </x-button>
-            </div>
-        </form>
-    </x-authentication-card>
-</x-guest-layout>
+        </main>
+    </div>
+</x-auth-layout>

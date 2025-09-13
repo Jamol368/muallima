@@ -864,32 +864,15 @@
                     <a href="{{ trans('messages.telegram bot') }}" target="_blank" class="nav-item nav-link">{{ __('messages.contact') }}</a>
                     @if (Route::has('login'))
                         @auth
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link fz-22"
-                                   data-bs-toggle="dropdown"><i class="fa fa-user-tie me-2"></i></a>
-                                <div class="dropdown-menu m-0" style="right: 0; width: 200px">
-                                    <div class="dropdown-title p-3">
-                                        <h5 class="font-black fz-20"> {{ auth()->user()->name }}</h5>
-                                        <p class="fz-16">ID: {{ auth()->user()->getAuthIdentifier() }}</p>
-                                    </div>
-                                    <a href="{{ route('user-balance.edit') }}" class="dropdown-item">
-                                        <i class="fa fa-user me-2 light-blue"> </i>{{ __('messages.profile') }}</a>
-                                    <hr>
-                                    <form method="POST" id="logout" action="{{ route('logout') }}">
-                                        @csrf
-                                        <button type="submit" class="dropdown-item">
-                                            <i class="fa fa-sign-out me-2 light-blue"> </i>{{ __('messages.log out') }}</button>
-                                    </form>
-                                </div>
-                            </div>
+                            <a href="{{ route('user-balance.edit') }}" class="nav-item nav-link">Profil</a>
                         @endauth
                     @endif
                 </div>
                 @guest
                 <a href="{{ route('login') }}"
-                   class="btn btn-primary py-2 px-4 ms-3">{{ __('messages.log in') }}</a>
+                   class="btn bg-default py-2 px-4 ms-3">{{ __('messages.log in') }}</a>
                 <a href="{{ route('register') }}"
-                       class="btn btn-primary py-2 px-4 ms-3">{{ __('messages.register') }}</a>
+                       class="btn bg-default py-2 px-4 ms-3">{{ __('messages.register') }}</a>
                 @endguest
             </div>
         </nav>

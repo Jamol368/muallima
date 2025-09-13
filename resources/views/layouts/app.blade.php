@@ -870,9 +870,9 @@
                 </div>
                 @guest
                 <a href="{{ route('login') }}"
-                   class="btn bg-default py-2 px-4 ms-3">{{ __('messages.log in') }}</a>
+                   class="btn bg-primary color-white py-2 px-4 ms-3">{{ __('messages.log in') }}</a>
                 <a href="{{ route('register') }}"
-                       class="btn bg-default py-2 px-4 ms-3">{{ __('messages.register') }}</a>
+                       class="btn bg-primary color-white py-2 px-4 ms-3">{{ __('messages.register') }}</a>
                 @endguest
             </div>
         </nav>

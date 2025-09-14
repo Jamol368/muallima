@@ -845,34 +845,33 @@
 
     <!-- Navbar & Carousel Start -->
     <div class="container-fluid position-relative p-0">
-        <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-white px-5 py-3 py-lg-0">
             <a href="{{ route('home') }}" class="navbar-brand p-0">
-                <h1 class="m-0 fs-2"><i class="fa fa-user-tie me-2"></i>Muallima<span class="fs-5">.uz</span> <br><span
-                        class="fs-7">Yaxshi muallim - sifatli ta'lim</span></h1>
+                <img src="{{ asset('/img/logo-3.png') }}" alt="logo" class="logo-img">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="fa fa-bars"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="{{ route('home') }}" class="nav-item nav-link {{ Request::is('home')?'active':'' }}">{{ __('messages.home') }}</a>
-                    <a href="#" class="nav-item nav-link">{{ __('messages.course') }}</a>
-                    <a href="{{ route('home').'#test_type' }}" class="nav-item nav-link">{{ __('messages.test') }}</a>
-                    <a href="#" class="nav-item nav-link">{{ __('messages.contest') }}</a>
-                    <a href="{{ route('posts') }}" class="nav-item nav-link">{{ __('messages.news') }}</a>
-                    <a href="#" class="nav-item nav-link">{{ __('messages.about') }}</a>
-                    <a href="{{ trans('messages.telegram bot') }}" target="_blank" class="nav-item nav-link">{{ __('messages.contact') }}</a>
+                    <a href="{{ route('home') }}" class="nav-item nav-link color-black {{ Request::is('home')?'active':'' }}">{{ __('messages.home') }}</a>
+                    <a href="#" class="nav-item nav-link color-black">{{ __('messages.course') }}</a>
+                    <a href="{{ route('home').'#test_type' }}" class="nav-item nav-link color-black">{{ __('messages.test') }}</a>
+                    <a href="#" class="nav-item nav-link color-black">{{ __('messages.contest') }}</a>
+                    <a href="{{ route('posts') }}" class="nav-item nav-link color-black">{{ __('messages.news') }}</a>
+                    <a href="#" class="nav-item nav-link color-black">{{ __('messages.about') }}</a>
+                    <a href="{{ trans('messages.telegram bot') }}" target="_blank" class="nav-item nav-link color-black">{{ __('messages.contact') }}</a>
                     @if (Route::has('login'))
                         @auth
-                            <a href="{{ route('user-balance.edit') }}" class="nav-item nav-link">Profil</a>
+                            <a href="{{ route('user-balance.edit') }}" class="nav-item nav-link color-black">Profil</a>
                         @endauth
                     @endif
                 </div>
                 @guest
                 <a href="{{ route('login') }}"
-                   class="btn bg-primary color-white py-2 px-4 ms-3">{{ __('messages.log in') }}</a>
+                   class="btn bg-green color-white py-2 px-4 ms-3">{{ __('messages.log in') }}</a>
                 <a href="{{ route('register') }}"
-                       class="btn bg-primary color-white py-2 px-4 ms-3">{{ __('messages.register') }}</a>
+                       class="btn bg-green color-white py-2 px-4 ms-3">{{ __('messages.register') }}</a>
                 @endguest
             </div>
         </nav>
@@ -912,9 +911,9 @@
                 <div class="row gx-5">
                     <div class="col-lg-4 col-md-6 footer-about">
                         <div
-                            class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
+                            class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-green p-4">
                             <a href="{{ route('home') }}" class="navbar-brand">
-                                <h1 class="h1 m-0 text-white"><i class="fa fa-user-tie me-2"></i>{{ env('APP_NAME') }}</h1>
+                                <img src="{{ asset('/img/logo-3.png') }}" alt="logo" class="logo-img">
                             </a>
                             <p class="mt-3 mb-4">Yaxshi muallim - sifatli ta'lim</p>
                         </div>
@@ -926,35 +925,35 @@
                                     <h3 class="text-light mb-0">{{ __('messages.get in touch') }}</h3>
                                 </div>
                                 <div class="d-flex mb-2">
-                                    <i class="bi bi-telegram text-primary me-2"></i>
+                                    <i class="bi bi-telegram text-green me-2"></i>
                                     <a href="{{ trans('messages.telegram') }}" target="_blank">
                                         <p class="">Telegram</p>
                                     </a>
                                 </div><div class="d-flex mb-2">
-                                    <i class="bi bi-telegram text-primary me-2"></i>
+                                    <i class="bi bi-telegram text-green me-2"></i>
                                     <a href="{{ trans('messages.telegram bot') }}" target="_blank">
                                         <p class="">Telegram bot</p>
                                     </a>
                                 </div>
                                 <div class="d-flex mb-2">
-                                    <i class="bi bi-facebook text-primary me-2"></i>
+                                    <i class="bi bi-facebook text-green me-2"></i>
                                     <a href="{{ trans('messages.facebook') }}" target="_blank">
                                         <p class="">Facebook</p>
                                     </a>
                                 </div>
                                 <div class="d-flex mb-2">
-                                    <i class="bi bi-instagram text-primary me-2"></i>
+                                    <i class="bi bi-instagram text-green me-2"></i>
                                     <a href="{{ trans('messages.instagram') }}" target="_blank">
                                         <p class="">Instagram</p>
                                     </a>
                                 </div>
                                 <div class="d-flex mt-4">
-                                    <a class="btn btn-primary btn-square me-2" href="{{ trans('messages.telegram') }}"><i class="fab fa-telegram fw-normal"></i></a>
-                                    <a class="btn btn-primary btn-square me-2" href="{{ trans('messages.facebook') }}"><i
+                                    <a class="btn btn-success btn-square me-2" href="{{ trans('messages.telegram') }}"><i class="fab fa-telegram fw-normal"></i></a>
+                                    <a class="btn btn-success btn-square me-2" href="{{ trans('messages.facebook') }}"><i
                                             class="fab fa-facebook-f fw-normal"></i></a>
-                                    <a class="btn btn-primary btn-square me-2" href="{{ trans('messages.instagram') }}"><i
+                                    <a class="btn btn-success btn-square me-2" href="{{ trans('messages.instagram') }}"><i
                                             class="fab fa-instagram fw-normal"></i></a>
-                                    <a class="btn btn-primary btn-square" href="{{ trans('messages.twitter') }}"><i
+                                    <a class="btn btn-success btn-square" href="{{ trans('messages.twitter') }}"><i
                                             class="fab fa-x-twitter fw-normal"></i></a>
                                 </div>
                             </div>
@@ -963,10 +962,10 @@
                                     <h3 class="text-light mb-0">{{ __('messages.quick links') }}</h3>
                                 </div>
                                 <div class="link-animated d-flex flex-column justify-content-start">
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{{ __('messages.home') }}</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{{ __('messages.about') }}</a>
-                                    <a class="text-light mb-2" href="{{ route('posts') }}"><i class="bi bi-arrow-right text-primary me-2"></i>{{ __('messages.news') }}</a>
-                                    <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{{ __('messages.contact') }}</a>
+                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right me-2"></i>{{ __('messages.home') }}</a>
+                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right me-2"></i>{{ __('messages.about') }}</a>
+                                    <a class="text-light mb-2" href="{{ route('posts') }}"><i class="bi bi-arrow-right me-2"></i>{{ __('messages.news') }}</a>
+                                    <a class="text-light" href="#"><i class="bi bi-arrow-right me-2"></i>{{ __('messages.contact') }}</a>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
@@ -974,10 +973,10 @@
                                     <h3 class="text-light mb-0">{{ __('messages.popular links') }}</h3>
                                 </div>
                                 <div class="link-animated d-flex flex-column justify-content-start">
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{{ __('messages.home') }}</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{{ __('messages.course') }}</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{{ __('messages.test') }}</a>
-                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>{{ __('messages.contest') }}</a>
+                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right me-2"></i>{{ __('messages.home') }}</a>
+                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right me-2"></i>{{ __('messages.course') }}</a>
+                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right me-2"></i>{{ __('messages.test') }}</a>
+                                    <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right me-2"></i>{{ __('messages.contest') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -992,9 +991,6 @@
                         <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
                             <p class="mb-0">&copy; <a class="text-white border-bottom" href="{{ route('home') }}">{{ env('APP_NAME') }}</a>. All Rights
                                 Reserved.
-
-                                <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                                Designed by <a class="text-white border-bottom" href="https://htmlcodex.com">HTML Codex</a></p>
                         </div>
                     </div>
                 </div>
@@ -1003,7 +999,7 @@
         <!-- Footer End -->
 
         <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+        <a href="#" class="btn btn-lg btn-green btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 var preventBack = {{ Session::has('preventBack') ? 'true' : 'false' }};

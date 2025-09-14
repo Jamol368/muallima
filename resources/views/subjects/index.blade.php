@@ -1,14 +1,8 @@
-<style>
-    .navbar-dark {
-        background-color: #5674a2;
-    }
-</style>
-
 <x-app-layout>
     <style>
         .card-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             max-width: 1200px;
             width: 100%;
@@ -45,7 +39,7 @@
             margin-bottom: 10px;
         }
 
-        .btn {
+        .subject-btn {
             background: rgba(255, 255, 255, 0.3);
             border: none;
             padding: 10px 20px;
@@ -57,7 +51,7 @@
             font-size: 18px;
         }
 
-        .btn:hover {
+        .subject-btn:hover {
             background: rgba(255, 255, 255, 0.5);
         }
 
@@ -79,7 +73,7 @@
     <div id="subject" class="container-fluid py-5 wow fadeInUp mt-lg-5" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto">
-                <h5 class="fw-bold text-primary text-uppercase">{{ __('messages.test') }}</h5>
+                <h5 class="fw-bold text-green text-uppercase fz-22">{{ __('messages.test') }}</h5>
                 <h1 class="mb-0">{{ $test_type->name }} uchun fanni tanlang!</h1>
             </div>
             <div class="card-container">
@@ -88,7 +82,7 @@
                          style="background: linear-gradient(135deg, {{ $subject->color }}, {{ $subject->color_to }});">
                         <div class="icon"><img src="{{ $subject->img }}" alt="img"></div>
                         <div class="title">{{ $subject->name }}</div>
-                        <a class="btn"
+                        <a class="subject-btn"
                            href="{{ $subject->topic_count > 0
                 ? route('topics.index', ['subject' => $subject->id])
                 : route('result.create', ['test_type' => $test_type->id, 'subject' => $subject->id]) }}">

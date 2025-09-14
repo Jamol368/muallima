@@ -24,10 +24,10 @@
                         <img class="img-fluid w-100 rounded mb-5" src="{{ asset('storage/' . $post->img) }}" alt="">
                         <h1 class="h1 mb-4">{{ $post->title }}</h1>
                         <div class="d-flex mb-3">
-                            <small class="me-3"><i class="far fa-eye text-primary me-2"></i>{{ $post->view_count }}
+                            <small class="me-3"><i class="far fa-eye text-green me-2"></i>{{ $post->view_count }}
                             </small>
                             <small><i
-                                    class="far fa-calendar-alt text-primary me-2"></i>{{ $post->created_at->format('d M, Y') }}
+                                    class="far fa-calendar-alt text-green me-2"></i>{{ $post->created_at->format('d M, Y') }}
                             </small>
                         </div>
                         <div class="content">

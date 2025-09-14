@@ -1,7 +1,7 @@
 <x-app-layout>
 
     @section('carousel')
-        <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
+        <div class="container-fluid bg-green py-5 bg-header" style="margin-bottom: 90px;">
             <div class="row py-5">
                 <div class="col-12 pt-lg-5 mt-lg-5 text-center">
                     <h1 class="display-4 text-white animated zoomIn">{{ __('messages.news') }}</h1>
@@ -25,22 +25,21 @@
                                 <div class="blog-item bg-light rounded overflow-hidden">
                                     <div class="flex justify-center blog-img position-relative overflow-hidden">
                                         <img class="img-fluid" src="{{ asset('storage/' . $item->img) }}" alt="">
-                                        <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4"
+                                        <a class="position-absolute top-0 start-0 bg-green text-white rounded-end mt-5 py-2 px-4"
                                            href="">{{ $item->postCategory?->name }}</a>
                                     </div>
                                     <div class="p-4">
                                         <div class="d-flex mb-3">
                                             <small class="me-3"><i
-                                                    class="far fa-eye text-primary me-2"></i>{{ $item->view_count }}
+                                                    class="far fa-eye text-green me-2"></i>{{ $item->view_count }}
                                             </small>
                                             <small><i
-                                                    class="far fa-calendar-alt text-primary me-2"></i>{{ $item->created_at->format('d M, Y') }}
+                                                    class="far fa-calendar-alt text-green me-2"></i>{{ $item->created_at->format('d M, Y') }}
                                             </small>
                                         </div>
                                         <h4 class="h5 mb-3">{{ $item->title }}</h4>
                                         <p>{!! $item->description !!}</p>
-                                        <a class="text-uppercase" href="{{ route('post', ['slug' => $item->slug]) }}">Batafsil
-                                            <i class="bi bi-arrow-right"></i></a>
+                                        <a class="btn text-uppercase test-type-btn" href="{{ route('post', ['slug' => $item->slug]) }}">Batafsil</a>
                                     </div>
                                 </div>
                             </div>

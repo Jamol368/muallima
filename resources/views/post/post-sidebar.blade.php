@@ -3,7 +3,7 @@
     <div class="mb-5 wow slideInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: slideInUp;">
         <div class="input-group">
             <input type="text" class="form-control p-3" placeholder="{{ __('messages.search') }}">
-            <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+            <button class="btn btn-success px-4"><i class="bi bi-search"></i></button>
         </div>
     </div>
     <!-- Search Form End -->

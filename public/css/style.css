@@ -4,6 +4,7 @@
     --secondary: #34AD54;
     --light: #EEF9FF;
     --dark: #091E3E;
+    --green: #1F8F4A;
 }
 
 
@@ -11,7 +12,7 @@
 .spinner {
     width: 40px;
     height: 40px;
-    background: var(--primary);
+    background: var(--green);
     margin: 100px auto;
     -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
     animation: sk-rotateplane 1.2s infinite ease-in-out;
@@ -143,7 +144,7 @@ h6,
 
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link.active {
-    color: var(--primary);
+    color: var(--green);
 }
 
 .navbar-dark .navbar-brand h1 {
@@ -151,8 +152,8 @@ h6,
 }
 
 .navbar-dark .navbar-toggler {
-    color: var(--primary) !important;
-    border-color: var(--primary) !important;
+    color: var(--green) !important;
+    border-color: var(--green) !important;
 }
 
 @media (max-width: 991.98px) {
@@ -169,7 +170,7 @@ h6,
     }
 
     .navbar-dark .navbar-brand h1 {
-        color: var(--primary);
+        color: var(--green);
     }
 }
 
@@ -195,7 +196,7 @@ h6,
         height: 2px;
         bottom: -1px;
         left: 50%;
-        background: var(--primary);
+        background: var(--green);
         transition: .5s;
     }
 
@@ -210,7 +211,7 @@ h6,
     }
 
     .sticky-top.navbar-dark .navbar-brand h1 {
-        color: var(--primary);
+        color: var(--green);
     }
 }
 
@@ -257,7 +258,7 @@ h6,
     height: 5px;
     left: 0;
     bottom: 0;
-    background: var(--primary);
+    background: var(--green);
     border-radius: 2px;
 }
 
@@ -325,7 +326,7 @@ h6,
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--primary);
+    background: var(--green);
     border-radius: 2px;
     transform: rotate(-45deg);
 }
@@ -370,7 +371,7 @@ h6,
 
 .testimonial-carousel .owl-dot.active {
     width: 30px;
-    background: var(--primary);
+    background: var(--green);
 }
 
 .testimonial-carousel .owl-item.center {
@@ -649,13 +650,13 @@ body {
 }
 
 .test-type-btn {
-    background-color: #6dbde8;
+    background-color: #2aac3b;
     color: #fff !important;
     width: 100%;
 }
 
 .test-type-btn:hover {
-    background-color: #3ba3ce;
+    background-color: #207d2a;
 }
 
 .profile-card {
@@ -693,4 +694,16 @@ body {
 }
 .color-white:hover {
     color: #dddddd;
+}
+
+.logo-img {
+    width: 330px;
+}
+
+.bg-green {
+    background-color: #1F8F4A;
+}
+
+.color-black{
+    color: #000000 !important;
 }

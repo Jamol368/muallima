@@ -999,7 +999,7 @@
         <!-- Footer End -->
 
         <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-green btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+        <a href="#" class="btn btn-lg btn-success btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
         <script>
             document.addEventListener("DOMContentLoaded", function() {
                 var preventBack = {{ Session::has('preventBack') ? 'true' : 'false' }};

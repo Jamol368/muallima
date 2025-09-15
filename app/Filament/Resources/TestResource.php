@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\TestTypeEnum;
 use App\Filament\Resources\TestResource\Pages;
 use App\Models\Subject;
 use App\Models\Test;
@@ -78,10 +79,12 @@ class TestResource extends Resource
                     })
                     ->reactive()
                     ->searchable()
-                    ->required(),
+                    ->visible(fn (callable $get) => $get('test_type_id') == TestTypeEnum::TEST_TYPE_TOPIC->value)
+                    ->required(fn (callable $get) => $get('test_type_id') == TestTypeEnum::TEST_TYPE_TOPIC->value),
                 Forms\Components\RichEditor::make('question')
                     ->label(__('filament.question'))
                     ->fileAttachmentsDirectory('test')
+                    ->dehydrateStateUsing(fn($state) => html_entity_decode($state ?? '', ENT_QUOTES | ENT_HTML5, 'UTF-8'))
                     ->required(),
                 Forms\Components\Repeater::make('answers')
                     ->label(__('filament.answers'))

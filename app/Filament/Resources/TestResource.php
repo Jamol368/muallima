@@ -70,11 +70,7 @@ class TestResource extends Resource
                 Forms\Components\Select::make('topic_id')
                     ->label(__('filament.topic'))
                     ->options(function ($get) {
-                        $subject_id = $get('$subject_id');
-                        if (!$subject_id) {
-                            return Topic::query()->pluck('name', 'id');
-                        }
-
+                        $subject_id = $get('subject_id');
                         return Topic::query()->where('subject_id', $subject_id)->pluck('name', 'id');
                     })
                     ->reactive()

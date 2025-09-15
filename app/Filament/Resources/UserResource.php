@@ -56,6 +56,14 @@ class UserResource extends Resource
                     ->telRegex('/^[0-9]{9}$/')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Select::make('subject')
+                    ->relationship('subject', 'name')
+                    ->label(__('filament.subject'))
+                    ->required(),
+                Forms\Components\Select::make('teacherCategory')
+                    ->relationship('teacherCategory', 'name')
+                    ->label(__('filament.teacher category'))
+                    ->required(),
                 Forms\Components\DatePicker::make('created_at')
                     ->label(__('messages.registered at'))
                     ->disabled(),
@@ -72,41 +80,6 @@ class UserResource extends Resource
                                 Forms\Components\TextInput::make('last_transaction_id')
                                     ->label(__('filament.last transaction id'))
                                     ->disabled(),
-                            ]),
-                    ]),
-                Forms\Components\Section::make(__('filament.personal info'))
-                    ->description(__('filament.personal info'))
-                    ->schema([
-                        Forms\Components\Fieldset::make('User info')
-                            ->label(__('filament.user info'))
-                            ->relationship('userInfo')
-                            ->schema([
-                                Forms\Components\Select::make('province_id')
-                                    ->relationship('province', 'name')
-                                    ->label(__('filament.province'))
-                                    ->disabled(),
-                                Forms\Components\Select::make('town_id')
-                                    ->relationship('town', 'name')
-                                    ->label(__('filament.town'))
-                                    ->disabled(),
-                                Forms\Components\Select::make('user_type_id')
-                                    ->relationship('userType', 'name')
-                                    ->label(__('filament.user type'))
-                                    ->disabled(),
-                                Forms\Components\Fieldset::make('User teacher')
-                                    ->label(__('filament.teacher info'))
-                                    ->relationship('userTeacher')
-                                    ->schema([
-                                        Forms\Components\Select::make('subject')
-                                            ->relationship('subject', 'name')
-                                            ->label(__('filament.subject'))
-                                            ->disabled(),
-                                        Forms\Components\Select::make('teacherCategory')
-                                            ->relationship('teacherCategory', 'name')
-                                            ->label(__('filament.teacher category'))
-                                            ->disabled(),
-                                    ])
-                                    ->hidden(fn ($record) => !$record || !$record->userTeacher),
                             ]),
                     ]),
                 Forms\Components\Section::make(__('filament.results'))

@@ -89,6 +89,13 @@ class TestTypeResource extends Resource
                     ])
                     ->maxLength(511)
                     ->required(),
+
+                Forms\Components\Select::make('subjects')
+                    ->label(__('filament.subjects'))
+                    ->relationship('subjects', 'name')
+                    ->multiple()
+                    ->preload()
+                    ->searchable(),
             ]);
     }
 

@@ -22,6 +22,7 @@ return [
 
     'test' => 'Test',
     'subject' => 'Fan',
+    'subjects' => 'Fanlar',
     'primary_subject' => 'Boshlang\'ich ta\'lim fani',
     'description' => 'Matn',
     'color' => 'Rang',

@@ -588,7 +588,7 @@ body {
     border: 1px solid #ddd;
 }
 .profile-links.active {
-    background-color: #0d2e55;
+    background-color: #146c43;
     color: #fff;
 }
 .profile-links:first-child {

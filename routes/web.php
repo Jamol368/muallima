@@ -11,6 +11,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\TestTypeController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\UserBalanceController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserInfoController;
 use Illuminate\Support\Facades\Route;
 
@@ -77,6 +78,11 @@ Route::middleware([
 
     Route::post('balance-yangilash', [UserBalanceController::class, 'update'])
         ->name('user-balance.update');
+
+    Route::get('profile-edit/{user_id}', [UserController::class, 'edit'])
+        ->name('profile.edit');
+    Route::post('profile-update', [UserController::class, 'update'])
+        ->name('profile.update');
 
     Route::get('fan/{subject}/mavzulashgan-test', [TopicController::class, 'index'])
         ->name('topics.index');

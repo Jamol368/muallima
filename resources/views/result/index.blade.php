@@ -61,6 +61,9 @@
                                     Mening
                                     natijalarim</a>
                             </li>
+                            <li class="profile-links {{ request()->routeIs('profile.edit') ? 'active' : '' }}">
+                                <a href="{{ route('profile.edit', ['user_id' => Auth::id()]) }}" class=""><i class="fas fa-line-chart me-2"></i> Sozlamalar</a>
+                            </li>
                             <li class="profile-links">
                                 <form method="POST" id="logout" action="{{ route('logout') }}">
                                     @csrf

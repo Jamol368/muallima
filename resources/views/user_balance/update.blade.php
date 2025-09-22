@@ -54,7 +54,7 @@
                                            value="1000" style="height: 55px;" min="1000">
                                 </div>
                                 <div class="col-md-4">
-                                    <button class="btn btn-info w-100 py-3" type="submit">To'ldirish</button>
+                                    <button class="btn btn-success bg-success w-100 py-3" type="submit">To'ldirish</button>
                                 </div>
                             </div>
                         </form>
@@ -70,6 +70,9 @@
                         <li class="profile-links {{ request()->routeIs('result.index') ? 'active' : '' }}">
                             <a href="{{ route('result.index') }}" class=""><i class="fas fa-line-chart me-2"></i> Mening
                                 natijalarim</a>
+                        </li>
+                        <li class="profile-links {{ request()->routeIs('profile.edit') ? 'active' : '' }}">
+                            <a href="{{ route('profile.edit', ['user_id' => $user['id']]) }}" class=""><i class="fas fa-line-chart me-2"></i> Sozlamalar</a>
                         </li>
                         <li class="profile-links">
                             <form method="POST" id="logout" action="{{ route('logout') }}">

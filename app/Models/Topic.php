@@ -26,7 +26,7 @@ class Topic extends Model
 
     public function children(): HasMany
     {
-        return $this->hasMany(__CLASS__, 'parent_id');
+        return $this->hasMany(__CLASS__, 'parent_id')->with('children');
     }
 
     public function subject(): BelongsTo

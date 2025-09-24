@@ -55,11 +55,11 @@ Route::middleware([
     'prevent-back-button',
 ])->group(function () {
 
-    Route::get('fan/{name}', [TestTypeController::class, 'index'])
-        ->name('subject');
-
     Route::get('test-turi/{test_type}/fanlar', [SubjectController::class, 'index'])
         ->name('subject.list');
+
+    Route::get('fan/{subject_id}', [SubjectController::class, 'degree'])
+        ->name('subject.degree');
 
     Route::get('test/{test_type}{subject}', [ResultController::class, 'store'])
         ->name('result.create');
@@ -84,13 +84,13 @@ Route::middleware([
     Route::post('profile-update', [UserController::class, 'update'])
         ->name('profile.update');
 
-    Route::get('fan/{subject}/mavzulashgan-test', [TopicController::class, 'index'])
+    Route::get('fanlar/mavzulashgan-test', [TopicController::class, 'index'])
         ->name('topics.index');
 
     Route::get('mavzulashgan-test/fanlar', [SubjectController::class, 'topicSubjects'])
         ->name('topic-test.subjects');
 
-    Route::get('test/{subject}{topic}', [ResultController::class, 'storeForTopic'])
+    Route::get('test/{subject}/{topic}', [ResultController::class, 'storeForTopic'])
         ->name('topic-result.create');
 
 //    redirect to payment system or payment form

@@ -77,6 +77,19 @@ class TestResource extends Resource
                     ->searchable()
                     ->visible(fn (callable $get) => $get('test_type_id') == TestTypeEnum::TEST_TYPE_TOPIC->value)
                     ->required(fn (callable $get) => $get('test_type_id') == TestTypeEnum::TEST_TYPE_TOPIC->value),
+                Forms\Components\Select::make('degree')
+                    ->label(__('filament.degree'))
+                    ->options([
+                        '2' => 2,
+                        '3' => 3,
+                        '4' => 4,
+                    ]),
+                Forms\Components\Select::make('part')
+                    ->label(__('filament.part'))
+                    ->options([
+                        '1' => 1,
+                        '2' => 2,
+                    ]),
                 Forms\Components\RichEditor::make('question')
                     ->label(__('filament.question'))
                     ->fileAttachmentsDirectory('test')

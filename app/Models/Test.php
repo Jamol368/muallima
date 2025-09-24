@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TestTypeEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,6 +23,8 @@ class Test extends Model
         'primary_subject_id',
         'question',
         'topic_id',
+        'degree',
+        'part',
     ];
 
     /**
@@ -77,14 +80,23 @@ class Test extends Model
 
     public static function check(int $subject_id, TestType $test_type): object|int
     {
-        $tests = Test::getQuestions($subject_id, $test_type);
+        if($test_type->id == 1) {
+            $test_type->questions += 10;
+            $tests = Test::getAttestationQuestions($subject_id, $test_type);
+        } else {
+            $tests = Test::getQuestions($subject_id, $test_type);
+        }
 
         return Test::ckeckQuestionsCount($tests, $test_type->questions);
     }
 
     public static function getAttestationQuestions(int $subject_id, TestType $test_type): object|int
     {
-        $tests = Test::where(['subject_id' => $subject_id, 'test_type_id' => $test_type->id])
+        $tests = Test::where('subject_id', $subject_id)
+            ->where(function ($query) use ($test_type) {
+                $query->where('test_type_id', $test_type->id)
+                    ->orWhere('test_type_id', TestTypeEnum::TEST_TYPE_TOPIC->value);
+            })
             ->inRandomOrder()
             ->take(35)
             ->get();
@@ -108,16 +120,16 @@ class Test extends Model
         return $tests;
     }
 
-    public static function checkForTopic(int $topic_id, TestType $test_type): object|int
+    public static function checkForTopic(int $topic_id, int $subject_id, TestType $test_type): object|int
     {
-        $tests = self::getTopicQuestions($topic_id, $test_type->id);
+        $tests = self::getTopicQuestions($topic_id, $subject_id, $test_type);
 
         return self::ckeckQuestionsCount($tests, $test_type->questions);
     }
 
-    public static function getTopicQuestions(int $topic_id, TestType $test_type): object|int
+    public static function getTopicQuestions(int $topic_id, int $subject_id, TestType $test_type): object|int
     {
-        $tests = Test::where(['topic_id' => $topic_id, 'test_type_id' => $test_type->id])
+        $tests = Test::where(['topic_id' => $topic_id, 'subject_id' => $subject_id, 'test_type_id' => $test_type->id])
             ->inRandomOrder()
             ->take($test_type->questions)
             ->get();

@@ -7,7 +7,6 @@ use App\Models\TestType;
 
 class SubjectController extends Controller
 {
-
     public function index($test_type_id)
     {
         $test_type = TestType::with(['subjects' => function($query) {
@@ -22,10 +21,12 @@ class SubjectController extends Controller
         ]);
     }
 
-    public function topicSubjects()
+    public function degree($subject_id)
     {
-        return view('subjects/for-topic', [
-            'subject_models' => Subject::all()->sortBy('order'),
+        $subject = Subject::query()->find($subject_id);
+
+        return view('subjects.degree', [
+            'subject' => $subject,
         ]);
     }
 }

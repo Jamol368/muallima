@@ -2,7 +2,7 @@
     <div class="card mb-2">
         <div class="card-body">
             <h5 class="card-title">
-                <a href="{{ route('topic-result.create', [$subject->id, $topic->id]) }}">
+                <a href="{{ $topic->children->isNotEmpty()? '#': route('topic-result.create', ['subject' => $subject->id, 'topic' => $topic->id]) }}">
                     {{ $topic->name }}
                 </a>
             </h5>

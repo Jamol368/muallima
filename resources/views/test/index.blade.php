@@ -102,7 +102,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @if($test_type->id === 100)
+                                        @if($test_type->id === 1)
                                         <div class="mat-expansion-panel ng-tns-c128-30 mat-expanded mat-expansion-panel-spacing">
                                             <div class="mat-expansion-panel-header mat-focus-indicator ng-tns-c129-31 ng-tns-c128-30 mat-expanded mat-expansion-toggle-indicator-after ng-star-inserted"
                                                 id="mat-expansion-panel-header-1"

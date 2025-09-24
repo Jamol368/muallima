@@ -52,4 +52,7 @@ return [
     'content' => "Kontent",
     'view count' => "Ko'rildi",
     'tag' => "Teg",
+
+    'degree' => "Sinf",
+    'part' => 'Qism'
 ];

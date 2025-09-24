@@ -78,14 +78,21 @@
             </div>
             <div class="card-container">
                 @foreach($subjects as $subject)
+                    @php
+                        if ($subject->id == 3) {
+                            $url = route('subject.degree', ['subject_id' => $subject->id]);
+                        } elseif ($test_type->id == \App\Enums\TestTypeEnum::TEST_TYPE_TOPIC->value) {
+                            $url = route('topics.index', ['subject_id' => $subject->id]);
+                        } else {
+                            $url = route('result.create', ['test_type' => $test_type->id, 'subject' => $subject->id]);
+                        }
+                    @endphp
                     <div class="card"
                          style="background: linear-gradient(135deg, {{ $subject->color }}, {{ $subject->color_to }});">
                         <div class="icon"><img src="{{ $subject->img }}" alt="img"></div>
                         <div class="title">{{ $subject->name }}</div>
                         <a class="subject-btn"
-                           href="{{ $subject->topic_count > 0
-                ? route('topics.index', ['subject' => $subject->id])
-                : route('result.create', ['test_type' => $test_type->id, 'subject' => $subject->id]) }}">
+                           href="{{ $url  }}">
                             Boshlash
                         </a>
                         <div class="info">

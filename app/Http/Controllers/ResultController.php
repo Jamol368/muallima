@@ -85,12 +85,11 @@ class ResultController extends Controller
         DB::beginTransaction();
 
         try {
-
-            if ($subject = Subject::query()->find($subject_id)?->first() and
-                $test_type = TestType::query()->find(TestTypeEnum::TEST_TYPE_TOPIC)?->first()) {
+            if ($subject = Subject::query()->find($subject_id) and
+                $test_type = TestType::query()->find(TestTypeEnum::TEST_TYPE_TOPIC->value)) {
 
                 if ($user->userBalance->check($test_type->price) and
-                    $questions = Test::checkForTopic($topic_id, $test_type->id)) {
+                    $questions = Test::checkForTopic($topic_id, $subject->id, $test_type)) {
 
                     $question_ids = $questions->pluck('id')->toArray();
 

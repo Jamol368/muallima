@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\SubjectEnum;
 use App\Enums\TestTypeEnum;
 use App\Http\Requests\StoreResultRequest;
 use App\Models\Answer;
@@ -90,6 +91,59 @@ class ResultController extends Controller
 
                 if ($user->userBalance->check($test_type->price) and
                     $questions = Test::checkForTopic($topic_id, $subject->id, $test_type)) {
+
+                    $question_ids = $questions->pluck('id')->toArray();
+
+                    $answers = Answer::query()->whereIn('test_id', $question_ids)->where('is_true', true)->get();
+                    $answers = $answers->sortby(function ($answer) use ($question_ids) {
+                        return array_search($answer->test_id, $question_ids);
+                    });
+
+                    $true_answers = $answers->pluck('id');
+
+                    $result = new Result([
+                        'user_id' => $user->id,
+                        'test_type_id' => $test_type->id,
+                        'subject_id' => $subject->id,
+                    ]);
+                    $result->save();
+
+                    $result_session = new ResultSession([
+                        'result_id' => $result->id,
+                        'questions' => $question_ids,
+                        'true_answers' => $true_answers,
+                    ]);
+                    $result_session->save();
+
+                    DB::commit();
+
+                    return view('test.index', [
+                        'questions' => $questions,
+                        'test_type' => $test_type,
+                        'subject' => $subject,
+                    ]);
+                }
+                abort(404, 'Balansingiz yoki testlar soni yetarli emas.');
+            }
+            abort(404, 'Fan yoki test turi noto\'g\'ri tanlangan.');
+        } catch (\Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
+    }
+
+    public function storeForNaturalScience(StoreResultRequest $request)
+    {
+        $user = User::query()->find(Auth::user()?->getAuthIdentifier());
+
+        DB::beginTransaction();
+
+        try {
+            if ($subject = Subject::query()->find(SubjectEnum::NATURAL_SCIENCE->value) and
+                $test_type = TestType::query()->find(TestTypeEnum::TEST_TYPE_TOPIC->value)) {
+
+                if ($user->userBalance->check($test_type->price) and
+                    $questions = Test::checkForNaturalScience($subject->id, $test_type, $request->degree, $request->part)) {
 
                     $question_ids = $questions->pluck('id')->toArray();
 

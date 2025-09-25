@@ -8,11 +8,10 @@
             </div>
 
             <div class="container mx-auto max-w-md p-6 bg-white shadow rounded">
-                <form id="subject-degree" action="{{ route('topics.index') }}" method="get" class="space-y-6">
+                <form id="subject-degree" action="{{ route('natural-science.result.create') }}" method="get" class="space-y-6">
                     @csrf
                     @method('GET')
 
-                    <input type="hidden" name="subject_id" value="{{ $subject->id }}">
                     <div>
                         <h2 class="text-lg font-semibold mb-3">Sinfni tanlang</h2>
                         <div class="grid grid-cols-3 gap-4">

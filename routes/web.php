@@ -93,6 +93,9 @@ Route::middleware([
     Route::get('test/{subject}/{topic}', [ResultController::class, 'storeForTopic'])
         ->name('topic-result.create');
 
+    Route::get('natural-science/test', [ResultController::class, 'storeForNaturalScience'])
+        ->name('natural-science.result.create');
+
 //    redirect to payment system or payment form
     Route::any('/pay/{paysys}/{key}/{amount}', function ($paysys, $key, $amount) {
         $model = Goodoneuz\PayUz\Services\PaymentService::convertKeyToModel($key);

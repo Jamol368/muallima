@@ -137,6 +137,25 @@ class Test extends Model
         return $tests;
     }
 
+    public static function checkForNaturalScience(int $subject_id, TestType $test_type, int $degree, int $part): object|int
+    {
+        $tests = self::getNaturalScienceQuestions($subject_id, $test_type, $degree, $part);
+
+//        dd($degree, $part, $subject_id, $test_type->id);
+
+        return self::ckeckQuestionsCount($tests, $test_type->questions);
+    }
+
+    public static function getNaturalScienceQuestions(int $subject_id, TestType $test_type, int $degree, int $part): object|int
+    {
+        $tests = Test::where(['subject_id' => $subject_id, 'test_type_id' => $test_type->id, 'degree' => $degree, 'part' => $part])
+            ->inRandomOrder()
+            ->take($test_type->questions)
+            ->get();
+
+        return $tests;
+    }
+
     public static function ckeckQuestionsCount($questions, $expectedQuestionCount)
     {
         return count($questions)==$expectedQuestionCount?$questions:0;

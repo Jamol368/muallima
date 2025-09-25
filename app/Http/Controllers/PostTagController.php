@@ -38,7 +38,7 @@ class PostTagController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(PostTag $postTag, string $slug)
+    public function show($postTag, string $slug)
     {
         $posts = Post::whereHas('tags', function ($query) use ($slug) {
             $query->where('slug', $slug);

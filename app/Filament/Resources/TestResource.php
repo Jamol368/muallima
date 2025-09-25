@@ -75,8 +75,7 @@ class TestResource extends Resource
                     })
                     ->reactive()
                     ->searchable()
-                    ->visible(fn (callable $get) => $get('test_type_id') == TestTypeEnum::TEST_TYPE_TOPIC->value)
-                    ->required(fn (callable $get) => $get('test_type_id') == TestTypeEnum::TEST_TYPE_TOPIC->value),
+                    ->visible(fn (callable $get) => $get('test_type_id') == TestTypeEnum::TEST_TYPE_TOPIC->value),
                 Forms\Components\Select::make('degree')
                     ->label(__('filament.degree'))
                     ->options([

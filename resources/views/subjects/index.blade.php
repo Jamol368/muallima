@@ -79,7 +79,7 @@
             <div class="card-container">
                 @foreach($subjects as $subject)
                     @php
-                        if ($subject->id == 3) {
+                        if ($subject->id == \App\Enums\SubjectEnum::NATURAL_SCIENCE->value) {
                             $url = route('subject.degree', ['subject_id' => $subject->id]);
                         } elseif ($test_type->id == \App\Enums\TestTypeEnum::TEST_TYPE_TOPIC->value) {
                             $url = route('topics.index', ['subject_id' => $subject->id]);

@@ -4187,3 +4187,7 @@ body {
         margin-left: 6px
     }
 }
+
+.tiptap figure figcaption {
+    display: none !important;
+}

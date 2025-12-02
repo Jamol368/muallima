@@ -79,6 +79,7 @@ class TestResource extends Resource
                 Forms\Components\Select::make('degree')
                     ->label(__('filament.degree'))
                     ->options([
+                        '1' => 1,
                         '2' => 2,
                         '3' => 3,
                         '4' => 4,
@@ -88,6 +89,8 @@ class TestResource extends Resource
                     ->options([
                         '1' => 1,
                         '2' => 2,
+                        '3' => 3,
+                        '4' => 4,
                     ]),
                 Forms\Components\RichEditor::make('question')
                     ->label(__('filament.question'))

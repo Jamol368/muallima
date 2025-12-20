@@ -133,13 +133,43 @@ class TestResource extends Resource
                 Tables\Columns\TextColumn::make('subject.name')
                     ->label(__('filament.subject'))
                     ->searchable(),
-                Tables\Columns\TextColumn::make('question')
-                    ->label(__('filament.question'))
-                    ->html()->wrap()->limit(50),
+                Tables\Columns\TextColumn::make('topic.name')
+                    ->label(__('filament.topic'))
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('degree')
+                    ->label(__('filament.degree'))
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('part')
+                    ->label(__('filament.part'))
+                    ->searchable(),
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('test_type_id')
+                    ->label(__('filament.test type'))
+                    ->options(
+                        TestType::query()->pluck('name', 'id')->toArray()
+                    ),
+                Tables\Filters\SelectFilter::make('subject_id')
+                    ->label(__('filament.subject'))
+                    ->options(
+                        Subject::query()->pluck('name', 'id')->toArray()
+                    ),
+                Tables\Filters\SelectFilter::make('topic_id')
+                    ->label(__('filament.topic'))
+                    ->relationship('topic', 'name')
+                    ->searchable()
+                    ->multiple(),
+                Tables\Filters\SelectFilter::make('degree')
+                    ->label(__('filament.degree'))
+                    ->options(
+                        [1 => '1', 2 => '2', 3 => '3', 4 => '4'],
+                    ),
+                Tables\Filters\SelectFilter::make('part')
+                    ->label(__('filament.part'))
+                    ->options(
+                        [1 => '1', 2 => '2', 3 => '3', 4 => '4'],
+                    ),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

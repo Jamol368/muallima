@@ -4,6 +4,9 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
+use App\Models\Subject;
+use App\Models\TeacherCategory;
+use App\Models\TestType;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -127,10 +130,25 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('phone')
                     ->label(__('messages.phone'))
                     ->searchable(),
+                Tables\Columns\TextColumn::make('teacherCategory.name')
+                    ->label(__('filament.teacher category'))
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('subject.name')
+                    ->label(__('filament.subject'))
+                    ->searchable(),
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('teacher_category_id')
+                    ->label(__('filament.teacher category'))
+                    ->options(
+                        TeacherCategory::query()->pluck('name', 'id')->toArray()
+                    ),
+                Tables\Filters\SelectFilter::make('subject_id')
+                    ->label(__('filament.subject'))
+                    ->options(
+                        Subject::query()->pluck('name', 'id')->toArray()
+                    ),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

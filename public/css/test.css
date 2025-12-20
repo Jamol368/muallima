@@ -250,7 +250,7 @@ img {
 }
 
 img {
-    max-width: 100%;
+    width: auto;
     height: auto
 }
 
@@ -295,7 +295,7 @@ body {
 }
 
 img {
-    width: 100%;
+    width: auto;
     vertical-align: top
 }
 
@@ -3917,6 +3917,7 @@ select.mat-input-element:not(:disabled) {
 }
 
 .teacher-name {
+    margin-bottom: 10px;
     font-size: 20px;
     font-weight: 600;
     line-height: 28px;
@@ -4011,9 +4012,9 @@ select.mat-input-element:not(:disabled) {
 
 .table {
     width: 300px;
-    margin: 0 auto;
+    margin: 10px 0;
     border-collapse: separate;
-    border-spacing: 10px
+    border-spacing: 0
 }
 
 .selected-answer {
@@ -4075,7 +4076,7 @@ form {
 }
 
 .question, .answers {
-    margin-bottom: 15px
+    margin: 20px 0 15px
 }
 
 .question .mat-radio-label-content, .answers .mat-radio-label-content {
@@ -4181,7 +4182,8 @@ body {
         font-size: 16px
     }
     .header-container {
-        width: 100vh
+        width: fit-content;
+        min-width: 100vh
     }
     #test-submit {
         margin-left: 6px

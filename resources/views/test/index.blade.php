@@ -69,8 +69,16 @@
                                         </div>
 
                                         <div class="flex">
-                                            <div> Pedagog ID raqami: {{ auth()->user()->getAuthIdentifier() }}</div>
-
+                                            <div> <strong>Pedagog ID raqami:</strong> {{ auth()->user()->getAuthIdentifier() }}</div>
+                                        </div>
+                                        <div class="flex">
+                                            <div> <strong>Test turi:</strong> {{ $test_type->getOriginal('name') }}</div>
+                                        </div>
+                                        <div class="flex">
+                                            <div> <strong>Fan:</strong> {{ $subject->getOriginal('name') }}</div>
+                                        </div>
+                                        <div class="flex">
+                                            <div> <strong>Ball:</strong> {{ $test_type->getOriginal('score') }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -142,11 +150,14 @@
                                 </div>
 
                                 <div class="question-form-wrapper ng-star-inserted">
-                                        <div class="question">
-                                            <div class="selected-answer times-new-roman-14 ng-star-inserted">
-                                                {!! $question->question !!}
-                                            </div>
+                                    <div class="question">
+                                        <div class="selected-answer times-new-roman-14 ng-star-inserted">
+                                            {!! $question->question !!}
                                         </div>
+                                    </div>
+
+                                    <div class="mat-divider mat-divider-horizontal">
+                                    </div>
 
                                         <div class="answers">
                                             <div class="mat-radio-group ng-untouched ng-pristine ng-invalid">

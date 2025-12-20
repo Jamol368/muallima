@@ -17,11 +17,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     libpq-dev \
     libicu-dev \
+    libzip-dev \
+    zip \
     && docker-php-ext-install \
     pdo \
     pdo_mysql \
     pdo_pgsql \
-    intl
+    intl \
+    zip
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*

@@ -12,6 +12,8 @@
         <!-- Icon Font Stylesheet -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
+        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}" media="all" onload="this.media='all'">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/test.css') }}" media="all">
 

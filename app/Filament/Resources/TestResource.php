@@ -13,6 +13,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use FilamentTiptapEditor\TiptapEditor;
 
 class TestResource extends Resource
 {
@@ -92,10 +93,9 @@ class TestResource extends Resource
                         '3' => 3,
                         '4' => 4,
                     ]),
-                Forms\Components\RichEditor::make('question')
+                TiptapEditor::make('question')
                     ->label(__('filament.question'))
-                    ->fileAttachmentsDirectory('test')
-                    ->dehydrateStateUsing(fn($state) => html_entity_decode($state ?? '', ENT_QUOTES | ENT_HTML5, 'UTF-8'))
+                    ->directory('test')
                     ->required(),
                 Forms\Components\Repeater::make('answers')
                     ->label(__('filament.answers'))

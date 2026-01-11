@@ -9,20 +9,24 @@
             align-items: center;
             z-index: 999;
         }
+
         .offerta-modal {
             background: #fff;
             border-radius: 16px;
             padding: 20px;
             width: 90%;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
+
         .offerta-modal h2 {
             text-align: center;
             margin-top: 0;
         }
+
         .offerta-modal p {
             font-size: 20px;
-         }
+        }
+
         .offerta-close-btn {
             margin-top: 20px;
             background: #7f7f7f;
@@ -68,7 +72,8 @@
                             @endif
 
                             <h1 class="mb-3 auth-title">Ro'yhatdan o'tish</h1>
-                            <p class="text-muted">Iltimos, tizimda akkaunt yaratish uchun ma'lumotlaringgizni kiriting!</p>
+                            <p class="text-muted">Iltimos, tizimda akkaunt yaratish uchun ma'lumotlaringgizni
+                                kiriting!</p>
 
                             <p class="auth-label">FIO</p>
                             <input type="text" id="name" name="name" placeholder="FIO" class="auth-input">
@@ -82,7 +87,8 @@
                             </select>
 
                             <p class="auth-label">Malaka (amaldagi) toifa</p>
-                            <select name="teacher_category" id="teacher_category" class="custom-select form-select auth-input">
+                            <select name="teacher_category" id="teacher_category"
+                                    class="custom-select form-select auth-input">
                                 <option value="" disabled selected>-- Amaldagi malaka topifangizni tanlang --</option>
                                 @foreach($teacher_types as $teacher_type)
                                     <option value="{{ $teacher_type->id }}">{{ $teacher_type->name }}</option>
@@ -93,7 +99,8 @@
                             <input type="password" id="password" name="password" class="auth-input">
 
                             <p class="auth-label">Telefon raqam</p>
-                            <input type="text" id="phone-number" name="phone-number" placeholder="+998" class="auth-input">
+                            <input type="text" id="phone-number" name="phone-number" placeholder="+998"
+                                   class="auth-input">
                             <input type="hidden" id="phone" name="phone">
 
                             <script src="https://cdn.jsdelivr.net/npm/cleave.js@1/dist/cleave.min.js"></script>
@@ -107,12 +114,16 @@
                                     rawValueTrimPrefix: true
                                 });
 
-                                document.querySelector('form').addEventListener('submit', function(e) {
+                                document.querySelector('form').addEventListener('submit', function (e) {
                                     document.querySelector('#phone').value = cleave.getRawValue()
                                 });
                             </script>
 
-                            <button class="btn auth-btn confirm-btn mt-3">Tasdiqlash</button>
+                            <div class="auth-offerta">
+                                <input type="checkbox" id="termsCheckbox" name="offerta" class="auth-offerta-input">
+                                <span class="auth-offerta-label auth-label">Men foydalanuvchi kelishuvi bilan tanishib chiqdim</span>
+                            </div>
+                                <button id="registerBtn" class="btn auth-btn confirm-btn mt-3" disabled="true">Tasdiqlash</button>
 
                             <p class="mt-3 small text-muted">
                                 Tizimdan ro‘yxatdan o‘tish bilan men offerta-ga roziligimni bildiraman.
@@ -125,60 +136,76 @@
         </main>
     </div>
 
-    <div class="offerta-modal-overlay" id="offertaModal">
-        <div class="offerta-modal">
-            <h2>Ommaviy Offerta – Foydalanuvchilar uchun shartlar</h2>
-            <p>
-                Muallima.uz saytidan ro‘yxatdan o‘tgan har bir foydalanuvchi ushbu ommaviy offerta bilan tanishgan va uni qabul qilgan hisoblanadi.
-            </p>
-            <h3>Mualliflik huquqi va foydalanish cheklovlari:</h3>
-            <p>
-                Saytda joylangan barcha materiallar (online testlar, kurs materillari va boshqa tayyor resurslar) faqat shaxsiy o‘qish va o‘rganish uchun mo‘ljallangan.
-            </p>
-            <p>
-                Ushbu materiallardan onlayn yoki oflayn kurslar tashkil qilish, sotish yoki boshqa tijoriy faoliyatda foydalanish qat’iyan taqiqlanadi.
-            </p>
-            <p>
-                Ushbu qoidalarga rioya qilmagan foydalanuvchilar, mualliflik huquqi qonunchiligiga muvofiq jarima undiriladi.
-            </p>
-            <p>
-                Ta’qiqlangan faoliyatni amalga oshirilgani haqida saytimizga  aniq ma’lumot yuborgan foydalanuvchilarga , qoidabuzarlardan undirilgan jarimaning ma’lum qismi bonus sifatida beriladi
-            </p>
-            <h3>Shaxsiy ma’lumotlar va hisobdan foydalanish:</h3>
-            <p>
-                • Foydalanuvchi ro‘yxatdan o‘tishda faqat o‘ziga tegishli va haqiqatga mos ma’lumotlardan foydalanishi shart.
-            </p>
-            <p>
-                • Saytimiz foydalanuvchilarining shaxsiy ma’lumotlari uchinchi shaxsga oshkor qilinmaydi.
-            </p>
-                <h3>Ro‘yxatdan o‘tish va shartlarni qabul qilish:</h3>
-            <p>
-            Saytimizga ro‘yxatdan o‘tgan foydalanuvchi ushbu offerta shartlarini to‘liq qabul qilgan hisoblanadi.
-            </p>
-            <p>
-                Shartlarga rioya qilmagan foydalanuvchiga nisbatan qonuniy chora ko‘riladi.
-            </p>
-            <button class="offerta-close-btn" id="offertaCloseModalBtn">Yopish</button>
+    <div id="termsModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;">
+        <div id="termsContent"
+             style="height:100vh; overflow-y:auto; border:1px solid #ccc; padding:10px">
+
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h3>Foydalanuvchi shartlari</h3>
+                    <button id="closeModal" class="close-btn btn">&times;</button>
+                </div>
+                <div id="termsFrame" class="terms-frame">
+                    <iframe
+                        src="{{ asset('storage/offerta/offerta.pdf#page=1&v=${Date.now()}') }}"
+                        id="termsFrameContent"
+                        class="terms-frame">
+                    </iframe>
+                </div>
+                <div class="modal-footer">
+                    <button id="agreeBtn" class="btn btn-success" disabled>
+                        Foydalanish shartlariga roziman
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
-
     <script>
-        const modal = document.getElementById("offertaModal");
-        const openBtn = document.getElementById("offertaOpenModalBtn");
-        const closeBtn = document.getElementById("offertaCloseModalBtn");
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkbox = document.getElementById('termsCheckbox');
+            const modal = document.getElementById('termsModal');
+            const termsContent = document.getElementById('termsContent');
+            const termsFrame = document.getElementById('termsFrame');
+            const agreeBtn = document.getElementById('agreeBtn');
+            const registerBtn = document.getElementById('registerBtn');
+            const closeModal = document.getElementById('closeModal');
+            const termsFrameContent = document.getElementById('termsFrameContent');
 
-        openBtn.addEventListener("click", () => {
-            modal.style.display = "flex";
-        });
-
-        closeBtn.addEventListener("click", () => {
-            modal.style.display = "none";
-        });
-
-        modal.addEventListener("click", (e) => {
-            if (e.target === modal) {
-                modal.style.display = "none";
+            if (!checkbox || !modal || !termsContent || !agreeBtn || !closeModal) {
+                console.error('Missing elements');
+                return;
             }
+
+            checkbox.addEventListener('click', (e) => {
+                if (checkbox.checked) {
+                    e.preventDefault();
+                    modal.style.display = 'block';
+                } else {
+                    registerBtn.disabled = true;
+                }
+            });
+
+            termsFrame.addEventListener('scroll', () => {
+                console.log(termsFrame.scrollTop+' '+termsFrame.clientHeight+' '+termsFrame.scrollHeight);
+                if (
+                    termsFrame.scrollTop + termsFrame.clientHeight
+                    >= termsFrame.scrollHeight - 5
+                ) {
+                    agreeBtn.disabled = false;
+                }
+            });
+
+            agreeBtn.addEventListener('click', () => {
+                checkbox.checked = true;
+                modal.style.display = 'none';
+                if (registerBtn) {
+                    registerBtn.disabled = false;
+                }
+            });
+
+            closeModal.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
         });
     </script>
 </x-auth-layout>

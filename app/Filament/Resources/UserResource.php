@@ -3,10 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\Subject;
 use App\Models\TeacherCategory;
-use App\Models\TestType;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -32,7 +30,7 @@ class UserResource extends Resource
 
     public static function getModelLabel(): string
     {
-        return UserResource::getNavigationLabel();
+        return self::getNavigationLabel();
     }
 
     public static function getNavigationBadge(): ?string

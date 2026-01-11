@@ -204,4 +204,19 @@
         </div>
     </div>
 
+    <style>
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+
+            background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg'><g transform='rotate(-30 200 125)'> <text x='100' y='150' font-size='22' fill='rgba(0,0,0,0.18)'>Muallima.uz</text> <text x='180' y='200' font-size='22' fill='rgba(0,0,0,0.18)'>Muallima.uz</text> <text x='260' y='150' font-size='22' fill='rgba(0,0,0,0.18)'>Muallima.uz</text> </g> </svg> ");
+
+            background-repeat: repeat;
+            background-size: 450px 300px;
+            }
+    </style>
+
 </x-test-layout>

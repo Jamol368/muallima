@@ -54,5 +54,6 @@ return [
     'tag' => "Teg",
 
     'degree' => "Sinf",
-    'part' => 'Qism'
+    'part' => 'Qism',
+    'status' => 'Holati'
 ];

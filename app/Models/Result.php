@@ -20,6 +20,9 @@ class Result extends Model
         'user_id',
         'test_type_id',
         'subject_id',
+        'topic_id',
+        'degree',
+        'part',
         'true_answers',
         'wrong_answers',
         'score',
@@ -49,6 +52,14 @@ class Result extends Model
     public function subject(): BelongsTo
     {
         return $this->belongsTo(Subject::class);
+    }
+
+    /**
+     * Get the topic that owns the result.
+     */
+    public function topic(): BelongsTo
+    {
+        return $this->belongsTo(Topic::class);
     }
 
     /**

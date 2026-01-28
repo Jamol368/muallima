@@ -21,7 +21,12 @@ class ResultController extends Controller
 
     public function index()
     {
-        $results = Result::where(['user_id' => Auth::id()])->latest()->limit(10)->get();
+        $results = Result::where(['user_id' => Auth::id()])
+            ->where('status', 'completed')
+            ->whereNotNull('finished_at')
+            ->latest()
+            ->limit(10)
+            ->get();
 
         return view('result.index', compact('results'));
     }

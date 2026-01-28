@@ -4170,6 +4170,14 @@ body {
     user-select: none;
 }
 
+.navbar-brand {
+    margin: auto;
+}
+.logo-img {
+    width: 300px;
+    margin: auto 0
+}
+
 @media (max-width: 768px) {
     .header-container {
         flex-wrap: wrap;

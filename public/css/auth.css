@@ -49,6 +49,9 @@
 .auth-logo {
     font-size: 64px;
 }
+.auth-logo img{
+    width: 90%;
+}
 
 .auth-form {
     display: flex;

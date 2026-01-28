@@ -49,6 +49,9 @@ class ResultResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('user.name')
                     ->label(__('filament.name'))
+                    ->url(fn ($record) => UserResource::getUrl('edit', [
+                        'record' => $record->user_id,
+                    ]))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('testType.name')
                     ->label(__('filament.test type'))
@@ -56,13 +59,24 @@ class ResultResource extends Resource
                 Tables\Columns\TextColumn::make('subject.name')
                     ->label(__('filament.subject'))
                     ->searchable(),
+                Tables\Columns\TextColumn::make('topic.name')
+                    ->label(__('filament.topic'))
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('degree')
+                    ->label(__('filament.degree'))
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('part')
+                    ->label(__('filament.part'))
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('true_answers')
                     ->label(__('filament.true answers')),
                 Tables\Columns\TextColumn::make('wrong_answers')
                     ->label(__('filament.wrong answers')),
                 Tables\Columns\TextColumn::make('score')
                     ->label(__('filament.score')),
-                Tables\Columns\TextColumn::make('created_at')
+                Tables\Columns\TextColumn::make('status')
+                    ->label(__('filament.status')),
+                Tables\Columns\TextColumn::make('finished_at')
                     ->label(__('filament.created_at')),
             ])
             ->defaultSort('created_at', 'desc')

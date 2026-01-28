@@ -13,12 +13,7 @@
                             <div class="home">
 
                                 <a href="{{ route('home') }}" class="navbar-brand p-0">
-
-                                    <h1 class="m-0 home-header"><i class="fa fa-user-tie me-2"></i>
-                                        Muallima<span>.uz</span> <br><span
-                                            class="home-header-span">Yaxshi muallim - sifatli ta'lim</span>
-                                    </h1>
-
+                                    <img src="{{ asset('/img/logo-3.png') }}" alt="logo" class="logo-img">
                                 </a>
 
                             </div>

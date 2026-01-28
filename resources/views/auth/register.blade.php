@@ -43,17 +43,16 @@
                 <div class="auth-content">
 
                     <div class="d-flex justify-content-center align-items-center mb-5">
-                        <div class="flex-1">
+                        <div class="flex-1 text-center">
                             <a href="{{ route('home') }}"
                                class="home-link navbar-brand p-0 d-flex align-items-center gap-2">
                                 <div class="auth-logo">
-                                    <i class="fa fa-user-tie me-2"></i>
-                                </div>
-                                <div class="auth-platform text-start">
-                                    <h3 class="m-0 fs-1 auth-color">Muallima</h3>
-                                    <p class="m-0 fs-6">test platformasi</p>
+                                    <img src="{{ asset('/img/logo-3.png') }}" alt="logo" class="logo-img">
                                 </div>
                             </a>
+                            <div class="auth-platform">
+                                <p class="m-0 fs-6">Yaxshi muallim - sifatli ta'lim</p>
+                            </div>
                         </div>
                     </div>
 

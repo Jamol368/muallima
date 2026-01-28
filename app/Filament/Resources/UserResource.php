@@ -134,6 +134,10 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('subject.name')
                     ->label(__('filament.subject'))
                     ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('filament.created_at'))
+                    ->dateTime('d/m/y H:i')
+                    ->searchable(),
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([

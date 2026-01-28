@@ -70,7 +70,7 @@ Route::middleware([
     Route::get('natijalar', [ResultController::class, 'index'])
         ->name('result.index');
 
-    Route::get('results/{result}', [ResultController::class, 'detailedResult'])
+    Route::get('natijalar/{result}', [ResultController::class, 'detailedResult'])
         ->name('results.detailed');
 
     Route::put('user-info/{userInfo}', [UserInfoController::class, 'update'])

@@ -23,6 +23,7 @@ class Subject extends Model
         'color',
         'img',
         'order',
+        'color_to',
     ];
 
     public function testTypes(): BelongsToMany

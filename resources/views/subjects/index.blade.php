@@ -123,7 +123,7 @@
                     @endphp
                     <div class="card col-sm-12"
                          style="background: linear-gradient(135deg, {{ $subject->color }}, {{ $subject->color_to }});">
-                        <div class="icon"><img src="{{ $subject->img }}" alt="img"></div>
+                        <div class="icon"><img src="{{ asset('storage/' . $subject->img) }}" alt="{{ $subject->img }}"></div>
                         <div class="title">{{ $subject->name }}</div>
                         <a class="subject-btn"
                            href="{{ $url  }}">

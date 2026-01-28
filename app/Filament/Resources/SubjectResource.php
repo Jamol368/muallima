@@ -53,14 +53,16 @@ class SubjectResource extends Resource
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\ColorPicker::make('color')
+                    ->label(__('filament.color')),
+                Forms\Components\ColorPicker::make('color_to')
+                    ->label(__('filament.color')),
                 Forms\Components\FileUpload::make('img')
                     ->label(__('filament.image upload'))
                     ->image()
                     ->directory('subject')
                     ->moveFiles()
                     ->maxSize(2048),
-                Forms\Components\ColorPicker::make('color')
-                    ->label(__('filament.color')),
             ]);
     }
 

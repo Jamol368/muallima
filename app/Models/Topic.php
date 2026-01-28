@@ -14,6 +14,7 @@ class Topic extends Model
     protected $table = 'topics';
 
     protected $fillable = [
+        'subject_id',
         'name',
         'description',
         'parent_id',

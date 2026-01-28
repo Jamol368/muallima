@@ -129,18 +129,29 @@ class TestResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('testType.name')
                     ->label(__('filament.test type'))
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('subject.name')
                     ->label(__('filament.subject'))
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('topic.name')
                     ->label(__('filament.topic'))
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable()
+                    ->limit(40),
                 Tables\Columns\TextColumn::make('degree')
                     ->label(__('filament.degree'))
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('part')
                     ->label(__('filament.part'))
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('filament.created_at'))
+                    ->dateTime('d/m/y H:i')
+                    ->sortable()
                     ->searchable(),
             ])
             ->defaultSort('created_at', 'desc')

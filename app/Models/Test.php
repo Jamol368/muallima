@@ -98,7 +98,7 @@ class Test extends Model
                     ->orWhere('test_type_id', TestTypeEnum::TEST_TYPE_TOPIC->value);
             })
             ->inRandomOrder()
-            ->take(35)
+            ->take($test_type->questions-15)
             ->get();
 
         $tests = $tests->concat(Test::where(['subject_id' => 12, 'test_type_id' => 2])
@@ -140,8 +140,6 @@ class Test extends Model
     public static function checkForNaturalScience(int $subject_id, TestType $test_type, int $degree, int $part): object|int
     {
         $tests = self::getNaturalScienceQuestions($subject_id, $test_type, $degree, $part);
-
-//        dd($degree, $part, $subject_id, $test_type->id);
 
         return self::ckeckQuestionsCount($tests, $test_type->questions);
     }

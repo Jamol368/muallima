@@ -2,17 +2,17 @@
     <div class="card mb-2">
         <div class="card-body">
             <h5 class="card-title">
-                <a href="{{ $topic->children->isNotEmpty()? '#': route('topic-result.create', ['subject' => $subject->id, 'topic' => $topic->id]) }}">
-                    {{ $topic->name }}
-                </a>
+                @if($topic->children->isNotEmpty())
+                    <p>
+                        {{ $topic->name }}
+                    </p>
+                @else
+                    <a href="{{ route('topic-result.create', ['subject' => $subject->id, 'topic' => $topic->id]) }}">
+                        {{ $topic->name }}
+                    </a>
+                @endif
             </h5>
             <p class="card-text">{{ $topic->description }}</p>
-
-            <div class="d-flex justify-content-between align-items-center">
-                <small class="text-muted">
-                    Created: {{ $topic->created_at->format('M d, Y') }}
-                </small>
-            </div>
         </div>
     </div>
 

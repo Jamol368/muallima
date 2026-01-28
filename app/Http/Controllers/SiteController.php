@@ -8,7 +8,6 @@ use App\Models\Subject;
 use App\Models\Test;
 use App\Models\TestType;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {

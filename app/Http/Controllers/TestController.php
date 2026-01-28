@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTestRequest;
 use App\Http\Requests\UpdateTestRequest;
+use App\Models\ResultSession;
 use App\Models\Test;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -32,19 +33,18 @@ class TestController extends Controller
      */
     public function store(StoreTestRequest $request)
     {
-        $result = User::find(Auth::user()->getAuthIdentifier())
-            ->results()
-            ->latest()
-            ->first();
+        $result_session_id = $request->post('result_session_id');
+        $result_session = ResultSession::find($result_session_id);
 
-        $result_session = $result->resultSession;
+        $result = $result_session->result;
+
 
         $array = [];
         $true_answers = 0;
 
         foreach ($result_session->true_answers as $key => $item) {
-            $value = $request->post('mat-radio-group-' . $key+1);
-            $array[] = $value;
+            $value = $request->post('mat-radio-group-' . $key);
+            $array[$key] = $value;
 
             if ($value == $item) {
                 $true_answers++;
@@ -55,6 +55,8 @@ class TestController extends Controller
         $result->true_answers = $true_answers;
         $result->wrong_answers = sizeof($result_session->questions) - $true_answers;
         $result->score = $result->testType->score * $true_answers;
+        $result->status = 'completed';
+        $result->finished_at = now();
 
         $result->update();
         $result_session->update();

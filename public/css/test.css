@@ -3367,6 +3367,16 @@ select.mat-input-element:not(:disabled) {
     width: 100%
 }
 
+.mat-radio-label-2 {
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    width: 100%
+}
+
 .mat-radio-container {
     box-sizing: border-box;
     display: inline-block;
@@ -3852,8 +3862,7 @@ select.mat-input-element:not(:disabled) {
     margin: 20px;
     height: auto;
     background-color: #f2f2f2;
-    border-radius: 10px;
-    overflow: auto
+    border-radius: 10px
 }
 
 .test-logo {
@@ -3998,7 +4007,7 @@ select.mat-input-element:not(:disabled) {
 }
 
 .container .nav-item.active {
-    background-color: var(--gold) !important
+    border: 1px solid #6a6a6a
 }
 
 .container .nav-item.checked {
@@ -4104,9 +4113,11 @@ button {
 
 .prev, .next {
     display: inline-block;
-    padding: 14px 18px;
-    background-color: #8096d5;
-    border-radius: 10px
+    padding: 11px 17px;
+    background-color: #dbe2ea;
+    border-radius: 10px;
+    color: #000;
+    font-weight: 500;
 }
 
 .test-list-pagination {
@@ -4117,12 +4128,12 @@ button {
 }
 
 .test-number {
-    font-size: 21px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 700;
     line-height: 25px;
-    margin-left: 40px;
-    margin-right: 40px;
-    color: #3b4c7e
+    margin-left: 30px;
+    margin-right: 30px;
+    color: #343739
 }
 
 .answered {
@@ -4160,6 +4171,18 @@ body {
 }
 
 @media (max-width: 768px) {
+    .header-container {
+        flex-wrap: wrap;
+        height: auto;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .home {
+        margin-top: 24px;
+    }
+    #test-submit {
+        margin: 36px 0 24px
+    }
     .wrapper .time-block .count {
         width: 64px;
         padding: 12px 7px;
@@ -4181,12 +4204,28 @@ body {
     .selected-answer {
         font-size: 16px
     }
-    .header-container {
-        width: fit-content;
-        min-width: 100vh
-    }
     #test-submit {
         margin-left: 6px
+    }
+    .main {
+        grid-template-columns: auto;
+    }
+    .test-user-info {
+        margin-bottom: 24px;
+    }
+    #test {
+        overflow: auto;
+        background-color: #fff;
+    }
+    .example-radio-button b {
+        font-size: 16px;
+    }
+    .mat-radio-container, .mat-radio-outer-circle, .mat-radio-inner-circle{
+        width: 12px;
+        height: 12px;
+    }
+    .question-form-wrapper {
+        overflow: auto;
     }
 }
 

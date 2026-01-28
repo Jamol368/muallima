@@ -15,12 +15,12 @@
                     <div>
                         <h2 class="text-lg font-semibold mb-3">Sinfni tanlang</h2>
                         <div class="grid grid-cols-3 gap-4">
-                            @foreach([2,3,4] as $degree)
+                            @foreach($degrees as $degree)
                                 <label class="flex items-center justify-center border rounded-lg py-3 cursor-pointer hover:bg-indigo-50">
                                     <input type="radio" name="degree" value="{{ $degree }}" class="hidden peer">
                                     <span class="peer-checked:text-white peer-checked:bg-indigo-600 px-4 py-2 rounded transition">
-                            {{ $degree }} - sinf uchun
-                        </span>
+                                        {{ $degree }} - sinf uchun
+                                    </span>
                                 </label>
                             @endforeach
                         </div>
@@ -29,14 +29,12 @@
                     <div>
                         <h2 class="text-lg font-semibold mb-3 mt-6">Qismni tanlang</h2>
                         <div class="grid grid-cols-2 gap-4">
+                            @foreach($parts as $part)
                             <label class="flex items-center justify-center border rounded-lg py-3 cursor-pointer hover:bg-indigo-50">
-                                <input type="radio" name="part" value="1" class="hidden peer">
-                                <span class="peer-checked:text-white peer-checked:bg-indigo-600 px-4 py-2 rounded transition">1 - qism</span>
+                                <input type="radio" name="part" value="{{ $part }}" class="hidden peer">
+                                <span class="peer-checked:text-white peer-checked:bg-indigo-600 px-4 py-2 rounded transition">{{ $part }} - qism</span>
                             </label>
-                            <label class="flex items-center justify-center border rounded-lg py-3 cursor-pointer hover:bg-indigo-50">
-                                <input type="radio" name="part" value="2" class="hidden peer">
-                                <span class="peer-checked:text-white peer-checked:bg-indigo-600 px-4 py-2 rounded transition">2 - qism</span>
-                            </label>
+                            @endforeach
                         </div>
                     </div>
 
@@ -75,6 +73,5 @@
             checkRadios();
         });
     </script>
-
 
 </x-app-layout>

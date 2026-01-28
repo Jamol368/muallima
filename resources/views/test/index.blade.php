@@ -46,7 +46,7 @@
                                 </div>
                             </div>
 
-                            <div id="test-submit" class="flex gap-2 align-middle">
+                            <div id="test-submit" class="gap-2 align-middle">
                                 <button id="end-test-button" class="end-test-button"> Sinovni yakunlash
                                 </button>
 
@@ -126,7 +126,7 @@
                                                  style="visibility: visible;">
                                                 <div class="mat-expansion-panel-body ng-tns-c128-30">
                                                     <div class="container ng-tns-c128-30">
-                                                        @for($i=40; $i<sizeof($questions);)
+                                                        @for($i=$test_type->getOriginal('questions'); $i<sizeof($questions);)
                                                             <div class="nav-item ng-star-inserted tab-links nav-item-{{ $i + 1 }}"> {{ ++$i }}</div>
                                                         @endfor
                                                     </div>
@@ -142,6 +142,7 @@
                                 @csrf
                                 @method('post')
                             @foreach($questions as $key => $question)
+                                    <input type="hidden" name="result_session_id" value="{{ $result_session_id }}">
                             <div class="test-list test-list-{{ $key + 1 }} {{ $key ? 'hidden' : '' }}">
                                 <div class="question-wrapper">
                                     <div class="question-number"> Savol {{ $key + 1 }}</div>
@@ -152,7 +153,7 @@
                                 <div class="question-form-wrapper ng-star-inserted">
                                     <div class="question">
                                         <div class="selected-answer times-new-roman-14 ng-star-inserted">
-                                            {!! $question->question !!}
+                                            {!! $question['question'] !!}
                                         </div>
                                     </div>
 
@@ -161,14 +162,14 @@
 
                                         <div class="answers">
                                             <div class="mat-radio-group ng-untouched ng-pristine ng-invalid">
-                                                @foreach($question->answers as $answer_key => $answer)
-                                                <div class="mat-radio-button example-radio-button mat-accent" id="mat-radio-{{ $answer->id }}">
-                                                    <label class="mat-radio-label" for="mat-radio-{{ $answer->id }}-input">
+                                                @foreach($question['options'] as $answer_key => $answer)
+                                                <div class="mat-radio-button example-radio-button mat-accent" id="mat-radio-{{ $answer['id'] }}">
+                                                    <label class="mat-radio-label" for="mat-radio-{{ $answer['id'] }}-input">
                                                         <span class="mat-radio-container">
                                                             <span class="mat-radio-outer-circle"></span>
                                                             <span class="mat-radio-inner-circle"></span>
                                                             <input type="radio" class="mat-radio-input"
-                                                                   id="mat-radio-{{ $answer->id }}-input" name="mat-radio-group-{{ $key + 1 }}" value="{{ $answer->id }}" tabindex="0">
+                                                                   id="mat-radio-{{ $answer['id'] }}-input" name="mat-radio-group-{{ $question['id'] }}" value="{{ $answer['id'] }}" tabindex="0">
                                                             <span class="mat-ripple mat-radio-ripple mat-focus-indicator">
                                                                 <span class="mat-ripple-element mat-radio-persistent-ripple"></span>
                                                             </span>
@@ -177,7 +178,7 @@
                                                             <span style="display: none;">&nbsp;</span>
                                                             <span><b _ngcontent-eob-c283="">{{ chr(65+$answer_key) }})</b></span>
                                                             <div class="selected-answer times-new-roman-14 ng-star-inserted">
-                                                                {!! $answer->option !!}
+                                                                {!! $answer['option'] !!}
                                                             </div>
                                                         </span>
                                                     </label>
@@ -187,9 +188,9 @@
                                         </div>
                                 </div>
                                 <div class="test-list-pagination">
-                                    <button class="prev" type="button"> Oldingi</button>
+                                    <button class="prev" type="button"><i class="fas fa-chevron-left"></i> Oldingi</button>
                                     <span class="test-number"> {{ $key + 1 }} / {{ count($questions) }}</span>
-                                    <button class="next" type="button"> Keyingisi</button>
+                                    <button class="next" type="button"> Keyingisi <i class="fas fa-chevron-right"></i></button>
                                 </div>
                             </div>
                             @endforeach
@@ -212,10 +213,10 @@
             pointer-events: none;
             z-index: 9999;
 
-            background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg'><g transform='rotate(-30 200 125)'> <text x='100' y='150' font-size='22' fill='rgba(0,0,0,0.18)'>Muallima.uz</text> <text x='180' y='200' font-size='22' fill='rgba(0,0,0,0.18)'>Muallima.uz</text> <text x='260' y='150' font-size='22' fill='rgba(0,0,0,0.18)'>Muallima.uz</text> </g> </svg> ");
+            background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg'><g transform='rotate(-30 200 125)'> <text x='70' y='120' font-size='22' fill='rgba(0,0,0,0.3)'>Muallima.uz</text> <text x='150' y='170' font-size='22' fill='rgba(0,0,0,0.3)'>Muallima.uz</text> <text x='230' y='120' font-size='22' fill='rgba(0,0,0,0.3)'>Muallima.uz</text> </g> </svg> ");
 
             background-repeat: repeat;
-            background-size: 450px 300px;
+            background-size: 380px 230px;
             }
     </style>
 

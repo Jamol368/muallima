@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\SubjectEnum;
 use App\Models\Subject;
 use App\Models\TestType;
 
@@ -25,8 +26,16 @@ class SubjectController extends Controller
     {
         $subject = Subject::query()->find($subject_id);
 
+        if ($subject->id === SubjectEnum::NATURAL_SCIENCE->value) {
+            $parts = [1,2];
+        } else {
+            $parts = [1,2,3,4];
+        }
+
         return view('subjects.degree', [
             'subject' => $subject,
+            'degrees' => [2,3,4],
+            'parts' => $parts,
         ]);
     }
 }

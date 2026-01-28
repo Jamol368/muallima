@@ -23,6 +23,8 @@ class Result extends Model
         'true_answers',
         'wrong_answers',
         'score',
+        'finished_at',
+        'status',
     ];
 
     /**

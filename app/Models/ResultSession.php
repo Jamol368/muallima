@@ -20,6 +20,7 @@ class ResultSession extends Model
         'questions',
         'answers',
         'true_answers',
+        'options',
     ];
 
     /**
@@ -31,6 +32,7 @@ class ResultSession extends Model
         'questions' => 'array',
         'answers' => 'array',
         'true_answers' => 'array',
+        'options' => 'array',
     ];
 
     /**

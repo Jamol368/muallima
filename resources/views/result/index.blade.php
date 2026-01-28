@@ -18,9 +18,9 @@
                 <div class="col-sm-9">
                     <div class="profile-card">
                         <h1 class="h2 text-center">Mening natijalarim</h1>
-                        <div class="container py-5">
+                        <div class="container py-5 overflow-auto">
                             <div class="row g-5">
-                                <table class="table">
+                                <table class="table overflow-x-scroll">
                                     <thead>
                                     <th>#</th>
                                     <th>Test turi</th>
@@ -29,6 +29,7 @@
                                     <th>Noto'g'ri javoblar</th>
                                     <th>Ball</th>
                                     <th>Topshirgan vaqti</th>
+                                    <th>Amallar</th>
                                     </thead>
                                     <tbody>
                                     @foreach($results as $key => $item)
@@ -39,7 +40,8 @@
                                             <td>{{ $item->true_answers }}</td>
                                             <td>{{ $item->wrong_answers }}</td>
                                             <td>{{ $item->score }}</td>
-                                            <td>{{ $item->created_at->format('h:i d/m/Y') }}</td>
+                                            <td>{{ $item->created_at->format('H:i d/m/Y') }}</td>
+                                            <td><a href="{{ route('results.detailed', ['result' => $item->id]) }}" class="btn border">Batafsil</a></td>
                                         </tr>
                                     @endforeach
                                     </tbody>

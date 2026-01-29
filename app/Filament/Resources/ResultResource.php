@@ -54,7 +54,7 @@ class ResultResource extends Resource
                     ]))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('testType.name')
-                    ->label(__('filament.test type'))
+                    ->label(__('filament.test_type'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('subject.name')
                     ->label(__('filament.subject'))
@@ -69,9 +69,9 @@ class ResultResource extends Resource
                     ->label(__('filament.part'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('true_answers')
-                    ->label(__('filament.true answers')),
+                    ->label(__('filament.true_answers')),
                 Tables\Columns\TextColumn::make('wrong_answers')
-                    ->label(__('filament.wrong answers')),
+                    ->label(__('filament.wrong_answers')),
                 Tables\Columns\TextColumn::make('score')
                     ->label(__('filament.score')),
                 Tables\Columns\TextColumn::make('status')

@@ -860,7 +860,7 @@
                     <a href="#" class="nav-item nav-link color-black">{{ __('messages.contest') }}</a>
                     <a href="{{ route('posts') }}" class="nav-item nav-link color-black">{{ __('messages.news') }}</a>
                     <a href="#" class="nav-item nav-link color-black">{{ __('messages.about') }}</a>
-                    <a href="{{ trans('messages.telegram bot') }}" target="_blank" class="nav-item nav-link color-black">{{ __('messages.contact') }}</a>
+                    <a href="{{ trans('messages.telegram_bot') }}" target="_blank" class="nav-item nav-link color-black">{{ __('messages.contact') }}</a>
                     @if (Route::has('login'))
                         @auth
                             <a href="{{ route('user-balance.edit') }}" class="nav-item nav-link color-black">Profil</a>
@@ -869,7 +869,7 @@
                 </div>
                 @guest
                 <a href="{{ route('login') }}"
-                   class="btn bg-green color-white py-2 px-4 ms-3">{{ __('messages.log in') }}</a>
+                   class="btn bg-green color-white py-2 px-4 ms-3">{{ __('messages.log_in') }}</a>
                 <a href="{{ route('register') }}"
                        class="btn bg-green color-white py-2 px-4 ms-3">{{ __('messages.register') }}</a>
                 @endguest
@@ -922,7 +922,7 @@
                         <div class="row gx-5">
                             <div class="col-lg-4 col-md-12 pt-5 mb-5">
                                 <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                                    <h3 class="text-light mb-0">{{ __('messages.get in touch') }}</h3>
+                                    <h3 class="text-light mb-0">{{ __('messages.get_in_touch') }}</h3>
                                 </div>
                                 <div class="d-flex mb-2">
                                     <i class="bi bi-telegram text-green me-2"></i>
@@ -931,7 +931,7 @@
                                     </a>
                                 </div><div class="d-flex mb-2">
                                     <i class="bi bi-telegram text-green me-2"></i>
-                                    <a href="{{ trans('messages.telegram bot') }}" target="_blank">
+                                    <a href="{{ trans('messages.telegram_bot') }}" target="_blank">
                                         <p class="">Telegram bot</p>
                                     </a>
                                 </div>
@@ -959,7 +959,7 @@
                             </div>
                             <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
                                 <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                                    <h3 class="text-light mb-0">{{ __('messages.quick links') }}</h3>
+                                    <h3 class="text-light mb-0">{{ __('messages.quick_links') }}</h3>
                                 </div>
                                 <div class="link-animated d-flex flex-column justify-content-start">
                                     <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right me-2"></i>{{ __('messages.home') }}</a>
@@ -970,7 +970,7 @@
                             </div>
                             <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
                                 <div class="section-title section-title-sm position-relative pb-3 mb-4">
-                                    <h3 class="text-light mb-0">{{ __('messages.popular links') }}</h3>
+                                    <h3 class="text-light mb-0">{{ __('messages.popular_links') }}</h3>
                                 </div>
                                 <div class="link-animated d-flex flex-column justify-content-start">
                                     <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right me-2"></i>{{ __('messages.home') }}</a>

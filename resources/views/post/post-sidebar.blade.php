@@ -11,7 +11,7 @@
     <!-- Category Start -->
     <div class="mb-5 wow slideInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: slideInUp;">
         <div class="section-title section-title-sm position-relative pb-3 mb-4">
-            <h3 class="h3 mb-0">{{ __('filament.post category') }}</h3>
+            <h3 class="h3 mb-0">{{ __('filament.post_category') }}</h3>
         </div>
         <div class="link-animated d-flex flex-column justify-content-start">
             @foreach($categories as $key => $item)
@@ -24,7 +24,7 @@
     <!-- Recent Post Start -->
     <div class="mb-5 wow slideInUp" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: slideInUp;">
         <div class="section-title section-title-sm position-relative pb-3 mb-4">
-            <h3 class="h3 mb-0">{{ __('messages.recent news') }}</h3>
+            <h3 class="h3 mb-0">{{ __('messages.recent_news') }}</h3>
         </div>
         @foreach($recent_posts as $key => $item)
             <div class="d-flex rounded overflow-hidden mb-3">

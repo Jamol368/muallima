@@ -11,7 +11,7 @@
                             <h3 class="display-5 text-white mb-md-4 animated zoomIn">Yaxshi muallim - sifatli ta'lim</h3>
                             <a href="#"
                                class="btn btn-success bg-green py-md-3 px-md-5 me-3 animated slideInLeft">{{ __('messages.brief') }}</a>
-                            <a href="{{ trans('messages.telegram bot') }}" target="_blank"
+                            <a href="{{ trans('messages.telegram_bot') }}" target="_blank"
                                class="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">{{ __('messages.contact') }}</a>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                             <i class="fa fa-users text-green fs-3"></i>
                         </div>
                         <div class="ps-4">
-                            <h5 class="text-white mb-0 fs-6">{{ __('messages.happy clients')}}</h5>
+                            <h5 class="text-white mb-0 fs-6">{{ __('messages.happy_clients')}}</h5>
                             <h1 class="text-white mb-0 fs-4" data-toggle="counter-up">{{ $users }}</h1>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-green text-uppercase fz-22">{{ __('messages.recent news') }}</h5>
+                <h5 class="fw-bold text-green text-uppercase fz-22">{{ __('messages.recent_news') }}</h5>
             </div>
             <div class="row g-5">
                 @foreach($posts as $key => $item)
@@ -169,13 +169,13 @@
                             <i class="fab fa-telegram text-white fs-3"></i>
                         </div>
                         <div class="ps-4">
-                            <h5 class="mb-2">{{ __('messages.get in touch') }}</h5>
+                            <h5 class="mb-2">{{ __('messages.get_in_touch') }}</h5>
                             <a href="https://t.me/Muallimauz_bot" target="_blank">
                                 <h4 class="text-green mb-0">Telegram bot</h4>
                             </a>
                         </div>
                     </div>
-                    <a href="{{ trans('messages.telegram bot') }}" target="_blank" class="btn btn-success py-3 px-5 mt-3 wow zoomIn"
+                    <a href="{{ trans('messages.telegram_bot') }}" target="_blank" class="btn btn-success py-3 px-5 mt-3 wow zoomIn"
                        data-wow-delay="0.9s">{{ __('messages.contact') }}</a>
                 </div>
                 <div class="col-lg-5" style="min-height: 500px;">

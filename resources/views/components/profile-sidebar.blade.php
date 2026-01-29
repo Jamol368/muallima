@@ -13,7 +13,7 @@
     <li class="profile-links">
         <form method="POST" id="logout" action="{{ route('logout') }}">
             @csrf
-            <button type="submit"><i class="fas fa-sign-out me-2"></i>{{ __('messages.log out') }}
+            <button type="submit"><i class="fas fa-sign-out me-2"></i>{{ __('messages.log_out') }}
             </button>
         </form>
     </li>

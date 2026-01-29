@@ -58,7 +58,7 @@ class SubjectResource extends Resource
                 Forms\Components\ColorPicker::make('color_to')
                     ->label(__('filament.color')),
                 Forms\Components\FileUpload::make('img')
-                    ->label(__('filament.image upload'))
+                    ->label(__('filament.image_upload'))
                     ->image()
                     ->directory('subject')
                     ->moveFiles()

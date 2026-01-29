@@ -37,7 +37,7 @@
                             <p class="flex-auto">{{ $user['subject']['name'] }}</p>
                         </div>
                         <div class="profile-info">
-                            <h4 class="flex-grow-0">{{ trans('filament.teacher category') }}: </h4>
+                            <h4 class="flex-grow-0">{{ trans('filament.teacher_category') }}: </h4>
                             <p class="flex-auto">{{ $user['teacher_category']['name'] }}</p>
                         </div>
                     </div>

@@ -27,7 +27,7 @@ class TestTypeResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('filament.test type');
+        return __('filament.test_type');
     }
 
     public static function getModelLabel(): string
@@ -70,7 +70,7 @@ class TestTypeResource extends Resource
                     ->integer()
                     ->required(),
                 Forms\Components\FileUpload::make('img')
-                    ->label(__('filament.image upload'))
+                    ->label(__('filament.image_upload'))
                     ->image()
                     ->directory('test_type')
                     ->moveFiles()

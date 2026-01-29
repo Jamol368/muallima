@@ -63,13 +63,13 @@ class UserResource extends Resource
                     ->required(),
                 Forms\Components\Select::make('teacherCategory')
                     ->relationship('teacherCategory', 'name')
-                    ->label(__('filament.teacher category'))
+                    ->label(__('filament.teacher_category'))
                     ->required(),
                 Forms\Components\DatePicker::make('created_at')
-                    ->label(__('messages.registered at'))
+                    ->label(__('messages.registered_at'))
                     ->disabled(),
-                Forms\Components\Section::make(__('messages.user balance'))
-                    ->description(__('messages.user balance'))
+                Forms\Components\Section::make(__('messages.user_balance'))
+                    ->description(__('messages.user_balance'))
                     ->schema([
                         Forms\Components\Fieldset::make('User balance')
                             ->label(false)
@@ -79,12 +79,12 @@ class UserResource extends Resource
                                     ->label(__('messages.balance'))
                                     ->type('number'),
                                 Forms\Components\TextInput::make('last_transaction_id')
-                                    ->label(__('filament.last transaction id'))
+                                    ->label(__('filament.last_transaction_id'))
                                     ->disabled(),
                             ]),
                     ]),
                 Forms\Components\Section::make(__('filament.results'))
-                    ->description(__('filament.user results'))
+                    ->description(__('filament.user_results'))
                     ->schema([
                         Forms\Components\Repeater::make('results')
                             ->hiddenLabel(__('filament.results'))
@@ -92,17 +92,17 @@ class UserResource extends Resource
                             ->schema([
                                 Forms\Components\Select::make('test_type_id')
                                     ->relationship('testType', 'name')
-                                    ->label(__('filament.test type'))
+                                    ->label(__('filament.test_type'))
                                     ->disabled(),
                                 Forms\Components\Select::make('subject_id')
                                     ->relationship('subject', 'name')
                                     ->label(__('filament.subject'))
                                     ->disabled(),
                                 Forms\Components\TextInput::make('true_answers')
-                                    ->label(__('filament.true answers'))
+                                    ->label(__('filament.true_answers'))
                                     ->disabled(),
                                 Forms\Components\TextInput::make('wrong_answers')
-                                    ->label(__('filament.wrong answers'))
+                                    ->label(__('filament.wrong_answers'))
                                     ->disabled(),
                                 Forms\Components\TextInput::make('score')
                                     ->label(__('filament.score'))
@@ -129,7 +129,7 @@ class UserResource extends Resource
                     ->label(__('messages.phone'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('teacherCategory.name')
-                    ->label(__('filament.teacher category'))
+                    ->label(__('filament.teacher_category'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('subject.name')
                     ->label(__('filament.subject'))
@@ -142,7 +142,7 @@ class UserResource extends Resource
             ->defaultSort('created_at', 'desc')
             ->filters([
                 Tables\Filters\SelectFilter::make('teacher_category_id')
-                    ->label(__('filament.teacher category'))
+                    ->label(__('filament.teacher_category'))
                     ->options(
                         TeacherCategory::query()->pluck('name', 'id')->toArray()
                     ),

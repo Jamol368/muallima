@@ -55,7 +55,7 @@ class TopicResource extends Resource
                     ->required(),
 
                 Select::make('parent_id')
-                    ->label(__('filament.parent topic'))
+                    ->label(__('filament.parent_topic'))
                     ->relationship('parent', 'name')
                     ->searchable()
                     ->preload()
@@ -77,7 +77,7 @@ class TopicResource extends Resource
                     ->label(__('filament.name'))
                     ->searchable(),
                 TextColumn::make('parent.name')
-                    ->label(__('filament.parent topic')),
+                    ->label(__('filament.parent_topic')),
             ])
             ->filters([
                 //

@@ -25,7 +25,7 @@ class UserTypeResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('filament.user type');
+        return __('filament.user_type');
     }
 
     public static function getModelLabel(): string
@@ -52,7 +52,7 @@ class UserTypeResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('img')
-                    ->label(__('filament.image upload'))
+                    ->label(__('filament.image_upload'))
                     ->image()
                     ->directory('usertype')
                     ->moveFiles()

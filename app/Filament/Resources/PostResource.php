@@ -47,7 +47,7 @@ class PostResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('post_category_id')
-                    ->label(__('filament.post category'))
+                    ->label(__('filament.post_category'))
                     ->required()
                     ->options(PostCategory::all()->pluck('name', 'id'))
                     ->searchable(),
@@ -65,7 +65,7 @@ class PostResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('img')
-                    ->label(__('filament.image upload'))
+                    ->label(__('filament.image_upload'))
                     ->image()
                     ->directory('post')
                     ->moveFiles()
@@ -76,7 +76,7 @@ class PostResource extends Resource
                     ->fileAttachmentsDirectory('post/content')
                     ->required(),
                 Forms\Components\TextInput::make('view_count')
-                    ->label(__('filament.view count'))
+                    ->label(__('filament.view_count'))
                     ->type('number')
                     ->disabled(),
                 Forms\Components\Select::make('tags')
@@ -94,7 +94,7 @@ class PostResource extends Resource
                     ->label(__('filament.title'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('view_count')
-                    ->label(__('filament.view count')),
+                    ->label(__('filament.view_count')),
             ])
             ->defaultSort('created_at', 'desc')
             ->filters([

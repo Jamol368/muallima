@@ -28,7 +28,7 @@ class PostCategoryResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('filament.post category');
+        return __('filament.post_category');
     }
 
     public static function getModelLabel(): string
@@ -55,7 +55,7 @@ class PostCategoryResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('img')
-                    ->label(__('filament.image upload'))
+                    ->label(__('filament.image_upload'))
                     ->image()
                     ->directory('post_category')
                     ->moveFiles()

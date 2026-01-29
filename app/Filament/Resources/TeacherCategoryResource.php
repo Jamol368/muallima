@@ -27,7 +27,7 @@ class TeacherCategoryResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('filament.teacher category');
+        return __('filament.teacher_category');
     }
 
     public static function getModelLabel(): string

@@ -46,7 +46,7 @@ class TestResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Select::make('test_type_id')
-                    ->label(__('filament.test type'))
+                    ->label(__('filament.test_type'))
                     ->options(
                         TestType::query()
                             ->orderBy('name')
@@ -107,7 +107,7 @@ class TestResource extends Resource
                             ->required()
                             ->columnSpan(3),
                         Forms\Components\Checkbox::make('is_true')
-                            ->label(__('filament.is true'))
+                            ->label(__('filament.is_true'))
                             ->inline(false),
                     ])
                     ->default([
@@ -128,7 +128,7 @@ class TestResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('testType.name')
-                    ->label(__('filament.test type'))
+                    ->label(__('filament.test_type'))
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('subject.name')
@@ -157,7 +157,7 @@ class TestResource extends Resource
             ->defaultSort('created_at', 'desc')
             ->filters([
                 Tables\Filters\SelectFilter::make('test_type_id')
-                    ->label(__('filament.test type'))
+                    ->label(__('filament.test_type'))
                     ->options(
                         TestType::query()->pluck('name', 'id')->toArray()
                     ),

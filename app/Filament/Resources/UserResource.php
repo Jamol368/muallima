@@ -68,52 +68,12 @@ class UserResource extends Resource
                 Forms\Components\DatePicker::make('created_at')
                     ->label(__('messages.registered_at'))
                     ->disabled(),
-                Forms\Components\Section::make(__('messages.user_balance'))
-                    ->description(__('messages.user_balance'))
+                Forms\Components\Group::make()
+                    ->relationship('userBalance')
                     ->schema([
-                        Forms\Components\Fieldset::make('User balance')
-                            ->label(false)
-                            ->relationship('userBalance')
-                            ->schema([
-                                Forms\Components\TextInput::make('balance')
-                                    ->label(__('messages.balance'))
-                                    ->type('number'),
-                                Forms\Components\TextInput::make('last_transaction_id')
-                                    ->label(__('filament.last_transaction_id'))
-                                    ->disabled(),
-                            ]),
-                    ]),
-                Forms\Components\Section::make(__('filament.results'))
-                    ->description(__('filament.user_results'))
-                    ->schema([
-                        Forms\Components\Repeater::make('results')
-                            ->hiddenLabel(__('filament.results'))
-                            ->relationship('results')
-                            ->schema([
-                                Forms\Components\Select::make('test_type_id')
-                                    ->relationship('testType', 'name')
-                                    ->label(__('filament.test_type'))
-                                    ->disabled(),
-                                Forms\Components\Select::make('subject_id')
-                                    ->relationship('subject', 'name')
-                                    ->label(__('filament.subject'))
-                                    ->disabled(),
-                                Forms\Components\TextInput::make('true_answers')
-                                    ->label(__('filament.true_answers'))
-                                    ->disabled(),
-                                Forms\Components\TextInput::make('wrong_answers')
-                                    ->label(__('filament.wrong_answers'))
-                                    ->disabled(),
-                                Forms\Components\TextInput::make('score')
-                                    ->label(__('filament.score'))
-                                    ->disabled(),
-                                Forms\Components\TextInput::make('created_at')
-                                    ->label(__('filament.created_at'))
-                                    ->disabled(),
-                            ])
-                            ->disableItemCreation()
-                            ->disableItemDeletion()
-                            ->columns(3),
+                        Forms\Components\TextInput::make('balance')
+                            ->label(__('messages.balance'))
+                            ->numeric(),
                     ]),
             ]);
     }

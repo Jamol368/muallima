@@ -19,7 +19,6 @@ class UserBalance extends Model
         'user_id',
         'name',
         'balance',
-        'balace_id',
         'last_transaction_id',
     ];
 

@@ -56,5 +56,9 @@ return [
     'degree' => "Sinf",
     'part' => 'Qism',
     'status' => 'Holati',
-    'icon' => 'ikonka'
+    'icon' => 'ikonka',
+    'from_date' => 'Sanadan',
+    'to_date' => 'Sanagacha',
+    'completed' => 'Tugallangan',
+    'in_progress' => 'Jarayonda',
 ];

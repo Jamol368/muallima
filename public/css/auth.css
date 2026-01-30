@@ -160,14 +160,47 @@
     height: 100%;
     border: none;
     overflow: auto;
+    padding: 20px 40px 40px;
 }
 .modal-footer {
-    flex-shrink: 0;
-    padding: 12px;
-    border-top: 1px solid #eee;
-    background: #fff;
-    text-align: right;
+    justify-content: center;
 }
-.close-btn{
+.icon-btn{
     font-size: 24px;
+}
+.btn-rounded{
+    border-radius: 28px;
+    padding: 12px 28px;
+}
+.bolder{
+    font-weight: bolder;
+}
+
+.rotate-down{
+    transform: rotate(90deg);
+    display: inline-block;
+}
+.offerta-band{
+    border-top: 2px solid #ddd;
+    padding-top: 40px;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .modal-box{
+        width: 100%;
+        max-width: 100%;
+    }
+    .modal-header h2{
+        font-size: 22px;
+    }
+    #termsFrame{
+        font-size: 14px;
+    }
+    .offerta-band h3, .offerta-band h4{
+        font-size: 20px;
+    }
+    .icon-btn{
+        font-size: 18px;
+    }
 }

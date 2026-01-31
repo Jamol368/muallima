@@ -1,40 +1,11 @@
 <x-auth-layout>
     <style>
-        .offerta-modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.6);
-            justify-content: center;
-            align-items: center;
-            z-index: 999;
-        }
-
-        .offerta-modal {
-            background: #fff;
-            border-radius: 16px;
-            padding: 20px;
-            width: 90%;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
         .offerta-modal h2 {
             text-align: center;
             margin-top: 0;
         }
-
         .offerta-modal p {
             font-size: 20px;
-        }
-
-        .offerta-close-btn {
-            margin-top: 20px;
-            background: #7f7f7f;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
         }
     </style>
     <div class="auth-layout">

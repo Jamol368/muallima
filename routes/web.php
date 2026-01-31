@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostTagController;
@@ -98,6 +99,9 @@ Route::middleware([
 
     Route::get('natural-science/test', [ResultController::class, 'storeForNaturalScience'])
         ->name('natural-science.result.create');
+
+    Route::post('/complaints', [ComplaintController::class, 'store'])->name('complaints.store');
+
 
 //    redirect to payment system or payment form
     Route::any('/pay/{paysys}/{key}/{amount}', function ($paysys, $key, $amount) {

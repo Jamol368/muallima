@@ -56,7 +56,7 @@ class RegisterController extends Controller
 
             DB::commit();
 
-            return redirect()->route('home');
+            return redirect()->route('user-balance.edit');
         } catch (Throwable $throwable) {
             DB::rollBack();
             throw $throwable;

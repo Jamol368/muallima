@@ -141,6 +141,15 @@
                             <div class="test-list test-list-{{ $key + 1 }} {{ $key ? 'hidden' : '' }}">
                                 <div class="question-wrapper">
                                     <div class="question-number"> Savol {{ $key + 1 }}</div>
+                                    <button
+                                        type="button"
+                                        class="btn mat-button mat-raised-button text-warn-400"
+                                        onclick="openComplaintModal({{ $question['id'] }})"
+                                    >
+                                        <i class="fa fa-exclamation-circle"></i>
+                                        E'tiroz
+                                    </button>
+
                                 </div>
                                 <div class="mat-divider mat-divider-horizontal">
                                 </div>
@@ -214,5 +223,79 @@
             background-size: 380px 230px;
             }
     </style>
+
+    <div id="complaintModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h4 class="mb-3">E'tiroz bildirish</h4>
+
+            <form id="complaintForm">
+                @csrf
+                <input type="hidden" name="test_id" id="complaintQuestionId">
+
+                <textarea
+                    id="complaintMessageTextarea"
+                    name="description"
+                    required
+                    placeholder="E'tiroz izohi..."
+                    rows="4"
+                ></textarea>
+
+                <div class="mt-3">
+                    <button type="submit" id="complaintSubmitBtn" class="btn bnt-complaint mat-button mat-raised-button btn-success" disabled>Yuborish</button>
+                    <button type="button" class="btn mat-button mat-raised-button" onclick="closeComplaintModal()">Bekor qilish</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        function openComplaintModal(questionId) {
+            document.getElementById('complaintQuestionId').value = questionId;
+            document.getElementById('complaintModal').style.display = 'block';
+        }
+
+        const textarea = document.getElementById('complaintMessageTextarea');
+        const submitBtn = document.getElementById('complaintSubmitBtn');
+
+        textarea.addEventListener('input', function () {
+            submitBtn.disabled = !this.value.trim().length;
+        });
+
+
+        function closeComplaintModal() {
+            document.getElementById('complaintModal').style.display = 'none';
+
+            const form = document.getElementById('complaintForm');
+            form.reset();
+            submitBtn.disabled = true
+        }
+
+        document.getElementById('complaintForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            fetch('/complaints', {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+                    'Accept': 'application/json'
+                },
+                body: new FormData(this)
+            })
+                .then(res => res.json())
+                .then((data) => {
+                    if(data.success){
+                        alert("✅ E'tirozingiz muvaffaqiyatli jo'natildi");
+                        closeComplaintModal();
+                        this.reset();
+                    } else{
+                        alert("⚠️ Nimadir noto'g'ri ketdi. Qaytadan urinib ko'ring.");
+                    }
+                })
+                .catch(() => {
+                    alert("⚠️ Nimadir noto'g'ri ketdi. Qaytadan urinib ko'ring.");
+                });
+        });
+    </script>
+
+
 
 </x-test-layout>

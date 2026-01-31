@@ -46,6 +46,10 @@ return [
     'wrong_answers' => "Noto'g'ri javoblar",
     'created_at' => "Topshirgan vaqti",
 
+    'complaints' => "E'tirozlar",
+    'reviewed' => "Ko'rib chiqildi",
+    'complaint_reviewed_description' => "Shikoyatni ko'rib chiqilgan deb belgilash",
+
     'post' => "Yangilik",
     'post_category' => "Yangilik turi",
     'title' => "Sarlavha",

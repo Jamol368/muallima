@@ -46,13 +46,9 @@ class ComplaintResource extends Resource
                     ->disabled()
                     ->rows(6)
                     ->columnSpanFull(),
-                Forms\Components\Section::make('status')
-                    ->heading(__('filament.status'))
-                    ->schema([
-                        Forms\Components\Toggle::make('status')
-                            ->label(__('filament.reviewed'))
-                            ->helperText(__('filament.complaint_reviewed_description')),
-                    ]),
+                Forms\Components\Toggle::make('status')
+                ->label(__('filament.reviewed'))
+                    ->helperText(__('filament.complaint_reviewed_description')),
             ]);
     }
 

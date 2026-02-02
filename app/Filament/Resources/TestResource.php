@@ -14,6 +14,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
+use Illuminate\Support\Str;
 
 class TestResource extends Resource
 {
@@ -150,8 +151,18 @@ class TestResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('question')
                     ->label(__('filament.question'))
-                    ->limit(50)
-                    ->searchable(),
+                    ->getStateUsing(fn ($record) =>
+                        Str::limit(strip_tags($record->question), 80)
+                    )
+                    ->tooltip(fn ($record) => strip_tags($record->question))
+                    ->searchable(
+                        query: function ($query, $search) {
+                            $query->whereRaw(
+                                "LOWER(question) LIKE ?",
+                                ['%' . strtolower($search) . '%']
+                            );
+                        }
+                    ),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label(__('filament.created_at'))
                     ->dateTime('d/m/y H:i')

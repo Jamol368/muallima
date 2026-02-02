@@ -39,4 +39,10 @@ class UserBalance extends Model
 
         return false;
     }
+
+    public function formatMoney(): string
+    {
+        return number_format($this->balance, 0, '.', ' ') . ' soʻm';
+    }
+
 }

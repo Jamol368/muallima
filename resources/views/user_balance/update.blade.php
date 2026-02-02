@@ -22,7 +22,7 @@
                         <h3 class="h3">{{ $user['name'] }}</h3>
                         <div class="profile-info">
                             <h4 class="flex-grow-0">{{ __('messages.balance') }}:</h4>
-                            <p class="flex-auto text-danger">{{ $user['user_balance']['balance'] }} so'm</p>
+                            <p class="flex-auto text-danger">{{ $user['user_balance']['balance'] }}</p>
                         </div>
                         <div class="profile-info">
                             <h4 class="flex-grow-0">User ID:</h4>

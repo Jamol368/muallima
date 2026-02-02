@@ -4007,7 +4007,7 @@ select.mat-input-element:not(:disabled) {
 }
 
 .container .nav-item.active {
-    border: 1px solid #6a6a6a
+    border: 1px solid #000
 }
 
 .container .nav-item.checked {
@@ -4205,6 +4205,32 @@ body {
     background-color: #fd3e3e !important;
     color: #fff !important;
 }
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+.modal-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    width: 90%;
+    margin: 12% auto;
+    box-shadow: 7px 9px 10px rgba(0, 0, 0, 0.3);
+}
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    border-top: 1px solid #ddd;
+}
+
 
 @media (max-width: 768px) {
     .header-container {

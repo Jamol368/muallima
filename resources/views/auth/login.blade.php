@@ -45,8 +45,11 @@
                                 });
                             </script>
 
-                            <p class="auth-label">Parol</p>
-                            <input type="password" id="password" name="password" class="auth-input">
+                            <div class="password-wrapper">
+                                <p class="auth-label">Parol</p>
+                                <input type="password" id="password" name="password" class="auth-input password-input">
+                                <i class="far fa-eye toggle-password" data-target="#password"></i>
+                            </div>
 
                             <button type="submit" class="btn auth-btn confirm-btn mt-3">Kirish</button>
 

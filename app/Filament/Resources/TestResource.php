@@ -148,6 +148,10 @@ class TestResource extends Resource
                     ->label(__('filament.part'))
                     ->sortable()
                     ->searchable(),
+                Tables\Columns\TextColumn::make('question')
+                    ->label(__('filament.question'))
+                    ->limit(50)
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label(__('filament.created_at'))
                     ->dateTime('d/m/y H:i')

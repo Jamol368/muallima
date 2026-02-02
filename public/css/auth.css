@@ -186,6 +186,30 @@
     margin-top: 20px;
 }
 
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-input {
+    padding-right: 40px;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 10;
+    pointer-events: auto;
+    opacity: 0.9;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+}
+
 @media (max-width: 768px) {
     .modal-box{
         width: 100%;

@@ -1,7 +1,7 @@
 <ul class="">
     <li class="profile-links {{ request()->routeIs('user-balance.edit') ? 'active' : '' }}">
         <a href="{{ route('user-balance.edit') }}" class=""><i class="fas fa-user-circle me-2"></i>
-            Profile</a>
+            Profil</a>
     </li>
     <li class="profile-links {{ request()->routeIs('result.index') ? 'active' : '' }}">
         <a href="{{ route('result.index') }}" class=""><i class="fas fa-line-chart me-2"></i> Mening

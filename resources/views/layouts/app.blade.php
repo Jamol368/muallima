@@ -849,9 +849,38 @@
             <a href="{{ route('home') }}" class="navbar-brand p-0">
                 <img src="{{ asset('/img/logo-3.png') }}" alt="logo" class="logo-img">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <div class="ml-auto flex gap-2">
+            <button class="navbar-toggler" type="button">
                 <span class="fa fa-bars"></span>
             </button>
+            @if (Route::has('login'))
+                @auth
+                    <div class="dropdown dropdown-mobile">
+                        <button id="profile_btn_mobile" class="nav-item nav-link color-black btn-profile btn-dropdown">
+                            <i class="far fa-circle-user"></i>
+                        </button>
+                        <div class="dropdown-content-mobile">
+                            <div class="dropdown-header">
+                                <h4 class="fs-5 text-wrap mb-2">{{ auth()->user()->name }}</h4>
+                                <p class="fs-7"><i class="fa fa-phone me-2"></i>{{ auth()->user()->formatPhone() }}</p>
+                                <p class="fs-7"><i class="fa-solid fa-circle-dollar-to-slot me-2"></i>{{ auth()->user()->userBalance->formatMoney() }}</p>
+                            </div>
+                                <?php
+
+                                ?>
+                            <div class="dropdown-bottom">
+                                <a href="{{ route('user-balance.edit') }}"><i class="far fa-circle-user me-2"></i> Profile</a>
+
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button type="submit" class="logout-btn"><i class="fa fa-arrow-right-from-bracket me-2"></i>{{ __('messages.log_out') }}</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                @endauth
+            @endif
+            </div>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <a href="{{ route('home') }}" class="nav-item nav-link color-black {{ Request::is('home')?'active':'' }}">{{ __('messages.home') }}</a>
@@ -863,7 +892,30 @@
                     <a href="{{ trans('messages.telegram_bot') }}" target="_blank" class="nav-item nav-link color-black">{{ __('messages.contact') }}</a>
                     @if (Route::has('login'))
                         @auth
-                            <a href="{{ route('user-balance.edit') }}" class="nav-item nav-link color-black">Profil</a>
+                            <div class="dropdown">
+                                <button id="profile_btn" class="nav-item nav-link color-black btn-profile btn-dropdown">
+                                    <i class="far fa-circle-user me-2"></i>
+                                    {{ explode(' ', auth()->user()->name)[0] ?? auth()->user()->name }}
+                                </button>
+                                <div class="dropdown-content">
+                                    <div class="dropdown-header">
+                                        <h4 class="fs-5 text-wrap mb-2">{{ auth()->user()->name }}</h4>
+                                        <p class="fs-7"><i class="fa fa-phone me-2"></i>{{ auth()->user()->formatPhone() }}</p>
+                                        <p class="fs-7"><i class="fa-solid fa-circle-dollar-to-slot me-2"></i>{{ auth()->user()->userBalance->formatMoney() }}</p>
+                                    </div>
+                                    <?php
+
+                                        ?>
+                                    <div class="dropdown-bottom">
+                                        <a href="{{ route('user-balance.edit') }}"><i class="far fa-circle-user me-2"></i> Profile</a>
+
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <button type="submit" class="logout-btn"><i class="fa fa-arrow-right-from-bracket me-2"></i>{{ __('messages.log_out') }}</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         @endauth
                     @endif
                 </div>
@@ -874,6 +926,31 @@
                        class="btn bg-green color-white py-2 px-4 ms-3">{{ __('messages.register') }}</a>
                 @endguest
             </div>
+
+            <div class="overlay"></div>
+            <aside id="mobile_sidebar" class="mobile-sidebar">
+                <div class="mobile-sidebar-header mt-3">
+                    <a href="{{ route('home') }}" class="navbar-brand p-0">
+                        <img src="{{ asset('/img/logo-3.png') }}" alt="logo" class="logo-img">
+                    </a>
+                    <button id="closeBtn" class="close-btn"><i class="far fa-circle-xmark fs-5"></i></button>
+                </div>
+                <nav class="mobile-sidebar-navbar mt-4 fs-5">
+                    <a href="{{ route('home') }}" class="mobile-sidebar-link mb-1 p-2 {{ Request::routeIs('home')?'active':'' }}">{{ __('messages.home') }}</a>
+                    <a href="#" class="mobile-sidebar-link mb-1 p-2">{{ __('messages.course') }}</a>
+                    <a href="{{ route('home').'#test_type' }}" class="mobile-sidebar-link mb-1 p-2">{{ __('messages.test') }}</a>
+                    <a href="#" class="mobile-sidebar-link mb-1 p-2">{{ __('messages.contest') }}</a>
+                    <a href="{{ route('posts') }}" class="mobile-sidebar-link mb-1 p-2 {{ Request::routeIs(['posts', 'post', 'post-category.show', 'post-tag.show'])?'active':'' }}">{{ __('messages.news') }}</a>
+                    <a href="#" class="mobile-sidebar-link mb-1 p-2">{{ __('messages.about') }}</a>
+                    <a href="{{ trans('messages.telegram_bot') }}" target="_blank" class="mobile-sidebar-link mb-1 p-2">{{ __('messages.contact') }}</a>
+                    @guest
+                        <a href="{{ route('login') }}"
+                           class="mobile-sidebar-link mb-1 p-2">{{ __('messages.log_in') }}</a>
+                        <a href="{{ route('register') }}"
+                           class="mobile-sidebar-link p-2">{{ __('messages.register') }}</a>
+                    @endguest
+                </nav>
+            </aside>
         </nav>
 
         @yield('carousel')

@@ -224,6 +224,23 @@
             }
     </style>
 
+    <div id="confirmModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="flex justify-center">
+                <span class="border-3 rounded-full border-warning text-warning py-2 px-6 fs-3">
+                    <i class="fa fa-exclamation"></i>
+                </span>
+            </div>
+            <p class="not-answered fs-5 p-3 d-none">Diqqat! Hamma savollarga ham javob berilmagan, baribir yakunlamoqchimisiz?</p>
+            <p class="submit-answers fs-5 p-3 d-none">Diqqat! Testni yakunlashga ishonchingiz komilmi?</p>
+
+            <div class="modal-actions pt-3">
+                <button id="confirmFinish" class="btn mat-button mat-raised-button text-warn-400 fs-6">Ha, yakunlash</button>
+                <button id="cancelFinish" class="btn mat-button mat-raised-button fs-6">Ortga</button>
+            </div>
+        </div>
+    </div>
+
     <div id="complaintModal" class="modal" style="display:none;">
         <div class="modal-content">
             <h4 class="mb-3">E'tiroz bildirish</h4>

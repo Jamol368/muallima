@@ -17,7 +17,7 @@
 
         if (secondsLeft < 0) {
             clearInterval(timerInterval);
-            $('#end-test-button').click();
+            $('#test').submit();
         }
     }
 
@@ -27,20 +27,6 @@
     // Call updateTimer every second
     var timerInterval = setInterval(updateTimer, 1000);
 
-    $('#end-test-button').click(function (){
-        $('#test').submit();
-    })
-
-    $('#test').submit(function(event) {
-        event.preventDefault();
-        // Show a confirmation dialog
-        var confirmation = secondsLeft>0?confirm("Testni yakunlamoqchimisiz?"):true;
-
-        // If user confirms, proceed with form submission
-        if (confirmation) {
-            $(this).unbind('submit').submit(); // Submit the form
-        }
-    });
 
     window.history.pushState(null, "", window.location.href);
     window.onpopstate = function() {
@@ -98,5 +84,38 @@
             next_nav.addClass('active');
         }
     })
+
+    $(function () {
+        $('#end-test-button').on('click', function (e) {
+
+            const totalQuestions = $('.question-form-wrapper').length;
+            let answered = 0;
+
+            $('.question-form-wrapper').each(function () {
+                if ($(this).find('input:checked').length > 0) {
+                    answered++;
+                }
+            });
+
+            if (answered < totalQuestions) {
+                e.preventDefault();
+                $('.not-answered').removeClass('d-none');
+                $('.submit-answers').addClass('d-none');
+            } else {
+                $('.submit-answers').removeClass('d-none');
+                $('.not-answered').addClass('d-none');
+            }
+            $('#confirmModal').fadeIn(200);
+        });
+
+        $('#confirmFinish').on('click', function () {
+            console.log('lskdgjklgj');
+            $('#test').submit();
+        });
+
+        $('#cancelFinish').on('click', function () {
+            $('#confirmModal').fadeOut(200);
+        });
+    });
 
 })(jQuery);

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -111,5 +112,20 @@ class User extends Authenticatable implements FilamentUser
     public function teacherCategory(): BelongsTo
     {
         return $this->belongsTo(TeacherCategory::class);
+    }
+
+    public function formatPhone(): string
+    {
+        $phone = preg_replace('/\D/', '', $this->phone);
+
+        if (strlen($phone) === 9) {
+            return '+998 (' .
+                substr($phone, 0, 2) . ') ' .
+                substr($phone, 2, 3) . ' ' .
+                substr($phone, 5, 2) . ' ' .
+                substr($phone, 7, 2);
+        }
+
+        return $phone;
     }
 }

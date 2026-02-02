@@ -49,7 +49,10 @@ class UserBalanceController extends Controller
      */
     public function edit()
     {
-        $user = User::query()->with(['userBalance', 'subject', 'teacherCategory'])->find(Auth::id())?->toArray();
+        $user_model = User::query()->with(['userBalance', 'subject', 'teacherCategory'])->find(Auth::id());
+        $user = $user_model->toArray();
+        $user['phone'] = $user_model->formatPhone();
+        $user['user_balance']['balance'] = $user_model->userBalance->formatMoney();
 
         return view('user_balance.update', [
             'user' => $user,

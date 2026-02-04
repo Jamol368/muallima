@@ -27,8 +27,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-9">
-                    <div class="profile-card">
-                        <h1 class="h2 text-center">Sozlamalar</h1>
+                    <div class="profile-card mx-auto max-w-md p-6 bg-white shadow-lg rounded-3">
+                        <h1 class="h2 text-center mt-3">Sozlamalar</h1>
                         <div class="profile-card">
                             <h3 class="h3">Hisobni tahrirlash</h3>
                             <form action="{{ route('profile.update') }}" method="post">

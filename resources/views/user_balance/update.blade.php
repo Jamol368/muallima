@@ -17,8 +17,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-9">
-                    <div class="profile-card">
-                        <h1 class="h2 text-center">Profil</h1>
+                    <div class="profile-card mx-auto max-w-md p-6 bg-white shadow-lg rounded-3">
+                        <h1 class="h2 text-center mt-3">Profil</h1>
                         <h3 class="h3">{{ $user['name'] }}</h3>
                         <div class="profile-info">
                             <h4 class="flex-grow-0">{{ __('messages.balance') }}:</h4>
@@ -42,7 +42,7 @@
                         </div>
                     </div>
 
-                    <div class="profile-card">
+                    <div class="profile-card mx-auto max-w-md p-6 bg-white shadow-lg rounded-3">
                         <h3 class="h3">Hisobni to'ldirish</h3>
                         <img src="{{ asset('img/click-white.jpg') }}" alt="click.uz" class="click-logo">
                         <form action="{{ route('user-balance.update') }}" method="post">

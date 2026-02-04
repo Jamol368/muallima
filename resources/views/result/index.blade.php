@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-sm-9">
                     <div class="profile-card container mx-auto max-w-md p-6 bg-white shadow-lg rounded-3">
-                        <h1 class="h2 text-center mt-4">Mening natijalarim</h1>
+                        <h1 class="h2 text-center mt-3">Mening natijalarim</h1>
                         <div class="container py-5 overflow-auto">
                             <div class="row g-5">
                                 <table class="table overflow-x-scroll">

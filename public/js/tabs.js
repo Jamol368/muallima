@@ -109,7 +109,6 @@
         });
 
         $('#confirmFinish').on('click', function () {
-            console.log('lskdgjklgj');
             $('#test').submit();
         });
 

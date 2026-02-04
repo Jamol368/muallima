@@ -75,6 +75,21 @@
                                         <div class="flex">
                                             <div> <strong>Ball:</strong> {{ $test_type->getOriginal('score') }}</div>
                                         </div>
+                                        @if(isset($topic))
+                                        <div class="flex">
+                                            <div> <strong>Mavzu:</strong> {{ $topic->getOriginal('name') }}</div>
+                                        </div>
+                                        @endif
+                                        @if(isset($degree))
+                                        <div class="flex">
+                                            <div> <strong>Sinf:</strong> {{ $degree }}</div>
+                                        </div>
+                                        @endif
+                                        @if(isset($part))
+                                        <div class="flex">
+                                            <div> <strong>Qism:</strong> {{ $part }}</div>
+                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="user-test-block">
@@ -257,9 +272,9 @@
                     rows="4"
                 ></textarea>
 
-                <div class="mt-3">
-                    <button type="submit" id="complaintSubmitBtn" class="btn bnt-complaint mat-button mat-raised-button btn-success" disabled>Yuborish</button>
-                    <button type="button" class="btn mat-button mat-raised-button" onclick="closeComplaintModal()">Bekor qilish</button>
+                <div class="mt-3 flex justify-content-end gap-1">
+                    <button type="submit" id="complaintSubmitBtn" class="btn bnt-complaint mat-button mat-raised-button btn-success fs-6" disabled>Yuborish</button>
+                    <button type="button" class="btn mat-button mat-raised-button fs-6" onclick="closeComplaintModal()">Bekor qilish</button>
                 </div>
             </form>
         </div>

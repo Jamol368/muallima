@@ -4186,13 +4186,23 @@ body {
 }
 .modal-content{
     padding: 24px;
-    width: 80%;
-    margin: 40% auto;
+    margin: 256px auto;
+    width: 412px;
+    max-width: 80%;
 }
 .modal-content h4{
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
+}
+.modal-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 412px;
+    max-width: 80%;
+    margin: 256px auto;
+    box-shadow: 7px 9px 10px rgba(0, 0, 0, 0.3);
 }
 #complaintForm textarea{
     resize: none;
@@ -4201,11 +4211,11 @@ body {
     border-radius: 20px;
     padding: 10px;
 }
+
 .bnt-complaint{
     background-color: #fd3e3e !important;
     color: #fff !important;
 }
-
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -4214,15 +4224,6 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 999;
-}
-.modal-box {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 400px;
-    width: 90%;
-    margin: 12% auto;
-    box-shadow: 7px 9px 10px rgba(0, 0, 0, 0.3);
 }
 .modal-actions {
     display: flex;

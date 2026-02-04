@@ -46,6 +46,25 @@
                                         <div class="flex">
                                             <div> <strong>Ball:</strong> {{ $test_type->getOriginal('score') }}</div>
                                         </div>
+                                        @if($topic)
+                                            <div class="flex">
+                                                <div> <strong>Mavzu:</strong> {{ $topic }}</div>
+                                            </div>
+                                        @elseif($mixed)
+                                            <div class="flex">
+                                                <div> <strong>Mavzu:</strong> Aralash test</div>
+                                            </div>
+                                        @endif
+                                        @if($degree)
+                                            <div class="flex">
+                                                <div> <strong>Sinf:</strong> {{ $degree }}</div>
+                                            </div>
+                                        @endif
+                                        @if($part)
+                                            <div class="flex">
+                                                <div> <strong>Qism:</strong> {{ $part }}</div>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="user-test-block">

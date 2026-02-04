@@ -34,4 +34,9 @@ class Topic extends Model
     {
         return $this->belongsTo(Subject::class, 'subject_id');
     }
+
+    public function results(): HasMany
+    {
+        return $this->hasMany(Result::class, 'topic_id');
+    }
 }

@@ -154,6 +154,14 @@ class Test extends Model
         return $tests;
     }
 
+    public static function storeMixedQuize(int $subject_id, TestType $test_type): object|int
+    {
+        return self::where(['subject_id' => $subject_id, 'test_type_id' => $test_type->id])
+            ->inRandomOrder()
+            ->take($test_type->questions)
+            ->get();
+    }
+
     public static function ckeckQuestionsCount($questions, $expectedQuestionCount)
     {
         return count($questions)==$expectedQuestionCount?$questions:0;

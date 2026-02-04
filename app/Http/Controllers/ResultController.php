@@ -11,6 +11,7 @@ use App\Models\ResultSession;
 use App\Models\Subject;
 use App\Models\Test;
 use App\Models\TestType;
+use App\Models\Topic;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -93,6 +94,10 @@ class ResultController extends Controller
             'detailed_questions' => $detailed_questions,
             'test_type' => $test_type,
             'subject' => $subject,
+            'topic' => Topic::query()->find($result->topic_id)?->name,
+            'degree' => $result->degree,
+            'part' => $result->part,
+            'mixed' => $result->mixed,
         ]);
     }
 
@@ -190,6 +195,8 @@ class ResultController extends Controller
                         ];
                     })->filter();
 
+                    $topic = Topic::query()->findOrFail($topic_id);
+
                     $preparedQuestions = $questions->map(function ($question) {
                         $allOptions = $question->answers->shuffle();
 
@@ -208,6 +215,7 @@ class ResultController extends Controller
                         'user_id' => $user->id,
                         'test_type_id' => $test_type->id,
                         'subject_id' => $subject->id,
+                        'topic_id' => $topic_id,
                     ]);
                     $result->save();
 
@@ -226,6 +234,7 @@ class ResultController extends Controller
                         'test_type' => $test_type,
                         'subject' => $subject,
                         'result_session_id' => $result_session->id,
+                        'topic' => $topic,
                     ]);
                 }
                 abort(404, 'Balansingiz yoki testlar soni yetarli emas.');
@@ -244,7 +253,7 @@ class ResultController extends Controller
         DB::beginTransaction();
 
         try {
-            if ($subject = Subject::query()->find(SubjectEnum::NATURAL_SCIENCE->value) and
+            if ($subject = Subject::query()->find($request->subject_id??SubjectEnum::NATURAL_SCIENCE->value) and
                 $test_type = TestType::query()->find(TestTypeEnum::TEST_TYPE_TOPIC->value)) {
 
                 if ($user->userBalance->check($test_type->price) and
@@ -283,6 +292,86 @@ class ResultController extends Controller
                         'user_id' => $user->id,
                         'test_type_id' => $test_type->id,
                         'subject_id' => $subject->id,
+                        'degree' => $request->degree,
+                        'part' => $request->part,
+                    ]);
+                    $result->save();
+
+                    $result_session = new ResultSession([
+                        'result_id' => $result->id,
+                        'questions' => $questions->pluck('id')->toArray(),
+                        'true_answers' => $trueAnswers,
+                        'options' => $preparedQuestions->pluck('display_order', 'id')->toArray(),
+                    ]);
+                    $result_session->save();
+
+                    DB::commit();
+
+                    return view('test.index', [
+                        'questions' => $preparedQuestions,
+                        'test_type' => $test_type,
+                        'subject' => $subject,
+                        'result_session_id' => $result_session->id,
+                        'degree' => $request->degree,
+                        'part' => $request->part,
+                    ]);
+                }
+                abort(404, 'Balansingiz yoki testlar soni yetarli emas.');
+            }
+            abort(404, 'Fan yoki test turi noto\'g\'ri tanlangan.');
+        } catch (\Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
+    }
+
+    public function storeMixedQuize(StoreResultRequest $request, int $subject_id)
+    {
+        $user = User::query()->find(Auth::user()?->getAuthIdentifier());
+
+        DB::beginTransaction();
+
+        try {
+            if ($subject = Subject::query()->find($subject_id) and
+                $test_type = TestType::query()->find(TestTypeEnum::TEST_TYPE_TOPIC->value)) {
+
+                if ($user->userBalance->check($test_type->price) and
+                    $questions = Test::storeMixedQuize($subject->id, $test_type)) {
+
+                    $trueAnswers = $questions->mapWithKeys(function ($question) {
+                        $correct = $question->answers
+                            ->where('is_true', true)
+                            ->first();
+
+                        return [
+                            $question->id => $correct ? $correct->id : null
+                        ];
+                    })->filter();
+
+                    $preparedQuestions = $questions->map(function ($question) {
+                        $allOptions = $question->answers->shuffle();
+
+                        $correctIds = $question->answers
+                            ->where('is_true', true)
+                            ->pluck('id')
+                            ->toArray();
+
+                        return [
+                            'id' => $question->id,
+                            'question' => $question->question,
+                            'options' => $allOptions->map(fn($opt) => [
+                                'id' => $opt->id,
+                                'option' => $opt->option,
+                            ])->toArray(),
+                            'display_order' => $allOptions->pluck('id')->toArray(),
+                        ];
+                    });
+
+                    $result = new Result([
+                        'user_id' => $user->id,
+                        'test_type_id' => $test_type->id,
+                        'subject_id' => $subject->id,
+                        'mixed' => true,
                     ]);
                     $result->save();
 

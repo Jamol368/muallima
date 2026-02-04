@@ -23,6 +23,7 @@ class Result extends Model
         'topic_id',
         'degree',
         'part',
+        'mixed',
         'true_answers',
         'wrong_answers',
         'score',

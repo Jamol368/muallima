@@ -3,14 +3,16 @@
     <div id="subject" class="container-fluid py-5 wow fadeInUp mt-lg-5" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto">
-                <h1 class="fw-bold text-green text-uppercase fz-22">Sinf va qismni tanlang</h1>
+                <h1 class="fw-bold text-green text-uppercase fz-22">Sinf va qismni yoki Aralash testni tanlang</h1>
                 <h5 class="mb-0">{{ $subject->name }} fanidan mavzulashtirilgan test</h5>
             </div>
 
-            <div class="container mx-auto max-w-md p-6 bg-white shadow rounded">
+            <div class="container mx-auto mb-5 max-w-md p-6 bg-white shadow-lg rounded-3">
                 <form id="subject-degree" action="{{ route('natural-science.result.create') }}" method="get" class="space-y-6">
                     @csrf
                     @method('GET')
+
+                    <input type="hidden" name="subject_id" value="{{ $subject->id }}">
 
                     <div>
                         <h2 class="text-lg font-semibold mb-3">Sinfni tanlang</h2>
@@ -45,6 +47,13 @@
                         </button>
                     </div>
                 </form>
+            </div>
+
+            <div class="container mx-auto mt-5 max-w-md p-6 bg-white shadow-lg rounded-3">
+                <div class="flex justify-content-between">
+                    <h2>{{ $subject->name }} fani bo'yicha aralash testlar</h2>
+                    <a href="{{ route('mixed.test.create', ['subject_id' => $subject->id]) }}" class="btn btn-success px-5 py-2 bg-success font-medium rounded-lg hover:bg-indigo-700 transition">Tanlash</a>
+                </div>
             </div>
         </div>
     </div>

@@ -16,8 +16,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-9">
-                    <div class="profile-card">
-                        <h1 class="h2 text-center">Mening natijalarim</h1>
+                    <div class="profile-card container mx-auto max-w-md p-6 bg-white shadow-lg rounded-3">
+                        <h1 class="h2 text-center mt-4">Mening natijalarim</h1>
                         <div class="container py-5 overflow-auto">
                             <div class="row g-5">
                                 <table class="table overflow-x-scroll">
@@ -25,6 +25,9 @@
                                     <th>#</th>
                                     <th>Test turi</th>
                                     <th>Fan</th>
+                                    <th>Mavzu</th>
+                                    <th>Sinf</th>
+                                    <th>Qism</th>
                                     <th>To'g'ri javoblar</th>
                                     <th>Noto'g'ri javoblar</th>
                                     <th>Ball</th>
@@ -37,6 +40,9 @@
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $item->testType->name }}</td>
                                             <td>{{ $item->subject->name }}</td>
+                                            <td>{{ $item->topic->name ?? ($item->mixed ? 'Aralash test' : '') }}</td>
+                                            <td>{{ $item->degree }}</td>
+                                            <td>{{ $item->part }}</td>
                                             <td>{{ $item->true_answers }}</td>
                                             <td>{{ $item->wrong_answers }}</td>
                                             <td>{{ $item->score }}</td>

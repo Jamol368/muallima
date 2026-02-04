@@ -100,6 +100,9 @@ Route::middleware([
     Route::get('natural-science/test', [ResultController::class, 'storeForNaturalScience'])
         ->name('natural-science.result.create');
 
+    Route::get('aralash/test/{subject_id}', [ResultController::class, 'storeMixedQuize'])
+        ->name('mixed.test.create');
+
     Route::post('/complaints', [ComplaintController::class, 'store'])->name('complaints.store');
 
 

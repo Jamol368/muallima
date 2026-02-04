@@ -800,6 +800,12 @@ body {
     }
 }
 
+@media (max-width: 405px) {
+    .logo-img{
+        width: 174px;
+    }
+}
+
 .overlay {
     position: fixed;
     inset: 0;

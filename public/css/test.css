@@ -4242,6 +4242,10 @@ body {
     }
     .home {
         margin-top: 24px;
+        border-bottom: 1px solid #ddd;
+    }
+    .timer{
+        margin-top: 10px;
     }
     #test-submit {
         margin: 36px 0 24px
@@ -4250,7 +4254,7 @@ body {
         width: 64px;
         padding: 12px 7px;
         border-width: 2px;
-        font-size: 20px;
+        font-size: 26px;
     }
     .wrapper .time-block .label {
         font-size: 12px;
@@ -4265,7 +4269,7 @@ body {
         font-size: 14px;
     }
     .selected-answer {
-        font-size: 16px
+        font-size: 18px
     }
     #test-submit {
         margin-left: 6px
@@ -4305,6 +4309,9 @@ body {
     .test-user-info{
         margin-bottom: 18px;
         padding: 0 10px;
+    }
+    .user-pic{
+        width: 64px
     }
 }
 

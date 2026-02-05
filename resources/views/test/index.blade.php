@@ -58,7 +58,6 @@
                                          src="https://i.pinimg.com/originals/ff/a0/9a/ffa09aec412db3f54deadf1b3781de2a.png">
 
                                     <div>
-
                                         <div class="teacher-name">
                                             {{ mb_strtoupper(auth()->user()->name) }}
                                         </div>
@@ -175,7 +174,7 @@
 
                                 <div class="question-form-wrapper ng-star-inserted">
                                     <div class="question">
-                                        <div class="selected-answer times-new-roman-14 ng-star-inserted">
+                                        <div class="selected-answer times-new-roman-14 ng-star-inserted fs-5">
                                             {!! $question['question'] !!}
                                         </div>
                                     </div>

@@ -14,9 +14,6 @@ class SiteController extends Controller
     public function index()
     {
         return view('welcome', [
-            'users' => User::all()->count(),
-            'tests' => Test::all()->count(),
-            'subjects' => Subject::all()->count(),
             'test_types' => TestType::all()->sortBy('order'),
             'posts' => Post::latest()->take(3)->get(),
             'topic_test_type' => TestType::query()->where('id', TestTypeEnum::TEST_TYPE_TOPIC)->first(),

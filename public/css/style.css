@@ -238,8 +238,15 @@ h6,
     }
 
     .carousel-caption h1 {
-        font-size: 30px;
+        font-size: 24px;
         font-weight: 600 !important;
+    }
+    .carousel-caption h3{
+        font-size: 18px;
+        margin-bottom: 10px
+    }
+    .container-minimized{
+        padding: 10px !important;
     }
 }
 
@@ -812,10 +819,16 @@ body {
         height: 34px;
     }
     .logo-img{
-        width: 174px;
+        width: 174px !important;
     }
     .btn-profile{
         padding: 6px 14px !important;
+    }
+    .mobile-sidebar-link{
+        font-size: 16px;
+    }
+    .dropdown-content, .dropdown-content-mobile{
+        width: 220px;
     }
 }
 
@@ -870,4 +883,9 @@ body {
 .mobile-sidebar-link:hover, .mobile-sidebar-link.active{
     background-color: #1bd886;
     color: #fff;
+}
+
+.short-description{
+    height: 75px;
+    overflow: hidden;
 }

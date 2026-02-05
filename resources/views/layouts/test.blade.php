@@ -46,6 +46,18 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var preventBack = {{ Session::has('preventBack') ? 'true' : 'false' }};
+
+            if (preventBack) {
+                history.pushState(null, null, location.href);
+                window.onpopstate = function () {
+                    history.go(1);
+                };
+            }
+        });
+    </script>
 
     </body>
 

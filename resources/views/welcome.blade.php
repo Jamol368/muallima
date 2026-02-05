@@ -30,56 +30,8 @@
         </div>
     @endsection
 
-    <!-- Facts Start -->
-    <div class="container-fluid facts py-5 pt-lg-0">
-        <div class="container py-5 pt-lg-0">
-            <div class="row gx-0">
-                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.1s">
-                    <div class="bg-green shadow d-flex align-items-center justify-content-center p-4"
-                         style="height: 150px;">
-                        <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2"
-                             style="width: 60px; height: 60px;">
-                            <i class="fa fa-users text-green fs-3"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="text-white mb-0 fs-6">{{ __('messages.happy_clients')}}</h5>
-                            <h1 class="text-white mb-0 fs-4" data-toggle="counter-up">{{ $users }}</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
-                    <div class="bg-light shadow d-flex align-items-center justify-content-center p-4"
-                         style="height: 150px;">
-                        <div class="bg-green d-flex align-items-center justify-content-center rounded mb-2"
-                             style="width: 60px; height: 60px;">
-                            <i class="fa fa-check text-white fs-3"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="text-green mb-0 fs-6">{{ __('messages.tests')}}</h5>
-                            <h1 class="mb-0 fs-4" data-toggle="counter-up">{{ $tests }}</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.6s">
-                    <div class="bg-green shadow d-flex align-items-center justify-content-center p-4"
-                         style="height: 150px;">
-                        <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2"
-                             style="width: 60px; height: 60px;">
-                            <i class="fa fa-award text-green fs-3"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="text-white mb-0 fs-6">{{ __('messages.subjects')}}</h5>
-                            <h1 class="text-white mb-0 fs-4" data-toggle="counter-up">{{ $subjects }}</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Facts Start -->
-
     <!-- Blog Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container-fluid py-5 wow fadeInUp container-minimized" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
                 <h5 class="fw-bold text-green text-uppercase fz-22">{{ __('messages.recent_news') }}</h5>
@@ -104,7 +56,7 @@
                                     <h4 class="h5 mb-3">{{ $item->title }}</h4>
                                 </a>
                                 <p>{!! $item->description !!}</p>
-                                <a class="btn text-uppercase test-type-btn" href="{{ route('post', ['slug' => $item->slug]) }}">Batafsil</a>
+                                <a class="btn text-uppercase test-type-btn mt-2" href="{{ route('post', ['slug' => $item->slug]) }}">Batafsil</a>
                             </div>
                         </div>
                     </div>
@@ -115,7 +67,7 @@
     <!-- Blog Start -->
 
     <!-- Service Start -->
-    <div id="test_type" class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div id="test_type" class="container-fluid py-5 wow fadeInUp container-minimized" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
                 <h1 class="fw-bold text-green text-uppercase fz-22">Test turlari</h1>
@@ -129,8 +81,8 @@
                             </div>
                             <div class="p-4">
                                 <h4 class="mb-3 min-h-full">{{ $item->name }}</h4>
-                                <div class="min-h-72">{!! $item->description !!}</div>
-                                <a class="btn text-uppercase test-type-btn" href="{{ route('subject.list', ['test_type' => $item->id]) }}">Tanlash <i class="bi bi-arrow-right"></i></a>
+                                <div>{!! $item->description !!}</div>
+                                <a class="btn text-uppercase test-type-btn mt-2" href="{{ route('subject.list', ['test_type' => $item->id]) }}">Tanlash <i class="fa fa-arrow-right-long"></i></a>
                             </div>
                         </div>
                     </div>
@@ -141,7 +93,7 @@
     <!-- Service End -->
 
     <!-- About Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container-fluid py-5 wow fadeInUp container-minimized" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-7">

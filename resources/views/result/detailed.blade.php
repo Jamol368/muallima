@@ -159,8 +159,8 @@
                                                                 <span class="mat-radio-label-content">
                                                                     <span style="display: none;">&nbsp;</span>
                                                                     <span><b _ngcontent-eob-c283="">{{ chr(65+$answer_key) }})</b></span>
-                                                                    <div class="selected-answer times-new-roman-14 ng-star-inserted">
-                                                                        {!! $answer['option'] !!}
+                                                                    <div class="selected-answer times-new-roman-14 ng-star-inserted flex align-items-center gap-2">
+                                                                        {!! preg_replace('/<a\s+[^>]*>(.*?)<\/a>/is', '$1', $answer['option']); !!}
                                                                         @if($answer['is_selected'] && $answer['is_true'])
                                                                             <i class="fas fa-check text-success text-xl"></i>
                                                                         @elseif($answer['is_selected'] && !$answer['is_true'])

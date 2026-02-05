@@ -794,13 +794,22 @@ body {
     }
 }
 
+@media (max-width: 512px) {
+    .mixed-quiz{
+        flex-wrap: wrap;
+    }
+    .mixed-quiz h2{
+        margin-bottom: 10px;
+    }
+}
+
 @media (max-width: 405px) {
     .navbar-brand{
         margin-right: 0
     }
     .navbar-dark .navbar-toggler {
-        font-size: 14px;
-        height: 38px;
+        font-size: 12px;
+        height: 34px;
     }
     .logo-img{
         width: 174px;

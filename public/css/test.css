@@ -4295,6 +4295,19 @@ body {
     }
 }
 
-.tiptap figure figcaption {
+@media (max-width: 405px) {
+    .test-page{
+        margin: 5px;
+    }
+    .main{
+        padding: 10px 0;
+    }
+    .test-user-info{
+        margin-bottom: 18px;
+        padding: 0 10px;
+    }
+}
+
+figcaption, .attachment__caption {
     display: none !important;
 }

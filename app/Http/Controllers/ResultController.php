@@ -390,6 +390,7 @@ class ResultController extends Controller
                         'test_type' => $test_type,
                         'subject' => $subject,
                         'result_session_id' => $result_session->id,
+                        'mixed' => true,
                     ]);
                 }
                 abort(404, 'Balansingiz yoki testlar soni yetarli emas.');

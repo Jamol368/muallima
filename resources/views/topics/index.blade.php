@@ -23,7 +23,7 @@
             </div>
 
             <div class="container mx-auto mt-5 max-w-md p-6 bg-white shadow-lg rounded-3">
-                <div class="flex justify-content-between">
+                <div class="mixed-quiz flex justify-content-between">
                     <h2>{{ $subject->name }} fani bo'yicha aralash testlar</h2>
                     <a href="{{ route('mixed.test.create', ['subject_id' => $subject->id]) }}" class="btn btn-success px-5 py-2 bg-success font-medium rounded-lg hover:bg-indigo-700 transition">Tanlash</a>
                 </div>

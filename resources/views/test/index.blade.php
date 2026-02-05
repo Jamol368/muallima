@@ -79,6 +79,10 @@
                                         <div class="flex">
                                             <div> <strong>Mavzu:</strong> {{ $topic->getOriginal('name') }}</div>
                                         </div>
+                                        @elseif(isset($mixed))
+                                            <div class="flex">
+                                                <div> <strong>Mavzu:</strong> Aralash test</div>
+                                            </div>
                                         @endif
                                         @if(isset($degree))
                                         <div class="flex">
@@ -161,7 +165,7 @@
                                         class="btn mat-button mat-raised-button text-warn-400"
                                         onclick="openComplaintModal({{ $question['id'] }})"
                                     >
-                                        <i class="fa fa-exclamation-circle"></i>
+                                        <i class="fa fa-exclamation-circle mr-1"></i>
                                         E'tiroz
                                     </button>
 
@@ -196,8 +200,8 @@
                                                         <span class="mat-radio-label-content">
                                                             <span style="display: none;">&nbsp;</span>
                                                             <span><b _ngcontent-eob-c283="">{{ chr(65+$answer_key) }})</b></span>
-                                                            <div class="selected-answer times-new-roman-14 ng-star-inserted">
-                                                                {!! $answer['option'] !!}
+                                                            <div class="selected-answer times-new-roman-14 ng-star-inserted flex align-items-center gap-2">
+                                                                {!! preg_replace('/<a\s+[^>]*>(.*?)<\/a>/is', '$1', $answer['option']); !!}
                                                             </div>
                                                         </span>
                                                     </label>
@@ -273,7 +277,7 @@
                 ></textarea>
 
                 <div class="mt-3 flex justify-content-end gap-1">
-                    <button type="submit" id="complaintSubmitBtn" class="btn bnt-complaint mat-button mat-raised-button btn-success fs-6" disabled>Yuborish</button>
+                    <button type="submit" id="complaintSubmitBtn" class="btn bnt-complaint mat-button mat-raised-button btn-success fs-6 mr-1" disabled>Yuborish</button>
                     <button type="button" class="btn mat-button mat-raised-button fs-6" onclick="closeComplaintModal()">Bekor qilish</button>
                 </div>
             </form>
@@ -325,6 +329,10 @@
                 .catch(() => {
                     alert("⚠️ Nimadir noto'g'ri ketdi. Qaytadan urinib ko'ring.");
                 });
+        });
+
+        document.querySelectorAll('figure a').forEach(a => {
+            a.dataset.href = '';
         });
     </script>
 

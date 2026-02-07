@@ -62,7 +62,7 @@ Route::middleware([
     Route::get('fan/{subject_id}', [SubjectController::class, 'degree'])
         ->name('subject.degree');
 
-    Route::get('test/{test_type}{subject}', [ResultController::class, 'store'])
+    Route::get('test/{test_type}/{subject}', [ResultController::class, 'store'])
         ->name('result.create');
 
     Route::post('test', [TestController::class, 'store'])

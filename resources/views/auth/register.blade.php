@@ -46,7 +46,7 @@
                                 kiriting!</p>
 
                             <p class="auth-label">FIO</p>
-                            <input type="text" id="name" name="name" placeholder="FIO" class="auth-input">
+                            <input type="text" id="name" name="name" value="{{ old('name') }}" placeholder="FIO" class="auth-input">
 
                             <p class="auth-label">Fan</p>
                             <select name="subject" id="subject" class="custom-select form-select auth-input">
@@ -72,9 +72,9 @@
                             </div>
 
                             <p class="auth-label">Telefon raqam</p>
-                            <input type="text" id="phone-number" name="phone-number" placeholder="+998"
+                            <input type="text" id="phone-number" name="phone-number" value="{{ old('phone') }}" placeholder="+998"
                                    class="auth-input">
-                            <input type="hidden" id="phone" name="phone">
+                            <input type="hidden" id="phone" name="phone" value="{{ old('phone') }}">
 
                             <script src="https://cdn.jsdelivr.net/npm/cleave.js@1/dist/cleave.min.js"></script>
                             <script>
@@ -99,8 +99,7 @@
                                 <button id="registerBtn" class="btn auth-btn confirm-btn mt-3" disabled="true">Tasdiqlash</button>
 
                             <p class="mt-3 small text-muted">
-                                Tizimdan ro‘yxatdan o‘tish bilan men offerta-ga roziligimni bildiraman.
-                                <a href="#" class="offerta-btn" id="offertaOpenModalBtn">Offerta</a>
+                                Tizimdan ro‘yxatdan o‘tish bilan men foydalanuvchi kelishuviga roziligimni bildiraman.
                             </p>
                         </div>
                     </form>

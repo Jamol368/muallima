@@ -25,14 +25,10 @@
                                     <th>#</th>
                                     <th>Test turi</th>
                                     <th>Fan</th>
-                                    <th>Mavzu</th>
-                                    <th>Sinf</th>
-                                    <th>Qism</th>
                                     <th>To'g'ri javoblar</th>
-                                    <th>Noto'g'ri javoblar</th>
                                     <th>Ball</th>
                                     <th>Topshirgan vaqti</th>
-                                    <th>Amallar</th>
+                                    <th>Tahlil</th>
                                     </thead>
                                     <tbody>
                                     @foreach($results as $key => $item)
@@ -40,11 +36,7 @@
                                             <td>{{ $key + 1 }}</td>
                                             <td>{{ $item->testType->name }}</td>
                                             <td>{{ $item->subject->name }}</td>
-                                            <td>{{ $item->topic->name ?? ($item->mixed ? 'Aralash test' : '') }}</td>
-                                            <td>{{ $item->degree }}</td>
-                                            <td>{{ $item->part }}</td>
                                             <td>{{ $item->true_answers }}</td>
-                                            <td>{{ $item->wrong_answers }}</td>
                                             <td>{{ $item->score }}</td>
                                             <td>{{ $item->created_at->format('H:i d/m/Y') }}</td>
                                             <td><a href="{{ route('results.detailed', ['result' => $item->id]) }}" class="btn border">Batafsil</a></td>

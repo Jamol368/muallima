@@ -234,9 +234,7 @@
             inset: 0;
             pointer-events: none;
             z-index: 9999;
-
-            background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg'><g transform='rotate(-30 200 125)'> <text x='70' y='120' font-size='22' fill='rgba(0,0,0,0.3)'>Muallima.uz</text> <text x='150' y='170' font-size='22' fill='rgba(0,0,0,0.3)'>Muallima.uz</text> <text x='230' y='120' font-size='22' fill='rgba(0,0,0,0.3)'>Muallima.uz</text> </g> </svg> ");
-
+            background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' width='400' height='250'> <g transform='rotate(-30 200 125)'> <text x='70' y='100' font-size='20' fill='rgba(0,0,0,0.15)'> <tspan x='70' dy='0'>Muallima.uz ID: {{ auth()->id() }}</tspan> </text> </g> </svg>");
             background-repeat: repeat;
             background-size: 380px 230px;
             }

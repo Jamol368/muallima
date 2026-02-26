@@ -27,8 +27,8 @@ class RegisterRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'min:3', 'max:255'],
             'phone' => ['required', 'integer', 'digits:9', 'unique:users'],
-            'teacher_category' => ['required_if:type,1', 'integer'],
-            'subject' => ['required_if:type,1', 'integer'],
+            'teacher_category_id' => ['required', 'integer'],
+            'subject_id' => ['required', 'integer'],
             'password' => ['required', 'string', 'min:8'],
         ];
     }

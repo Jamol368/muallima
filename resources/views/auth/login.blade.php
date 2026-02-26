@@ -22,6 +22,12 @@
                         @csrf
                         <div class="auth-form-container align-items-center">
 
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <p>Bunday foydalanuvchi mavjud emas, iltimos telefon va parolingizni to'g'ri kiriting</p>
+                                </div>
+                            @endif
+
                             <h1 class="mb-3 auth-title">Tizimga kirish</h1>
                             <p class="text-muted">Iltimos, telefon raqam hamda parolinggizni kiriting!</p>
 

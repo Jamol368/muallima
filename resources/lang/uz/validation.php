@@ -222,7 +222,10 @@ return [
         'languages'             => 'Til',
         'prefix'                => 'Prefiks',
         'queue'                 => 'Navbat',
-        'number'                => 'Raqam'
+        'number'                => 'Raqam',
+
+        'teacher_category_id'   => 'Malaka (amaldagi) toifa',
+        'subject_id'            => 'Fan',
     ],
 
 ];

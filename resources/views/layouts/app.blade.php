@@ -98,11 +98,11 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                     <a href="{{ route('home') }}" class="nav-item nav-link color-black {{ Request::is('home')?'active':'' }}">{{ __('messages.home') }}</a>
-                    <a href="#" class="nav-item nav-link color-black">{{ __('messages.course') }}</a>
                     <a href="{{ route('home').'#test_type' }}" class="nav-item nav-link color-black">{{ __('messages.test') }}</a>
+                    <a href="{{ route('textbooks.index') }}" class="nav-item nav-link color-black">{{ __('messages.textbooks') }}</a>
+                    <a href="#" class="nav-item nav-link color-black">{{ __('messages.course') }}</a>
                     <a href="#" class="nav-item nav-link color-black">{{ __('messages.contest') }}</a>
                     <a href="{{ route('posts') }}" class="nav-item nav-link color-black">{{ __('messages.news') }}</a>
-                    <a href="#" class="nav-item nav-link color-black">{{ __('messages.about') }}</a>
                     <a href="{{ trans('messages.telegram_bot') }}" target="_blank" class="nav-item nav-link color-black">{{ __('messages.contact') }}</a>
                     @if (Route::has('login'))
                         @auth
@@ -151,11 +151,11 @@
                 </div>
                 <nav class="mobile-sidebar-navbar mt-4 fs-5">
                     <a href="{{ route('home') }}" class="mobile-sidebar-link mb-1 p-2 {{ Request::routeIs('home')?'active':'' }}">{{ __('messages.home') }}</a>
-                    <a href="#" class="mobile-sidebar-link mb-1 p-2">{{ __('messages.course') }}</a>
                     <a href="{{ route('home').'#test_type' }}" class="mobile-sidebar-link mb-1 p-2">{{ __('messages.test') }}</a>
+                    <a href="{{ route('textbooks.index') }}" class="mobile-sidebar-link mb-1 p-2">{{ __('messages.textbooks') }}</a>
+                    <a href="#" class="mobile-sidebar-link mb-1 p-2">{{ __('messages.course') }}</a>
                     <a href="#" class="mobile-sidebar-link mb-1 p-2">{{ __('messages.contest') }}</a>
                     <a href="{{ route('posts') }}" class="mobile-sidebar-link mb-1 p-2 {{ Request::routeIs(['posts', 'post', 'post-category.show', 'post-tag.show'])?'active':'' }}">{{ __('messages.news') }}</a>
-                    <a href="#" class="mobile-sidebar-link mb-1 p-2">{{ __('messages.about') }}</a>
                     <a href="{{ trans('messages.telegram_bot') }}" target="_blank" class="mobile-sidebar-link mb-1 p-2">{{ __('messages.contact') }}</a>
                     @guest
                         <a href="{{ route('login') }}"

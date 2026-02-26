@@ -82,7 +82,71 @@
                             <div class="p-4">
                                 <h4 class="mb-3 min-h-full">{{ $item->name }}</h4>
                                 <div>{!! $item->description !!}</div>
-                                <a class="btn text-uppercase test-type-btn mt-2" href="{{ route('subject.list', ['test_type' => $item->id]) }}">Tanlash <i class="fa fa-arrow-right-long"></i></a>
+                                @if($item->id == \App\Enums\TestTypeEnum::TEST_TYPE_ATTESTATION->value)
+                                    <a href="{{ route('result.create', ['test_type' => $item->id, 'subject' => \App\Enums\SubjectEnum::PRIMARY->value]) }}"
+                                       class="btn text-uppercase test-type-btn mt-2"
+                                       data-bs-toggle="modal"
+                                       data-bs-target="#attestationModal">
+                                        Tanlash <i class="fa fa-arrow-right-long"></i>
+                                    </a>
+                                    <div class="modal fade" id="attestationModal" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog border-3">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title fs-4">Tasdiqlash</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                        <i class="fa fa-xmark align-top"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p class="fs-6 mb-3">Haqiqatan ham ushbu - {{ $item->name }}ni boshlamoqchimisiz?</p>
+                                                    <div class="flex justify-content-between text-white bg-warning p-2 mb-2 rounded-3">
+                                                        <span><i class="fas fa-book"></i> {{ $item->questions }} savol</span>
+                                                        <span><i class="fas fa-clock"></i> {{ $item->mins }} min</span>
+                                                        <span><i class="fas fa-money-bill-alt"></i> {{ $item->price }} so'm</span>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Bekor qilish</button>
+                                                    <a id="attestationRedirect" href="{{ route('result.create', ['test_type' => $item->id, 'subject' => \App\Enums\SubjectEnum::PRIMARY->value]) }}" class="btn btn-success">Davom etish</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @elseif($item->id == \App\Enums\TestTypeEnum::TEST_TYPE_CERTIFICATE->value)
+                                    <a href="{{ route('result.create', ['test_type' => $item->id, 'subject' => \App\Enums\SubjectEnum::CERTIFICATE->value]) }}"
+                                       class="btn text-uppercase test-type-btn mt-2"
+                                       data-bs-toggle="modal"
+                                       data-bs-target="#certificateModal">
+                                        Tanlash <i class="fa fa-arrow-right-long"></i>
+                                    </a>
+                                    <div class="modal fade" id="certificateModal" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog border-3">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title fs-4">Tasdiqlash</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                                        <i class="fa fa-xmark align-top"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p class="fs-6 mb-3">Haqiqatan ham ushbu - {{ $item->name }}ni boshlamoqchimisiz?</p>
+                                                    <div class="flex justify-content-between text-white bg-warning p-2 mb-2 rounded-3">
+                                                        <span><i class="fas fa-book"></i> {{ $item->questions }} savol</span>
+                                                        <span><i class="fas fa-clock"></i> {{ $item->mins }} min</span>
+                                                        <span><i class="fas fa-money-bill-alt"></i> {{ $item->price }} so'm</span>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Bekor qilish</button>
+                                                    <a id="certificateRedirect" href="{{ route('result.create', ['test_type' => $item->id, 'subject' => \App\Enums\SubjectEnum::CERTIFICATE->value]) }}" class="btn btn-success">Davom etish</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @else
+                                    <a class="btn text-uppercase test-type-btn mt-2" href="{{ route('subject.list', ['test_type' => $item->id]) }}">Tanlash <i class="fa fa-arrow-right-long"></i></a>
+                                @endif
                             </div>
                         </div>
                     </div>

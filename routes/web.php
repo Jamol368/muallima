@@ -10,6 +10,7 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TestTypeController;
+use App\Http\Controllers\TextbookController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\UserBalanceController;
 use App\Http\Controllers\UserController;
@@ -42,6 +43,8 @@ Route::get('yangiliklar-turi/{postCategory}/{slug}', [PostCategoryController::cl
     ->name('post-category.show');
 Route::get('yangiliklar-teg-boyicha/{postTag}/{slug}', [PostTagController::class, 'show'])
     ->name('post-tag.show');
+
+Route::get('/darsliklar', [TextbookController::class, 'index'])->name('textbooks.index');
 
 // handle requests from payment system
 Route::any('/handle/{paysys}',function($paysys){
@@ -80,12 +83,12 @@ Route::middleware([
     Route::get('balans', [UserBalanceController::class, 'edit'])
         ->name('user-balance.edit');
 
-    Route::post('balance-yangilash', [UserBalanceController::class, 'update'])
+    Route::post('balans-yangilash', [UserBalanceController::class, 'update'])
         ->name('user-balance.update');
 
-    Route::get('profile-edit/{user_id}', [UserController::class, 'edit'])
+    Route::get('profil-tahrirlash/{user_id}', [UserController::class, 'edit'])
         ->name('profile.edit');
-    Route::post('profile-update', [UserController::class, 'update'])
+    Route::post('profil-yangilash', [UserController::class, 'update'])
         ->name('profile.update');
 
     Route::get('fanlar/mavzulashgan-test', [TopicController::class, 'index'])
@@ -97,7 +100,7 @@ Route::middleware([
     Route::get('test/{subject}/{topic}', [ResultController::class, 'storeForTopic'])
         ->name('topic-result.create');
 
-    Route::get('natural-science/test', [ResultController::class, 'storeForNaturalScience'])
+    Route::get('sinf/qism/test', [ResultController::class, 'storeForNaturalScience'])
         ->name('natural-science.result.create');
 
     Route::get('aralash/test/{subject_id}', [ResultController::class, 'storeMixedQuize'])

@@ -656,7 +656,7 @@ body {
 }
 
 .test-type-btn {
-    background-color: #2aac3b;
+    background-color: #2aac3b !important;
     color: #fff !important;
     width: 100%;
 }
@@ -888,4 +888,8 @@ body {
 .short-description{
     height: 75px;
     overflow: hidden;
+}
+
+.textbook{
+    width: 312px;
 }

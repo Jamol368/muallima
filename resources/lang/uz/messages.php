@@ -72,6 +72,8 @@ return [
     "confirm_delete_account" => "Hisobingizni oʻchirib tashlamoqchimisiz? Hisobingiz o'chirilgandan so'ng, uning barcha resurslari va ma'lumotlari butunlay o'chiriladi. Hisobingizni butunlay oʻchirib tashlamoqchi ekanligingizni tasdiqlash uchun parolingizni kiriting.",
 
     "home" => "Asosiy",
+    "textbook" => "Darslik",
+    "textbooks" => "Darsliklar",
     "course" => "Kurs",
     "test" => "Test",
     "contest" => "Tanlov",
@@ -103,4 +105,6 @@ return [
     'error' => "Xatolik",
 
     "select_subject_for_topic_tests" => "Mavzulashgan test uchun fanni tanlash",
+    "file" => "Fayl",
+    "downloaded" => "Yuklab olingan",
 ];

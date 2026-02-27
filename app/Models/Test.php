@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\SubjectEnum;
 use App\Enums\TestTypeEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -92,12 +93,13 @@ class Test extends Model
 
     public static function getAttestationQuestions(int $subject_id, TestType $test_type): object|int
     {
-        $tests = Test::where('subject_id', $subject_id)
-            ->where(function ($query) use ($test_type) {
+        $tests = Test::where(function ($query) use ($subject_id) {
+                $query->where('subject_id', $subject_id)
+                    ->orWhere('subject_id', SubjectEnum::CERTIFICATE->value);
+            })->where(function ($query) use ($test_type) {
                 $query->where('test_type_id', $test_type->id)
                     ->orWhere('test_type_id', TestTypeEnum::TEST_TYPE_TOPIC->value);
-            })
-            ->inRandomOrder()
+            })->inRandomOrder()
             ->take($test_type->questions-15)
             ->get();
 

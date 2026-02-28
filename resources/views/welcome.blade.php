@@ -39,7 +39,7 @@
             <div class="row g-5">
                 @foreach($posts as $key => $item)
                     <div class="col-lg-4 wow slideInUp" data-wow-delay="0.{{ 2 + $key }}s">
-                        <div class="blog-item bg-light rounded overflow-hidden">
+                        <div class="blog-item bg-light rounded overflow-hidden shadow-lg rounded-3">
                             <div class="flex justify-center blog-img position-relative overflow-hidden">
                                 <a href="{{ route('post-category.show', ['postCategory' => $item->id, 'slug' => $item->slug]) }}">
                                     <img class="img-fluid" src="{{ asset('storage/' . $item->img) }}" alt="">
@@ -56,7 +56,7 @@
                                     <h4 class="h5 mb-3">{{ $item->title }}</h4>
                                 </a>
                                 <p>{!! $item->description !!}</p>
-                                <a class="btn text-uppercase test-type-btn mt-2" href="{{ route('post', ['slug' => $item->slug]) }}">Batafsil</a>
+                                <a class="btn text-uppercase test-type-btn mt-2 rounded-pill" href="{{ route('post', ['slug' => $item->slug]) }}">Batafsil</a>
                             </div>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
             <div class="row g-5">
                 @foreach($test_types as $key => $item)
                     <div class="col-lg-4 wow slideInUp" data-wow-delay="0.{{ 2 + $key }}s">
-                        <div class="blog-item bg-light rounded overflow-hidden">
+                        <div class="blog-item bg-light rounded overflow-hidden shadow-lg rounded-3">
                             <div class="blog-img position-relative overflow-hidden">
                                 <img class="img-fluid object-cover min-h-250" src="{{ asset('storage/' . $item->img) }}" alt="">
                             </div>
@@ -84,7 +84,7 @@
                                 <div>{!! $item->description !!}</div>
                                 @if($item->id == \App\Enums\TestTypeEnum::TEST_TYPE_ATTESTATION->value)
                                     <a href="{{ route('result.create', ['test_type' => $item->id, 'subject' => \App\Enums\SubjectEnum::PRIMARY->value]) }}"
-                                       class="btn text-uppercase test-type-btn mt-2"
+                                       class="btn text-uppercase test-type-btn mt-2 rounded-pill"
                                        data-bs-toggle="modal"
                                        data-bs-target="#attestationModal">
                                         Tanlash <i class="fa fa-arrow-right-long"></i>
@@ -115,7 +115,7 @@
                                     </div>
                                 @elseif($item->id == \App\Enums\TestTypeEnum::TEST_TYPE_CERTIFICATE->value)
                                     <a href="{{ route('result.create', ['test_type' => $item->id, 'subject' => \App\Enums\SubjectEnum::CERTIFICATE->value]) }}"
-                                       class="btn text-uppercase test-type-btn mt-2"
+                                       class="btn text-uppercase test-type-btn mt-2 rounded-pill"
                                        data-bs-toggle="modal"
                                        data-bs-target="#certificateModal">
                                         Tanlash <i class="fa fa-arrow-right-long"></i>
@@ -145,7 +145,7 @@
                                         </div>
                                     </div>
                                 @else
-                                    <a class="btn text-uppercase test-type-btn mt-2" href="{{ route('subject.list', ['test_type' => $item->id]) }}">Tanlash <i class="fa fa-arrow-right-long"></i></a>
+                                    <a class="btn text-uppercase test-type-btn mt-2 rounded-pill" href="{{ route('subject.list', ['test_type' => $item->id]) }}">Tanlash <i class="fa fa-arrow-right-long"></i></a>
                                 @endif
                             </div>
                         </div>
@@ -164,11 +164,10 @@
                     <div class="section-title position-relative pb-3 mb-5">
                         <h1 class="fw-bold text-green text-uppercase fz-22">{{ __('messages.about') }}</h1>
                     </div>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
-                        amet
-                        diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus
-                        clita
-                        duo justo et tempor eirmod magna dolore erat amet</p>
+                    <p class="mb-4">Biz sizga eng sifatli xizmatni taqdim etishni maqsad qilganmiz.
+                        Onlayn test ishlash platformasi. Attestatsiya, Mavzulashgan, Pedagogik mahorat va kast standarti testlari yordamida professional tayyorgarlik.
+                        Har bir foydalanuvchi uchun qulay va tushunarli interfeys, tezkor javob, hamda ishonchli ma’lumotlar asosiy ustuvorliklarimizdan biridir.
+                        Jamoamiz doimiy ravishda o‘z bilim va ko‘nikmalarini oshirib, zamonaviy yondashuvlar asosida xizmat ko‘rsatadi.</p>
                     <div class="row g-0 mb-3">
                         <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
                             <h5 class="mb-3"><i class="fa fa-check text-green me-3"></i>Aktual testlar</h5>

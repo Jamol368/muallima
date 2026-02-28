@@ -38,7 +38,8 @@
                     <a href="{{ trans('messages.telegram') }}" target="_blank"><small class="me-3 text-light"><i class="fab fa-telegram me-2"></i>Telegram</small></a>
                     <a href="{{ trans('messages.facebook') }}" target="_blank"><small class="me-3 text-light"><i class="fab fa-facebook me-2"></i>Facebook</small></a>
                     <a href="{{ trans('messages.instagram') }}" target="_blank"><small class="me-3 text-light"><i class="fab fa-instagram me-2"></i>Instagram</small></a>
-                    <a href="{{ trans('messages.twitter') }}" target="_blank"><small class="text-light"><i class="fab fa-x-twitter me-2"></i>Twitter</small></a>
+                    <a href="{{ trans('messages.twitter') }}" target="_blank"><small class="me-3 text-light"><i class="fab fa-x-twitter me-2"></i>Twitter</small></a>
+                    <a href="{{ trans('messages.youtube') }}" target="_blank"><small class="text-light"><i class="fab fa-youtube me-2"></i>Youtube</small></a>
                 </div>
             </div>
             <div class="col-lg-4 text-center text-lg-end">
@@ -51,6 +52,8 @@
                             class="fab fa-instagram fw-normal"></i></a>
                     <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="{{ trans('messages.twitter') }}"><i
                             class="fab fa-x-twitter fw-normal"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href="{{ trans('messages.youtube') }}"><i
+                            class="fab fa-youtube fw-normal"></i></a>
                 </div>
             </div>
         </div>
@@ -135,9 +138,9 @@
                 </div>
                 @guest
                 <a href="{{ route('login') }}"
-                   class="btn bg-green color-white py-2 px-4 ms-3">{{ __('messages.log_in') }}</a>
+                   class="btn bg-green color-white py-2 px-4 ms-3 rounded-pill">{{ __('messages.log_in') }}</a>
                 <a href="{{ route('register') }}"
-                       class="btn bg-green color-white py-2 px-4 ms-3">{{ __('messages.register') }}</a>
+                       class="btn bg-green color-white py-2 px-4 ms-3 rounded-pill">{{ __('messages.register') }}</a>
                 @endguest
             </div>
 
@@ -150,18 +153,18 @@
                     <button id="closeBtn" class="close-btn"><i class="far fa-circle-xmark fs-5"></i></button>
                 </div>
                 <nav class="mobile-sidebar-navbar mt-4 fs-5">
-                    <a href="{{ route('home') }}" class="mobile-sidebar-link mb-1 p-2 {{ Request::routeIs('home')?'active':'' }}">{{ __('messages.home') }}</a>
-                    <a href="{{ route('home').'#test_type' }}" class="mobile-sidebar-link mb-1 p-2">{{ __('messages.test') }}</a>
-                    <a href="{{ route('textbooks.index') }}" class="mobile-sidebar-link mb-1 p-2">{{ __('messages.textbooks') }}</a>
-                    <a href="#" class="mobile-sidebar-link mb-1 p-2">{{ __('messages.course') }}</a>
-                    <a href="#" class="mobile-sidebar-link mb-1 p-2">{{ __('messages.contest') }}</a>
-                    <a href="{{ route('posts') }}" class="mobile-sidebar-link mb-1 p-2 {{ Request::routeIs(['posts', 'post', 'post-category.show', 'post-tag.show'])?'active':'' }}">{{ __('messages.news') }}</a>
-                    <a href="{{ trans('messages.telegram_bot') }}" target="_blank" class="mobile-sidebar-link mb-1 p-2">{{ __('messages.contact') }}</a>
+                    <a href="{{ route('home') }}" class="mobile-sidebar-link mb-1 p-2 ps-4 {{ Request::routeIs('home')?'active':'' }}">{{ __('messages.home') }}</a>
+                    <a href="{{ route('home').'#test_type' }}" class="mobile-sidebar-link mb-1 p-2 ps-4">{{ __('messages.test') }}</a>
+                    <a href="{{ route('textbooks.index') }}" class="mobile-sidebar-link mb-1 p-2 ps-4">{{ __('messages.textbooks') }}</a>
+                    <a href="#" class="mobile-sidebar-link mb-1 p-2 ps-4">{{ __('messages.course') }}</a>
+                    <a href="#" class="mobile-sidebar-link mb-1 p-2 ps-4">{{ __('messages.contest') }}</a>
+                    <a href="{{ route('posts') }}" class="mobile-sidebar-link mb-1 p-2 ps-4 {{ Request::routeIs(['posts', 'post', 'post-category.show', 'post-tag.show'])?'active':'' }}">{{ __('messages.news') }}</a>
+                    <a href="{{ trans('messages.telegram_bot') }}" target="_blank" class="mobile-sidebar-link mb-1 p-2 ps-4">{{ __('messages.contact') }}</a>
                     @guest
                         <a href="{{ route('login') }}"
-                           class="mobile-sidebar-link mb-1 p-2">{{ __('messages.log_in') }}</a>
+                           class="mobile-sidebar-link mb-1 p-2 ps-4">{{ __('messages.log_in') }}</a>
                         <a href="{{ route('register') }}"
-                           class="mobile-sidebar-link p-2">{{ __('messages.register') }}</a>
+                           class="mobile-sidebar-link p-2 ps-4">{{ __('messages.register') }}</a>
                     @endguest
                 </nav>
             </aside>
@@ -223,8 +226,10 @@
                                         class="fab fa-facebook-f fw-normal"></i></a>
                                 <a class="btn btn-success btn-square me-2" href="{{ trans('messages.instagram') }}"><i
                                         class="fab fa-instagram fw-normal"></i></a>
-                                <a class="btn btn-success btn-square" href="{{ trans('messages.twitter') }}"><i
+                                <a class="btn btn-success btn-square me-2" href="{{ trans('messages.twitter') }}"><i
                                         class="fab fa-x-twitter fw-normal"></i></a>
+                                <a class="btn btn-success btn-square" href="{{ trans('messages.youtube') }}"><i
+                                        class="fab fa-youtube fw-normal"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
@@ -269,7 +274,7 @@
     <!-- Footer End -->
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-success btn-lg-square rounded back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <a href="#" class="btn btn-lg btn-success btn-lg-square rounded back-to-top border-radius-10"><i class="fa fa-chevron-up"></i></a>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var preventBack = {{ Session::has('preventBack') ? 'true' : 'false' }};

@@ -116,9 +116,15 @@
 
                                                 <div class="mat-expansion-panel-body ng-tns-c128-28">
                                                     <div class="container ng-tns-c128-28">
-                                                        @for($i=0; $i<$test_type->getOriginal('questions');)
-                                                        <div class="nav-item ng-star-inserted tab-links nav-item-{{ $i + 1 }} {{ $i ? '' : 'active' }}"> {{ ++$i }}</div>
-                                                        @endfor
+                                                        @if($test_type->id === 1)
+                                                            @for($i=0; $i<$test_type->getOriginal('questions')-15;)
+                                                                <div class="nav-item ng-star-inserted tab-links nav-item-{{ $i + 1 }} {{ $i ? '' : 'active' }}"> {{ ++$i }}</div>
+                                                            @endfor
+                                                        @else
+                                                            @for($i=0; $i<$test_type->getOriginal('questions');)
+                                                                <div class="nav-item ng-star-inserted tab-links nav-item-{{ $i + 1 }} {{ $i ? '' : 'active' }}"> {{ ++$i }}</div>
+                                                            @endfor
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -129,7 +135,7 @@
                                                 id="mat-expansion-panel-header-1"
                                                 aria-disabled="true" style="height: 60px;">
                                                 <span class="mat-content ng-tns-c129-31">
-                                                    <div class="mat-expansion-panel-header-title panel-title ng-tns-c129-31"> Pedagogik mahorati </div>
+                                                    <div class="mat-expansion-panel-header-title panel-title ng-tns-c129-31"> Pedagogik mahorat va Kasb standarti </div>
                                                 </span>
                                             </div>
                                             <div role="region"
@@ -139,7 +145,7 @@
                                                  style="visibility: visible;">
                                                 <div class="mat-expansion-panel-body ng-tns-c128-30">
                                                     <div class="container ng-tns-c128-30">
-                                                        @for($i=$test_type->getOriginal('questions'); $i<sizeof($questions);)
+                                                        @for($i=$test_type->getOriginal('questions')-15; $i<sizeof($questions);)
                                                             <div class="nav-item ng-star-inserted tab-links nav-item-{{ $i + 1 }}"> {{ ++$i }}</div>
                                                         @endfor
                                                     </div>

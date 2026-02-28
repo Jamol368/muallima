@@ -98,6 +98,7 @@ return [
     "facebook" => "https://www.facebook.com/Muallimaofficiel?mibextid=ZbWKwL",
     "instagram" => "https://www.instagram.com/invites/contact/?i=tv6lxbygsuvv&utm_content=pr5wtiu",
     "twitter" => "https://x.com/muallimauz/status/1432551336046956545?t=0sHNUtjomJmaZT1TmNJntw&s=35",
+    "youtube" => "https://www.youtube.com/@muallimauz",
 
     'user_balance' => "Foydalanuvchi balansi",
     'balance' => "Balans",

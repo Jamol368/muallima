@@ -88,9 +88,15 @@
 
                                                 <div class="mat-expansion-panel-body ng-tns-c128-28">
                                                     <div class="container ng-tns-c128-28">
-                                                        @for($i=0; $i<$test_type->getOriginal('questions');)
-                                                            <div class="nav-item ng-star-inserted tab-links nav-item-{{ $i + 1 }} {{ $i ? '' : 'active' }} {{ $detailed_questions[$i]['is_correct']?'bg-success':'bg-danger' }}"> {{ ++$i }}</div>
-                                                        @endfor
+                                                        @if($test_type->id === 1)
+                                                            @for($i=0; $i<$test_type->getOriginal('questions')-15;)
+                                                                <div class="nav-item ng-star-inserted tab-links nav-item-{{ $i + 1 }} {{ $i ? '' : 'active' }} {{ $detailed_questions[$i]['is_correct']?'bg-success':'bg-danger' }}"> {{ ++$i }}</div>
+                                                            @endfor
+                                                        @else
+                                                            @for($i=0; $i<$test_type->getOriginal('questions');)
+                                                                <div class="nav-item ng-star-inserted tab-links nav-item-{{ $i + 1 }} {{ $i ? '' : 'active' }} {{ $detailed_questions[$i]['is_correct']?'bg-success':'bg-danger' }}"> {{ ++$i }}</div>
+                                                            @endfor
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
@@ -101,7 +107,7 @@
                                                      id="mat-expansion-panel-header-1"
                                                      aria-disabled="true" style="height: 60px;">
                                                 <span class="mat-content ng-tns-c129-31">
-                                                    <div class="mat-expansion-panel-header-title panel-title ng-tns-c129-31"> Pedagogik mahorati </div>
+                                                    <div class="mat-expansion-panel-header-title panel-title ng-tns-c129-31"> Pedagogik mahorat va Kasb standarti </div>
                                                 </span>
                                                 </div>
                                                 <div role="region"
@@ -111,7 +117,7 @@
                                                      style="visibility: visible;">
                                                     <div class="mat-expansion-panel-body ng-tns-c128-30">
                                                         <div class="container ng-tns-c128-30">
-                                                            @for($i=$test_type->getOriginal('questions'); $i<sizeof($detailed_questions);)
+                                                            @for($i=$test_type->getOriginal('questions')-15; $i<sizeof($detailed_questions);)
                                                                 <div class="nav-item ng-star-inserted tab-links nav-item-{{ $i + 1 }} {{ $detailed_questions[$i]['is_correct']?'bg-success':'bg-danger' }}"> {{ ++$i }}</div>
                                                             @endfor
                                                         </div>
@@ -200,7 +206,7 @@
             pointer-events: none;
             z-index: 9999;
 
-            background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg'><g transform='rotate(-30 200 125)'> <text x='70' y='120' font-size='22' fill='rgba(0,0,0,0.3)'>Muallima.uz</text> <text x='150' y='170' font-size='22' fill='rgba(0,0,0,0.3)'>Muallima.uz</text> <text x='230' y='120' font-size='22' fill='rgba(0,0,0,0.3)'>Muallima.uz</text> </g> </svg> ");
+            background-image: url("data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' width='400' height='250'> <g transform='rotate(-30 200 125)'> <text x='70' y='100' font-size='20' fill='rgba(0,0,0,0.15)'> <tspan x='70' dy='0'>Muallima.uz ID: {{ auth()->id() }}</tspan> </text> </g> </svg>");
 
             background-repeat: repeat;
             background-size: 380px 230px;

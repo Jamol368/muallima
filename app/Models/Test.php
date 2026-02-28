@@ -82,7 +82,6 @@ class Test extends Model
     public static function check(int $subject_id, TestType $test_type): object|int
     {
         if($test_type->id == 1) {
-            $test_type->questions += 10;
             $tests = Test::getAttestationQuestions($subject_id, $test_type);
         } else {
             $tests = Test::getQuestions($subject_id, $test_type);
@@ -93,17 +92,14 @@ class Test extends Model
 
     public static function getAttestationQuestions(int $subject_id, TestType $test_type): object|int
     {
-        $tests = Test::where(function ($query) use ($subject_id) {
-                $query->where('subject_id', $subject_id)
-                    ->orWhere('subject_id', SubjectEnum::CERTIFICATE->value);
-            })->where(function ($query) use ($test_type) {
+        $tests = Test::where(function ($query) use ($test_type) {
                 $query->where('test_type_id', $test_type->id)
                     ->orWhere('test_type_id', TestTypeEnum::TEST_TYPE_TOPIC->value);
             })->inRandomOrder()
             ->take($test_type->questions-15)
             ->get();
 
-        $tests = $tests->concat(Test::where(['subject_id' => 12, 'test_type_id' => 2])
+        $tests = $tests->concat(Test::where(['subject_id' => SubjectEnum::CERTIFICATE->value, 'test_type_id' => TestTypeEnum::TEST_TYPE_CERTIFICATE->value])
             ->inRandomOrder()
             ->take(15)
             ->get()

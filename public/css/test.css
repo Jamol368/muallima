@@ -4315,6 +4315,17 @@ body {
     }
 }
 
+.question table {
+    border-collapse: collapse;
+}
+.question table, .question table th, .question table td {
+    border: 1px solid #000;
+}
+.question table th, .question table td {
+    padding: 6px;
+    text-align: left;
+}
+
 figcaption, .attachment__caption {
     display: none !important;
 }

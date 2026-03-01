@@ -224,8 +224,8 @@ return [
         'queue'                 => 'Navbat',
         'number'                => 'Raqam',
 
-        'teacher_category_id'   => 'Malaka (amaldagi) toifa',
-        'subject_id'            => 'Fan',
+        'teacher_category'   => 'Malaka (amaldagi) toifa',
+        'subject'            => 'Fan',
     ],
 
 ];

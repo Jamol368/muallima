@@ -4326,7 +4326,7 @@ body {
     text-align: left;
 }
 .question p{
-    margin-bottom: 1rem !important;
+    margin-bottom: 1rem;
 }
 .question table p{
     margin-bottom: 0;

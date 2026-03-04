@@ -12,7 +12,7 @@ return [
     "password" => "Parol",
     "confirm_password" => "Parolni tasdiqlash",
     "already_registered" => "Allaqachon ro'yxatdan o'tganman",
-    "register" => "Ro'yhatdan o'tish",
+    "register" => "Ro'yxatdan o'tish",
     "remember_me" => "Meni eslab qol",
     "forgot_your_password?" => "Parolingiz esdan chiqdimi?",
     "log_in" => "Kirish",
